@@ -19,6 +19,8 @@ Hooks.once("init", function (){
       // Preload Handlebars Templates
      preloadHandlebarsTemplates();
 
+
+     //calculate point costs for attribute values
     Handlebars.registerHelper("statValue", function(n, string){
       let result = '';
       let divisor = '';

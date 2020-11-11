@@ -158,15 +158,9 @@
   vertical-align: baseline;
   align-content: center;
 }
-.sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue input[type=text],
-.sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue select {
-  width: 30px;
-  margin: 3px 3px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  vertical-align: baseline;
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue {
+  text-align: right;
+  padding: 3px;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .pointslabel {
   font-size: 10px;

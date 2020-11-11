@@ -3,22 +3,19 @@
         <img src="systems/sjgurps4e/img/GURPS_LOGO.png" class = "logo" title="logo" height = "72" width = "219"/>
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
         <div class="pointsbox" >
-            <h4>total points </h4> 
-            <h4>unspent points</h4>
+            <h4>Total Points </h4> 
+            <h4>Unspent Points</h4>
         </div>
     </header>
 <div class="sheet-top">
        {{> "systems/sjgurps4e/templates/actors/parts/statblock.hbs"}}
-       {{> "system/sjgurps4e/templates/actors/parts/pools.hbs"}}
+       {{> "systems/sjgurps4e/templates/actors/parts/pools.hbs"}}
     <div class = "portrait">
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160"  width="160"/>
     </div>
+    <div class="drBlock">
+        <p>damage resistance</p>
     </div>
-    <div class="secondaryCharacteristics">
-        <p>Basic Lift</p>
-        <p>Basic Speed</p>
-        <p>Basic Move</p>
-    </div> 
 
 </div>
    {{!-- Character Sheet Navigation --}}
@@ -31,9 +28,9 @@
     </nav>
 
     <section class="sheet-body">
-        {{!-- favorites --}}
-        <div class="tab favorites flexrow" data-group="primary" data-tab="core">
-            <p>things that are considered core to game play (damage fav skills and the like)</p>
+        {{!-- core --}}
+        <div class="tab core flexrow" data-group="primary" data-tab="core">
+            {{> "systems/sjgurps4e/templates/actors/parts/core-actor.hbs"}}
         </div>
         {{!-- Inventory --}}
         <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
