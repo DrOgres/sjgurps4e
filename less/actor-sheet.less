@@ -1,0 +1,105 @@
+@font-face{
+    font-family: SpaceMono;
+    src:url(fonts/SpaceMono-Bold.ttf);
+}
+
+@font-face{
+    font-family: Cinzel;
+    src:url(fonts/Cinzel-VariableFont_wght.ttf);
+}
+
+.sjgurps4e.sheet.character {
+    form{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .sheet-header{
+        .pointsbox{
+            text-align: right;
+        }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        img.logo {
+            height: 100%;
+            border: none;
+            flex: 0 0 0;
+        }
+        .charname{
+            input{
+                background-color: rgba(255, 255, 255, 0);
+                border: none;
+                font-family: Cinzel, serif;
+                font-size: 30px;
+                width: 300px;
+            }
+        }
+    }
+
+    .sheet-top{
+        display: flex;
+        flex-direction: row;
+        .portrait{
+            margin-top: 7px;
+            padding: 10px;
+            img{
+                border: none;
+            }
+        }
+        .statblock{
+            width: fit-content;
+            padding: 0px 3px;
+            .statline{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                vertical-align: baseline;
+                .statname{
+                    font-family: SpaceMono, sans-serif;
+                    font-size: 25px;
+                    font-weight: bold;
+                    vertical-align: baseline;
+                    padding: 0px 10px;
+                }
+                .statvalue{
+                    font-size: 20px;
+                    vertical-align: baseline;
+                    padding-right: 10px;
+                    input[type=text], select{
+                        background-color: rgba(255, 255, 255, 0);
+                        width: 40px;
+                        margin: 3px;
+                        display: inline-block;
+                        border: none;
+                        vertical-align: baseline;
+                        align-content: center;
+                    }
+                }
+                .pointvalue{
+                    input[type=text], select {
+                        width: 30px;
+                        margin: 3px 3px;
+                        display: inline-block;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        vertical-align: baseline;
+                    }
+                }
+                .pointslabel{
+                    font-size: 10px;
+                    font-weight: lighter;
+                    vertical-align: baseline;
+
+                }
+            }
+        }
+        .pools{
+            flex-direction: column;
+        }
+    }
+}

@@ -1,0 +1,205 @@
+{
+    "sjgurps4e" : {
+        "attributes" : {
+            "ST": "Strength",
+            "DX": "Dexterity",
+            "IQ": "Intelligence",
+            "HT": "Health",
+            "Per": "Perception",
+            "Will": "Will"
+        },
+        "attributesAbrv" : {
+            "abrvST": "ST",
+            "abrvDX": "DX",
+            "abrvIQ": "IQ",
+            "abrvHT": "HT",
+            "abrvPer": "Per",
+            "abrvWill": "Will"
+        },
+        "secondaryAttributes" : {
+            "HP": "Hit Points",
+            "FP": "Fatigue Points"
+        },
+
+        "weapon-melee" : {
+            "reach": "Reach",
+            "parryType": "Parry",
+            "parryMod": "Parry Modifier"
+        },
+
+        "weapon-ranged" : {
+            "acc": "Accuracy",
+            "range": "Range",
+            "rof": "Rate of Fire",
+            "bulk": "Bulk"
+        },
+
+        "itemProperties" : {
+            "damage": "Damage",
+            "damageType" : "Damage Type",
+            "name": "Name",
+            "weight": "Weight",
+            "cost": "Cost",
+            "description": "Description",
+            "notes": "Notes",
+            "tl" : "Tech Level",
+            "skill" : "Skill",
+            "minSTR": "Minimum ST",
+            "location": "Location",
+            "trait" : "Trait Type"
+        },
+
+        "weaponSkill" : {
+            "axeMace": "Axe/Mace",
+            "boxing" : "Boxing",
+            "brawling" : "Brawling",
+            "martialArts" : "Martial Arts",
+            "broadsword" : "Broadsword",
+            "flail": "Flail",
+            "forcesword": "Force Sword",
+            "garrote" : "garrote",
+            "knife": "Knife",
+            "kusari": "Kusari",
+            "lance": "Lance",
+            "monowireWhip": "Monowire Whip",
+            "polearm": "Polearm",
+            "rapier": "Rapier",
+            "saber": "Saber",
+            "shield": "Sheild",
+            "shortsword": "Shortsword",
+            "smallsword": "Smallsword",
+            "spear": "Spear",
+            "staff": "Staff",
+            "twoHandedAxeMace": "Two-Handed Axe/Mace",
+            "twoHandedFlail": "Two-Handed Flail",
+            "twoHandedSword": "Two-Handed Sword",
+            "whip": "Whip"
+        },
+        
+        "rangedWeaponSkill" : {
+            "blowpipe": "Blowpipe",
+            "bolas": "Bolas",
+            "bow": "Bow",
+            "cloak": "Cloak",
+            "crossbow": "Crossbow",
+            "lasso": "Lasso",
+            "net": "Net",
+            "sling": "Sling",
+            "spearThrower": "Spear Thrower",
+            "thrownWeaponAxeMace": "Thrown Weapon (Axe/Mace)",
+            "thrownWeaponHarpoon": "Thrwon Weapon (Harpoon)",
+            "thrownWeaponKnife": "Thrown Weapon (Knife)",
+            "thrownWeaponShuriken": "Thrown Weapon (Shuriken)",
+            "thrownWeaponSpear": "Thrown Weapon (Spear)",
+            "throwing" : "Throwing",
+            "gunsPistol": "Guns (Pistol)",
+            "gunsGyroc": "Guns (Gyroc)",
+            "gunsSmg": "Guns(SMG)",
+            "gunsMusket": "Guns (Musket)",
+            "gunsRifle": "Guns(Rifle)",
+            "gunsShotgun": "Guns (Shotgun)",
+            "beamWeaponsPistol" : "Beam Weapons (Pistol)",
+            "beamWeaponsRifle": "Beam Weapons (Rifle)",
+            "artilleryGuidedMissile": "Artillery (Guided Missile)",
+            "gunnerCatapult": "Gunner (Catapult)",
+            "gunnerMachineGun": "Gunner (Machine Gun)",
+            "gunsGrenadeLauncher": "Guns (Grenade Launcher)",
+            "gunsLaw": "Guns (LAW)",
+            "gunsLmg": "Guns (LMG)",
+            "liquidProjectorFlamethrower": "Liquid Projector (Flamethrower)"
+        },
+        
+        "damageType" : {
+            "aff": "Affliction",
+            "burn" : "Burn",
+            "cor": "Corrosion",
+            "cr" : "Crushing",
+            "cut" : "Cutting",
+            "fat" : "Fatigue",
+            "imp" : "Impaling",
+            "pi-" : "Small Piercing",
+            "pi" : "Piericing",
+            "pi+" : "Large Piercing",
+            "pi++" : "Huge Piercing",
+            "spec" : "Special",
+            "tox" : "Toxic"
+        },
+        
+        "Description-Tab": "Description",
+        "Details" : "Details",
+        "weaponType" : "Weapon Type",
+        "weaponGroup" : {
+            "melee" : "Melee Weapon",
+            "ranged" : "Ranged Weapon"
+        },
+        
+        "skill": "Skill",
+        "spell": "Spell",
+        "attribute": "Attribute",
+        "difficulty": "Difficulty",
+        
+        "difficulties": {
+            "EZ": "Easy",
+            "AV": "Average",
+            "HD": "Hard",
+            "VH": "Very Hard"
+        }, 
+
+        "itemName": "Name",
+        "relativeSkill": "Relative Skill",
+        "pointCost": "Point Cost",
+        "modTotal": "Modifier Total",
+        "location": "Location",
+        "charTemplate": "Character Template",
+        "Inventory": "Inventory",
+        "Biography": "Biography",
+        "core": "Core",
+        "skills": "Skills",
+        "spells": "Spells",
+        "weapon": "weapon",
+
+        "traitGroup" : {
+            "adv" : "Advantage",
+            "dis" : "Disadvantage",
+            "perk" : "Perk",
+            "qrk" : "Quirk"
+        },
+        
+        "trait": "Trait",
+        "equip": "Equipment",
+
+        "itemLocation": {
+            "head" : "Head",
+            "torso":  "Torso",
+            "arm": "Arms",
+            "hand": "Hands",
+            "leg": "Legs",
+            "foot": "Feet",
+            "body" : "Body",
+            "neck": "Neck",
+            "groin": "Groin",
+            "limbs": "Limbs",
+            "rArm": "Right Arm",
+            "rHand": "Right Hand",
+            "rLeg": "Right Leg",
+            "rFoot": "Right Foot",
+            "lArm": "Left Arm",
+            "lHand": "Left Hand",
+            "lLeg": "Left Leg",
+            "lFoot": "Left Foot",
+            "fullSuit": "Full Suit",
+            "back": "Back",
+            "pack": "Pack",
+            "belt": "Belt",
+            "none": "None"
+        }, 
+
+        "dr": "Damage Resistance",
+        "db": "Defense Bonus",
+        "itemHP": "Item HP",
+        "lc": "Legality Class"
+
+    }
+}
+
+

@@ -1,0 +1,103 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header flexrow"> 
+        <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64">
+        <div class="header-details flexrow">
+      <h1 class = "charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'sjgurps4e.itemName'}}"/>
+            </h1>
+             <div class="item-subtitle">
+              <h4 class="item-type">
+               {{localize "sjgurps4e.equip"}}
+              </h4>
+            </div>
+            <ul class = "summary flexrow">
+            <li style="text-align: right;">
+                {{localize "sjgurps4e.itemProperties.tl"}}:</li>
+            <li style="color:black;" contenteditable="true" data-edit="data.itemTL"> 
+              {{data.itemTL}}</li></ul>
+        </div>
+    </header>
+
+    
+    {{!-- Item Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="description">{{ localize "sjgurps4e.Description-Tab" }}</a>
+        <a class="item" data-tab="details">{{ localize "sjgurps4e.Details" }}</a>
+    </nav>
+    <section class= "sheet-body">
+    {{!-- Description-Tab --}}
+    <div class="tab flexrow active" data-group="primary" data-tab="description">
+        <div class="item-properties">
+            <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.weight"}}</label>
+                <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number"/>
+            </div>
+            <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.cost"}}</label>
+                <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
+            </div>
+             <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.location"}} </label>
+        <select name="data.itemLocation">
+        {{#select data.itemLocation}}
+        {{#each config.locations as |name location|}}
+        <option value="{{location}}">{{localize name}}</option>
+        {{/each}}
+        {{/select}}
+        </select>
+        </div> 
+        </div>
+        {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    </div>
+
+    {{!-- Details Tab --}}
+    <div class="tab details" data-group="primary" data-tab="details">
+      <div class="form-group stacked">
+        <label>Armor and Shield Options</label>
+        <div class="form-fields">
+            <label class="checkbox">
+            <input type="checkbox" name="data.hasDr" {{checked data.hasDr}}/> Damage Resistance
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="data.hasDb" {{checked data.hasDb}}/> Defense Bonus
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="data.hasHp" {{checked data.hasHp}}/> Durability
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="data.hasLc" {{checked data.hasLc}}/> Legality Class
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" name="data.isEquipable" {{checked data.isEquipable}}/> Equipable
+            </label>
+        </div>
+      </div>
+
+      {{#if data.hasDr}}
+        <div class="form-group">
+                <label>{{localize "sjgurps4e.dr"}}</label>
+                <input type="text" name="data.dr" value="{{data.dr}}" data-dtype="Number"/>
+        </div>
+      {{/if}}
+      {{#if data.hasDb}}
+        <div class="form-group">
+                <label>{{localize "sjgurps4e.db"}}</label>
+                <input type="text" name="data.db" value="{{data.db}}" data-dtype="Number"/>
+        </div>
+      {{/if}}
+      {{#if data.hasHp}}
+        <div class="form-group">
+                <label>{{localize "sjgurps4e.itemHP"}}</label>
+                <input type="text" name="data.itemHP" value="{{data.itemHP}}" data-dtype="Number"/>
+        </div>
+      {{/if}}
+      {{#if data.hasLc}}
+        <div class="form-group">
+                <label>{{localize "sjgurps4e.lc"}}</label>
+                <input type="text" name="data.lc" value="{{data.lc}}" data-dtype="Number"/>
+        </div>
+      {{/if}}
+
+    </div>
+</section>
+</form>

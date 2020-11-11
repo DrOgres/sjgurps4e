@@ -1,0 +1,91 @@
+<form class="{{cssClass}}" autocomplete="off">
+    
+    {{!-- Item Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class = "profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="100" width="100"/>
+        <div class="header-details flexrow">
+            <h1 class = "charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'sjgurps4e.itemName'}}"/>
+            </h1>
+            
+            <div class="item-subtitle">
+                {{#unless data.isSpell}}
+                <h4 class="item-type">{{localize "sjgurps4e.skill"}}</h4>
+                {{/unless}}
+                {{#if data.isSpell}}
+                <h4 class="item-type">{{localize "sjgurps4e.spell"}}</h4>
+                {{/if}}
+            </div>
+            <ul class = "summary flexrow">
+                <li style="text-align: right;">
+                    {{ localize (lookup config.attributesAbrv data.attributesAbrv) }}
+                </li>
+                <li>
+                    {{ localize (lookup config.difficulties data.difficulty) }}
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    {{!-- Item Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="description">{{ localize "sjgurps4e.Description-Tab" }}</a>
+        <a class="item" data-tab="details">{{ localize "sjgurps4e.Details" }}</a>
+    </nav>
+
+    {{!-- Item Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        {{> "systems/sjgurps4e/templates/items/parts/item-description.hbs"}}
+
+
+    {{!== Details Tab --}}
+        <div class="tab details" data-group="primary" data-tab="details"> 
+            {{!-- Controlling Attribute --}}
+            <div class="form-group">
+                <select name="data.attributesAbrv">
+                  {{#select data.attributesAbrv}}
+                  {{#each config.attributesAbrv as |name attribute|}}
+                  <option value="{{attribute}}"> {{localize name}}</option>
+                  {{/each}}
+                  {{/select}}
+                </select>
+            </div>
+            {{!-- Difficulty Level --}}
+            <div class="form-group">
+                <select name="data.difficulty">
+                  {{#select data.difficulty}}
+                  {{#each config.difficulties as |name difficulty|}}
+                  <option value="{{difficulty}}"> {{localize name}}</option>
+                  {{/each}}
+                  {{/select}}
+                </select>
+            </div>
+            <div class="form-fields">
+                <label class="checkbox">
+                <input type="checkbox" name="data.isSpell" {{checked data.isSpell}}/> Spell?
+                </label>
+            </div>
+            {{!-- Relative Skill --}}
+            <lable>{{localize "sjgurps4e.relativeSkill"}}</lable> 
+            <input name="data.level" type="text" value = "{{data.level}}" placeholder="" data-dtype="Number"/>
+            {{!-- point cost --}}
+            <lable>{{localize "sjgurps4e.pointCost"}}</lable> 
+            <input name="data.points" type="text" value = "{{data.points}}" placeholder="" data-dtype="Number"/>
+            {{!-- Modifier --}}
+            <lable>{{localize "sjgurps4e.modTotal"}}</lable> 
+            <input name="data.modifier" type="text" value = "{{data.modifier}}" placeholder="" data-dtype="Number"/>
+       
+            {{!-- check to see if this is a spell, if so put spell stuff here --}}
+            {{#if data.isSpell}}
+            <p>this is a spell so have more stuff here: Class, College, Time to Cast, Duration, initial cost, maintenence cost</p>
+            {{/if}}
+           
+        
+        </div>
+
+
+
+    </section>
+</form>

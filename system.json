@@ -1,0 +1,35 @@
+{
+    "name" : "sjgurps4e",
+    "title" : "Steve Jackson's GURPS 4th Edition",
+    "description" : "Generic Universal Role Playing System (GURPS) 4th Edition by Steve Jackson Games",
+    "author" : "Dr Ogres", 
+    "version" : 0.1,
+    "miniumumCoreVersion" : "0.7.5",
+    "compatibleCoreVersion" : "0.7.5",
+
+    "esmodules" : [
+        "sjgurps4e.js"
+    ],
+
+    "styles" : [
+       "sjgurps4e.css" 
+    ],
+
+    "packs": [
+
+    ],
+    "languages" : [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+
+    ],
+
+    "gridDistance": 1,
+    "gridUnits": "yd",
+    "primaryTokenAttribute" : "HP",
+    "secondaryTokenAttribute": "FP",
+    "inititive" : "@base_speed"
+}

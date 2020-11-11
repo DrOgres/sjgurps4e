@@ -1,0 +1,117 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+ {{!-- Item Sheet Header --}} 
+    <header class="sheet-header flexrow"> 
+        <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64">
+        <div class="header-details flexrow">
+<h1 class = "charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'sjgurps4e.itemName'}}"/>
+            </h1>
+            <div class="item-subtitle">
+              <h4 class="item-type">
+                {{#unless isRangedWeapon}}
+                {{localize "sjgurps4e.weaponGroup.melee"}}
+                {{/unless}}
+                {{#if isRangedWeapon}}
+                {{localize "sjgurps4e.weaponGroup.ranged"}} 
+                {{/if}}
+              </h4>
+            </div>
+            <ul class = "summary flexrow">
+            <li style="text-align: right;">
+                {{localize "sjgurps4e.itemProperties.tl"}}:</li>
+            <li style="color:black;" contenteditable="true" data-edit="data.itemTL"> 
+              {{data.itemTL}}</li></ul>
+               
+            
+            
+        </div>
+    </header>
+    {{!-- Item Sheet Navigation --}}
+    <div class="nav-fix">
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="description">{{ localize "sjgurps4e.Description-Tab" }}</a>
+        <a class="item" data-tab="details">{{ localize "sjgurps4e.Details" }}</a>
+    </nav>
+    </div>
+    {{!-- Item Sheet Body --}}
+  <section class="sheet-body">
+      {{!-- Description Tab --}}
+      {{> "systems/sjgurps4e/templates/items/parts/item-description.hbs"}}
+      {{!-- Details Tab --}}
+    <div class="tab details" data-group="primary" data-tab="details">
+     {{!-- Weapon Type --}}
+      <div class="form-group">
+        <label>{{ localize "sjgurps4e.weaponType" }}</label>  
+        <select name="data.weaponType">
+          {{#select data.weaponType}}
+          {{#each config.weaponTypes as |name type|}}
+          <option value="{{type}}"> {{localize name}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </div>
+      {{!-- Melee Weapon Data --}}
+      {{#unless isRangedWeapon}}
+      <div class="weapon-data-table">
+      <table>
+              <tr>
+                <th>{{localize "sjgurps4e.itemProperties.damage"}}</th>
+                <th>{{localize "sjgurps4e.itemProperties.damageType"}}</th>
+                <th>{{localize "sjgurps4e.weapon-melee.reach"}}</th>
+                <th>{{localize "sjgurps4e.weapon-melee.parryType"}}</th>
+                <th>{{localize "sjgurps4e.weapon-melee.parryMod"}}</th>
+                <th>{{localize "sjgurps4e.itemProperties.minSTR"}}</th>
+              </tr>
+              {{!-- update damage for new data model --}}
+              <td><input name="data.damage" type="text" value="{{data.damage}}"/></td>
+              <td><select name="data.damageType">
+                {{#select data.damageType}}
+                {{#each config.damageType as |name type|}}
+                <option value="{{type}}"> {{localize name}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+            </td>
+              <td><input name="data.reach" type="text" value="{{data.reach}}" data-dtype="Number" /></td>
+              <td><input name="data.parryType" type="text" value="{{data.parryType}}"/></td>
+              <td><input name="data.parryMod" type="text" value="{{data.parryMod}}" data-dtype="Number"/></td>
+              <td><input name="data.minSTR" type="text" value="{{data.minSTR}}" data-dtype="Numer"/></td>
+            </tr>
+      </table>
+      </div>
+      {{/unless}}
+      {{!-- Ranged Weapon Data --}}
+      {{#if isRangedWeapon}}   
+      <table>
+           
+                <tr>
+                  <th>{{localize "sjgurps4e.itemProperties.damage"}}</th>
+                  <th>{{localize "sjgurps4e.itemProperties.damageType"}}</th>
+                  <th>{{localize "sjgurps4e.weapon-ranged.acc"}}</th>
+                  <th>{{localize "sjgurps4e.weapon-ranged.range"}}</th>
+                  <th>{{localize "sjgurps4e.weapon-ranged.rof"}}</th>
+                  <th>{{localize "sjgurps4e.weapon-ranged.bulk"}}</th>
+                  <th>{{localize "sjgurps4e.itemProperties.minSTR"}}</th>
+
+                </tr>
+                <td><input name="data.damage" type="text" value="{{data.damage}}"/></td>
+                <td><select name="data.damageType">
+                  {{#select data.damageType}}
+                  {{#each config.damageType as |name type|}}
+                  <option value="{{type}}"> {{localize name}}</option>
+                  {{/each}}
+                  {{/select}}
+              </select>
+              </td>
+                <td><input name="data.acc" type="text" value="{{data.acc}}" data-dtype="Number" /></td>
+                <td><input name="data.range" type="text" value="{{data.range}}"/></td>
+                <td><input name="data.rof" type="text" value="{{data.rof}}" data-dtype="Number"/></td>
+                <td><input name="data.bulk" type="text" value="{{data.bulk}}" data-dtype="Number"/></td>
+                <td><input name="data.minSTR" type="text" value="{{data.minSTR}}" data-dtype="Numer"/></td>
+               
+              </tr>
+      </table>   
+      {{/if}}
+     </div>
+  </section>
+  </form>

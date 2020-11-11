@@ -1,0 +1,136 @@
+{
+    "Actor":{
+        "types":[
+            "character",
+            "vehicle"
+        ], 
+        "templates":{
+            "attributes": {
+                "ST": {
+                    "value": 10},
+                "DX":  {
+                    "value": 10},
+                "IQ": {
+                    "value": 10},
+                "HT": {
+                    "value": 10},
+                "HP": {
+                   "value" : 10,
+                   "max" : 10
+                },
+                "Will": {
+                    "value": 10},
+                "Per":  {
+                    "value": 10},
+                "FP" : {
+                    "value" : 10,
+                    "max" : 10
+                }
+            },
+            "secondaryInformation" : {
+              "points" : 0,
+              "basicSpeed": 0,
+               "parry" : 0,
+                "block" : 0,
+                "dodge" : 0,
+                "encumbrance" : 0,
+                "basicLift" : 0,
+                "basicMove" : 0,
+                "damageThr" : 0,
+                "damageSw" : 0,
+                "sizeMod" : 0,
+                "move" : 0
+            }
+        },
+
+        "character" : {
+            "templates" : ["attributes", "secondaryInformation"]
+        }
+    },
+
+    "Item":{
+        "types": [
+            "weapon",
+            "equipment", 
+            "trait",
+            "skill",  
+            "template" 
+        ],
+        "templates":{
+            "itemDescription":{
+               "description":"" 
+            },
+            "itemNotes":{
+                "notes":""
+            },
+            "itemCost":{
+                "cost":0
+            },
+            "itemWeight":{
+                "weight":0
+            },
+            "itemSkill":{
+                "sillUsed":""
+            },
+            "itemTL":{
+                "tl":0
+            },
+            "itemDamage":{
+                "damage": "sw or th"
+            },
+            "itemDamageType":{
+                "damageType": ""
+            },
+            "itemST":{
+                "minST": 10
+            },
+            "itemType":{
+                "weapon-melee": "Melee Weapon",
+                "weapon-ranged": "Ranged Weapon",
+                "skill": "Skill",
+                "spell": "Spell",
+                "equipment": "Equipment",
+                "advantage": "Advantage",
+                "disadvantage": "Disadvantage",
+                "perk": "Perk",
+                "quirk": "Quirk",
+                "template": "Character Template"
+            },
+            "itemPoints": 0
+        },
+
+        "skill" : {
+            "templates": ["itemType", "itemDescription", "itemPoints"],
+            "stat" : "DX",
+            "difficulty": "Average",
+            "level" : 0,
+
+            "defaults": "stat or skills to use as default"
+        },
+        "weapon-melee" : {
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
+            "reach": 1,
+            "parryType": ""
+        },
+        "weapon-ranged":{
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
+            "acc": 0,
+            "range": "x4",
+            "rof": 1,
+            "shots": 1,
+            "bulk": -6
+        }, 
+        "equipment":{
+            "templates": ["itemCost", "itemDescription", "itemNotes", "itemWeight", "itemTL", "itemType"],
+            "location": ""
+        },
+        "trait": {
+            "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints"]
+        }, 
+        "template":{
+            "templates": ["itemType", "itemDescription"]
+        }
+
+        
+    }
+}

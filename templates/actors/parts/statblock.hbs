@@ -1,0 +1,88 @@
+<div class = "statblock">
+    <table class="statline">
+        <tr>
+            <td>
+                <label class="statname rollable" data-roll="3d6" data-label="Strength">ST</label>       
+            </td>
+            <td>
+                <div class = "statvalue">
+                    <input name="data.ST.value" type="text" placeholder="10" value = "{{data.ST.value}}" data-dtype="Number" />
+                </div>
+            </td>
+            <td>
+                <div class = "pointvalue">
+                {{#statValue data.ST.value "ST"}}
+                0
+                {{/statValue}}
+               
+                </div>
+            </td>
+            <td>
+                <div class="pointslabel">points</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="statname rollable" data-roll="3d6" data-label="Dexterity">DX</label>
+            </td>   
+            <td>
+                <div class = "statvalue">
+                     <input name="data.DX.value" type="text" placeholder="10" value = "{{data.DX.value}}" data-dtype="Number" />
+                </div>
+            </td>
+            <td>
+                <div class = "pointvalue">
+                    {{#statValue data.DX.value "DX"}}
+                    0
+                    {{/statValue}}
+                </div>
+            </td>
+            <td>
+                <div class="pointslabel">points</div>
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                <label class="statname rollable" data-roll="3d6" data-label="Intelligence">IQ</label>
+            </td>
+            <td>
+                <div class = "statvalue">
+                    <input name="data.IQ.value" type="text" placeholder="10" value = "{{data.IQ.value}}" data-dtype="Number" />                  
+                </div>
+            </td>
+            <td>
+                <div class = "pointvalue">
+                    {{#statValue data.IQ.value "IQ"}}
+                    0
+                    {{/statValue}}  
+                
+                </div>
+            </td>
+            <td>
+                <div class="pointslabel">points</div>
+            </td>
+        </tr>   
+        <tr>
+            <td> 
+                <label class="statname rollable" data-roll="{3d6}cs<={{data.HT.value}}" data-label="Health">HT</label>
+            </td>
+            <td>
+                <div class = "statvalue">
+                        <input name="data.HT.value" type="text" placeholder="10" value = "{{data.HT.value}}" data-dtype="Number" />               
+                </div>
+            </td>
+            <td>
+                <div class = "pointvalue">
+                    {{#statValue data.HT.value "HT"}}
+                    stValue
+                    {{/statValue}}  
+               
+                </div>
+            </td>
+            <td>
+                <div class="pointslabel">points</div>
+            </td>
+        </tr>
+    </table>
+    
+</div>

@@ -1,0 +1,78 @@
+<form class="actor-sheet {{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="systems/sjgurps4e/img/GURPS_LOGO.png" class = "logo" title="logo" height = "72" width = "219"/>
+        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        <div class="pointsbox" >
+            <h4>total points </h4> 
+            <h4>unspent points</h4>
+        </div>
+    </header>
+<div class="sheet-top">
+       {{> "systems/sjgurps4e/templates/actors/parts/statblock.hbs"}}
+    <div class = "portrait">
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160"  width="160"/>
+    </div>
+    {{!-- pools --}}
+    <div class = "pools">
+        <label>HP</label>
+        <div class"attibute-value multiple">
+            <input name="data.HP.value" type="text" value="{{data.HP.value}}" placeholder="10" data-dtype="Number"> 
+            <span class="sep"> / </span> 
+            <input name="data.HP.max" type="text" value="{{data.HP.max}}" placeholder="10" data-dtype="Number">
+        </div>
+
+        <label>FP</label>
+        <div class"attibute-value multiple">
+            <input name="data.attributes.FP.value" type="text" value="{{data.FP.value}}" placeholder="10" data-dtype="Number"> 
+            <span class="sep"> / </span> 
+            <input name="data.attributes.FP.max" type="text" value="{{data.FP.max}}" placeholder="10" data-dtype="Number">
+        </div>
+
+    </div>
+    <div class="secondaryCharacteristics">
+        <p>will</p>
+        <p>per</p>
+        <p>Basic Lift</p>
+        <p>Basic Speed</p>
+        <p>Basic Move</p>
+    </div> 
+
+</div>
+   {{!-- Character Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="core">{{ localize "sjgurps4e.core" }}</a>
+        <a class="item" data-tab="inventory">{{ localize "sjgurps4e.Inventory" }}</a>
+        <a class="item" data-tab="skills">{{ localize "sjgurps4e.skills" }}</a>
+        <a class="item" data-tab="spells">{{ localize "sjgurps4e.spells" }}</a>
+        <a class="item" data-tab="biography">{{ localize "sjgurps4e.Biography" }}</a>
+    </nav>
+
+    <section class="sheet-body">
+        {{!-- favorites --}}
+        <div class="tab favorites flexrow" data-group="primary" data-tab="core">
+            <p>things that are considered core to game play (damage fav skills and the like)</p>
+        </div>
+        {{!-- Inventory --}}
+        <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
+            {{> "systems/sjgurps4e/templates/actors/parts/actor-inventory.hbs"}}
+        </div>
+
+        {{!-- skills --}}
+        <div class="tab skills flexrow" data-group="primary" data-tab="skills">
+            <p>things that are considered skills</p>
+        </div>
+
+        {{!-- spells --}}
+        <div class="tab spells flexrow" data-group="primary" data-tab="spells">
+            <p>things that are considered spells</p>
+        </div>
+
+        {{!--biography--}}
+        <div class="tab biography flexrow" data-group="primary" data-tab="biography">
+            <p>details about the character</p>
+        </div>
+
+    </section>
+
+
+    </form>

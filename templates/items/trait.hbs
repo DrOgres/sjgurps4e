@@ -1,0 +1,35 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="100" width="100"/>
+        <h1 class = "charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        <div class="item-subtitle">
+              <h4 class="item-type">
+                  {{localize "sjgurps4e.trait"}}
+              </h4>
+            </div>
+    
+    </header>
+    {{!--Item Sheet Body --}}
+    <section class="sheet-body">
+    <div class="tab flexrow active" data-group="primary" data-tab="description">
+        <div class="item-properties">
+         {{!-- Choose Advantage, Disadvantage, Quir or Perk--}}
+         <div class="form-group">
+        <label>{{localize "sjgurps4e.itemProperties.trait"}} </label>
+        <select name="data.traitType">
+        {{#select data.traitType}}
+        {{#each config.traitType as |name type|}}
+        <option value="{{type}}">{{localize name}}</option>
+        {{/each}}
+        {{/select}}
+        </select>
+         </div>
+        <div class="form-group">
+            <label>{{localize "sjgurps4e.pointCost"}}</label>
+            <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
+        </div>
+        </div>
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+     </div>
+   </section>
+</form>

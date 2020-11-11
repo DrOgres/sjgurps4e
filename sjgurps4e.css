@@ -1,0 +1,167 @@
+.sjgurps4e.sheet.item .sheet-header {
+  align-items: flex-start;
+  flex: 0;
+}
+.sjgurps4e.sheet.item .sheet-header .charname input {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-family: Cinzel, serif;
+  font-size: 28px;
+  width: 300px;
+}
+.sjgurps4e.sheet.item .sheet-header img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 6px;
+}
+.sjgurps4e.sheet.item .sheet-header .item-subtitle .item-type {
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  text-align: right;
+  color: #888;
+}
+.sjgurps4e.sheet.item .sheet-header .summary {
+  flex: 0 1 100%;
+  height: 40px;
+  margin: 0%;
+  padding: 0;
+  list-style: none;
+  border-top: 2px groove #eeede0;
+  border-bottom: none;
+  font-size: 20px;
+  color: #666;
+  justify-content: flex-end;
+}
+.sjgurps4e.sheet.item .sheet-header .summary li {
+  padding: 1px 3px;
+}
+.sjgurps4e.sheet.item .weapon-data-table {
+  flex: 1;
+  margin: 5px;
+}
+.sjgurps4e.sheet.item .weapon-data-table td {
+  padding: 3px;
+}
+.sjgurps4e.sheet.item .item-TL {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 3px 0;
+  align-items: center;
+}
+.sjgurps4e.sheet.item .nav-fix {
+  max-height: 20px;
+}
+.sjgurps4e.sheet.item .sheet-body .editor {
+  min-height: 80px;
+  flex-basis: 40%;
+  padding: 5px;
+}
+.sjgurps4e.sheet.item .sheet-body .form-group select {
+  width: 95px;
+  font-size: 14px;
+  padding: 1px 3px;
+  margin: 0;
+  align-items: flex-end;
+}
+.sjgurps4e.sheet.item .sheet-body .form-group {
+  overflow: hidden;
+}
+@font-face {
+  font-family: SpaceMono;
+  src: url(fonts/SpaceMono-Bold.ttf);
+}
+@font-face {
+  font-family: Cinzel;
+  src: url(fonts/Cinzel-VariableFont_wght.ttf);
+}
+.sjgurps4e.sheet.character form {
+  display: flex;
+  flex-direction: column;
+}
+.sjgurps4e.sheet.character .sheet-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sjgurps4e.sheet.character .sheet-header .pointsbox {
+  text-align: right;
+}
+.sjgurps4e.sheet.character .sheet-header img.logo {
+  height: 100%;
+  border: none;
+  flex: 0 0 0;
+}
+.sjgurps4e.sheet.character .sheet-header .charname input {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-family: Cinzel, serif;
+  font-size: 30px;
+  width: 300px;
+}
+.sjgurps4e.sheet.character .sheet-top {
+  display: flex;
+  flex-direction: row;
+}
+.sjgurps4e.sheet.character .sheet-top .portrait {
+  margin-top: 7px;
+  padding: 10px;
+}
+.sjgurps4e.sheet.character .sheet-top .portrait img {
+  border: none;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock {
+  width: fit-content;
+  padding: 0px 3px;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  vertical-align: baseline;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .statname {
+  font-family: SpaceMono, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  vertical-align: baseline;
+  padding: 0px 10px;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue {
+  font-size: 20px;
+  vertical-align: baseline;
+  padding-right: 10px;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue input[type=text],
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue select {
+  background-color: rgba(255, 255, 255, 0);
+  width: 40px;
+  margin: 3px;
+  display: inline-block;
+  border: none;
+  vertical-align: baseline;
+  align-content: center;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue input[type=text],
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue select {
+  width: 30px;
+  margin: 3px 3px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .pointslabel {
+  font-size: 10px;
+  font-weight: lighter;
+  vertical-align: baseline;
+}
+.sjgurps4e.sheet.character .sheet-top .pools {
+  flex-direction: column;
+}
