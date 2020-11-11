@@ -1,0 +1,83 @@
+    <div class = "statblock">
+    <table class = "statline">
+        <tr>
+            <td>
+                <label class="statname" data-label="HP">HP</label>       
+            </td>
+            <td class="attibute-value multiple">
+            <input name="data.HP.value" type="text" value="{{data.HP.value}}" placeholder="10" data-dtype="Number"> 
+            </td>
+            <td class="sep"> / </td> 
+            <td class="attibute-value multiple">
+            <input name="data.HP.max" type="text" value="{{data.HP.max}}" placeholder="10" data-dtype="Number">
+            </td>
+            <td>
+                <div class = "pointvalue">
+                0
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="statname rollable" data-roll="3d6" data-label="Will">Will</label>       
+            </td>
+            <td>
+                <div class = "statvalue">
+                    <input name="data.Will.value" type="text" placeholder="10" value = "{{data.Will.value}}" data-dtype="Number" />
+                </div>
+            </td>
+            <td>
+                <div class = "pointvalue">
+                {{#statValue data.Will.value "Will"}}
+                0
+                {{/statValue}}
+               
+                </div>
+            </td>
+            <td>
+                <div class="pointslabel">points</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="statname rollable" data-roll="3d6" data-label="Perception">Per</label>       
+            </td>
+            <td>
+                <div class = "statvalue">
+                    <input name="data.Per.value" type="text" placeholder="10" value = "{{data.Per.value}}" data-dtype="Number" />
+                </div>
+            </td>
+            <td>
+                <div class = "pointvalue">
+                {{#statValue data.Per.value "Per"}}
+                0
+                {{/statValue}}
+               
+                </div>
+            </td>
+            <td>
+                <div class="pointslabel">points</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="statname" data-label="FP">FP</label>       
+            </td>
+            <td class="attibute-value multiple">
+            <input name="data.FP.value" type="text" value="{{data.FP.value}}" placeholder="10" data-dtype="Number"> 
+            </td>
+            <td class="sep"> / </td> 
+            <td class="attibute-value multiple">
+            <input name="data.FP.max" type="text" value="{{data.FP.max}}" placeholder="10" data-dtype="Number">
+            </td>
+            <td>
+                <div class = "pointvalue">
+                
+                0
+              
+               
+                </div>
+            </td>
+        </tr>
+    </table>
+    </div>

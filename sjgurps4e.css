@@ -116,17 +116,14 @@
   border: none;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock {
-  flex: 1 0 100%;
-  flex-direction: row;
   padding: 0px 3px;
-  flex-wrap: nowrap;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   vertical-align: baseline;
-  width: fit-content;
+  width: 100%;
   flex-wrap: nowrap;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline input[type=text],
@@ -175,7 +172,4 @@
   font-size: 10px;
   font-weight: lighter;
   vertical-align: baseline;
-}
-.sjgurps4e.sheet.character .sheet-top .pools {
-  flex-direction: column;
 }

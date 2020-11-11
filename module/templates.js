@@ -10,6 +10,7 @@ export const preloadHandlebarsTemplates = async function() {
   
       // Actor Sheet Partials
       "systems/sjgurps4e/templates/actors/parts/statblock.hbs",
+      "systems/sjgurps4e/templates/actors/parts/pools.hbs",
       "systems/sjgurps4e/templates/actors/parts/actor-inventory.hbs",
       "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs",
       //"systems/sjgurps4e/templates/actors/parts/actor-features.html",
