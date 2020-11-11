@@ -26,6 +26,12 @@ Hooks.once("init", function (){
         divisor = 10;
       } else if (string === "DX" || string === "IQ"){
         divisor = 20;
+      } else if (string === "Will" || string === "Per") {
+        divisor = 5;
+      } else if (string === "HP") {
+        divisor = 2;
+      } else if (string === "FP"){
+        divisor = 3;
       }
       result = (n-10)*divisor;
       console.log("*-* value of n in handlebarhelper " + n);

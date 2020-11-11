@@ -116,14 +116,28 @@
   border: none;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock {
-  width: fit-content;
+  flex: 1 0 100%;
+  flex-direction: row;
   padding: 0px 3px;
+  flex-wrap: nowrap;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   vertical-align: baseline;
+  width: fit-content;
+  flex-wrap: nowrap;
+}
+.sjgurps4e.sheet.character .sheet-top .statblock .statline input[type=text],
+.sjgurps4e.sheet.character .sheet-top .statblock .statline select {
+  background-color: rgba(255, 255, 255, 0);
+  width: 40px;
+  margin: 3px;
+  display: inline-block;
+  border: none;
+  vertical-align: baseline;
+  align-content: center;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .statname {
   font-family: SpaceMono, sans-serif;

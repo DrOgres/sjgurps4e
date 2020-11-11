@@ -51,13 +51,27 @@
             }
         }
         .statblock{
-            width: fit-content;
+            flex: 1 0 100%;
+            flex-direction: row;
             padding: 0px 3px;
+            flex-wrap: nowrap;
             .statline{
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
                 vertical-align: baseline;
+                width: fit-content;
+                flex-wrap: nowrap;
+                input[type=text], select{
+                    background-color: rgba(255, 255, 255, 0);
+                    width: 40px;
+                    margin: 3px;
+                    display: inline-block;
+                    border: none;
+                    vertical-align: baseline;
+                    align-content: center;
+                }
+
                 .statname{
                     font-family: SpaceMono, sans-serif;
                     font-size: 25px;
