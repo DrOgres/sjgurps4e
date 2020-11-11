@@ -3,8 +3,10 @@
         <img src="systems/sjgurps4e/img/GURPS_LOGO.png" class = "logo" title="logo" height = "72" width = "219"/>
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
         <div class="pointsbox" >
-            <h4>Total Points </h4> 
-            <h4>Unspent Points</h4>
+            {{!- toDo register a helper and fill this with the total of all points on the character --}}
+            <h4>Total Points {{data.totalPoints.value}}</h4> 
+            {{!-- this is to be a input field --}}
+            <h4>Unspent Points {{data.unspentPoints.value}}</h4>
         </div>
     </header>
 <div class="sheet-top">

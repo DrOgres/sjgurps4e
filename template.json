@@ -44,7 +44,13 @@
         },
 
         "character" : {
-            "templates" : ["attributes", "secondaryInformation"]
+            "templates" : ["attributes", "secondaryInformation"],
+            "totalPoints" : {
+                "value" : 0
+            },
+            "unspentPoints" :{
+                "value" : 0
+            }
         }
     },
 
