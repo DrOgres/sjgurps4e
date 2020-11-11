@@ -5,7 +5,7 @@
     "author" : "Dr Ogres", 
     "version" : 0.2,
     "miniumumCoreVersion" : "0.7.5",
-    "compatibleCoreVersion" : "0.7.5",
+    "compatibleCoreVersion" : "0.7.6",
 
     "esmodules" : [
         "sjgurps4e.js"
