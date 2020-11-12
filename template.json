@@ -29,7 +29,7 @@
             },
             "secondaryInformation" : {
               "points" : 0,
-              "basicSpeed": 0,
+              "base_speed": 0,
                "parry" : 0,
                 "block" : 0,
                 "dodge" : 0,

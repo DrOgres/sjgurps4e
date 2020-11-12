@@ -9,6 +9,10 @@
 }
 
 .sjgurps4e.sheet.character {
+    .rollable:hover {
+        text-shadow: 0 0 10px red;
+    }
+
     form{
         display: flex;
         flex-direction: column;
@@ -17,12 +21,32 @@
     .sheet-header{
         .pointsbox{
             text-align: right;
+            .unspentLine{
+                justify-content: flex-end;
+                flex-direction: row;
+                flex: 1 0 auto;
+                flex-wrap: nowrap;
+            }
         }
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: center;
+
+        .pointvalue{
+            font-size: 14px;
+            text-align: right;
+            input[type=text], select{
+                background-color: rgba(255, 255, 255, 0);
+                width: 15px;
+                display: inline-block;
+                border: none;
+                vertical-align: baseline;
+                align-content: center;
+                padding: 1px;
+            }
+        }
 
         img.logo {
             height: 100%;
@@ -69,12 +93,16 @@
                     align-content: center;
                 }
 
+ 
+
                 .statname{
                     font-family: SpaceMono, sans-serif;
                     font-size: 25px;
                     font-weight: bold;
                     vertical-align: baseline;
                     padding: 0px 10px;
+                   
+                    
                 }
                 .statvalue{
                     font-size: 20px;

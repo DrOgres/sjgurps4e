@@ -55,9 +55,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
             } else {       
                 if(dataset.roll){
-                    let modedTarget = dataset.target + modifier;
+                    let modedTarget = Number(dataset.target) + modifier;
                     let roll = new Roll(dataset.roll, this.actor.data.data);
-                    let label = dataset.label ? `Rolling ${dataset.label}, target is` + modedTarget : '';
+                    let label = dataset.label ? `Rolling ${dataset.label}, target is ` + modedTarget : '';
                     roll.roll().toMessage({
                     speaker: ChatMessage.getSpeaker({ actor: this.actor}),
                     flavor: label
@@ -72,7 +72,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 }
 
 async function getModifier() {
-            event.preventDefault();
+            
             let modifier=0;
             // if user presed that while clicking show a dialog to ask for modifier and or skill
             // then pass the changes from that form to the overall roll 
@@ -98,7 +98,7 @@ async function getModifier() {
             d.render(true);
             setTimeout(function() {document.getElementById("roll_modifier").focus();}, 300);
             setTimeout(function(){}, 2000 );
-            console.log(modifier);
+            console.log("got Modifier: " + modifier);
             // expected output: "resolved"
             return modifier;
 }

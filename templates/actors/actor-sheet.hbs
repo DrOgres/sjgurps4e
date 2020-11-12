@@ -4,9 +4,13 @@
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
         <div class="pointsbox" >
             {{!- toDo register a helper and fill this with the total of all points on the character --}}
-            <h4>Total Points {{data.totalPoints.value}}</h4> 
+            <div class = "pointvalue">Total Points {{data.totalPoints.value}}</div>
             {{!-- this is to be a input field --}}
-            <h4>Unspent Points {{data.unspentPoints.value}}</h4>
+            
+            <div class = "pointvalue">
+                 Unspent Points
+                <input name="data.unspentPoints.value" type="text" placeholder="10" value = "{{data.unspentPoints.value}}" data-dtype="Number" />
+            </div>
         </div>
     </header>
 <div class="sheet-top">

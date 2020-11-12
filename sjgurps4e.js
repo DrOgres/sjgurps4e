@@ -38,6 +38,12 @@ Hooks.once("init", function (){
       result = (n-10)*divisor;
       console.log("*-* value of n in handlebarhelper " + n);
       console.log("*-* value of divisor in helper " + divisor);
+      updateTotal();
       return result;
     });  
 })
+
+function updateTotal(){
+  //update the points total for the character sheet  call this after we change points
+  return;
+}

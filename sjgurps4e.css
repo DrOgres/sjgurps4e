@@ -78,6 +78,9 @@
   font-family: Cinzel;
   src: url(fonts/Cinzel-VariableFont_wght.ttf);
 }
+.sjgurps4e.sheet.character .rollable:hover {
+  text-shadow: 0 0 10px red;
+}
 .sjgurps4e.sheet.character form {
   display: flex;
   flex-direction: column;
@@ -91,6 +94,26 @@
 }
 .sjgurps4e.sheet.character .sheet-header .pointsbox {
   text-align: right;
+}
+.sjgurps4e.sheet.character .sheet-header .pointsbox .unspentLine {
+  justify-content: flex-end;
+  flex-direction: row;
+  flex: 1 0 auto;
+  flex-wrap: nowrap;
+}
+.sjgurps4e.sheet.character .sheet-header .pointvalue {
+  font-size: 14px;
+  text-align: right;
+}
+.sjgurps4e.sheet.character .sheet-header .pointvalue input[type=text],
+.sjgurps4e.sheet.character .sheet-header .pointvalue select {
+  background-color: rgba(255, 255, 255, 0);
+  width: 15px;
+  display: inline-block;
+  border: none;
+  vertical-align: baseline;
+  align-content: center;
+  padding: 1px;
 }
 .sjgurps4e.sheet.character .sheet-header img.logo {
   height: 100%;
