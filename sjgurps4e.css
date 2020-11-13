@@ -80,6 +80,7 @@
 }
 .sjgurps4e.sheet.character .rollable:hover {
   text-shadow: 0 0 10px red;
+  cursor: url(icons/3d6-black.svg), pointer;
 }
 .sjgurps4e.sheet.character form {
   display: flex;
