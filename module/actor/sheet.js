@@ -40,17 +40,55 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
 
     activateListeners(html){
+
+        if(this.isEditable) {}
+
+        if(this.actor.owner){}
+        //roll item from actor sheet
         html.find('.rollable').click(this._onRoll.bind(this));
+
+        //create a new item on the actor sheet
         html.find('.item-create').click(this._onItemCreate.bind(this));
+
+        //edit an owned item
         html.find('.item-edit').click(this._onItemEdit.bind(this));
+
+        //delete an owned item
         html.find('.item-delete').click(this._onItemDelete.bind(this));
+
+        //update a field on an owned item
         html.find('.inline-edit').change(this._onInlineEdit.bind(this));
+
+        // Item summaries
+        html.find('.item-detail').click(event => this._onItemSummary(event));
 
 
         super.activateListeners(html);
         //console.log("*-* activated listener");
 
 
+    }
+
+    _onItemSummary(event){
+        event.preventDefault();
+        let li=$(event.currentTarget).parents(".item"),
+        item = this.actor.getOwnedItem(li.data("itemid")),
+        chatData = item.getChatData({secrets: this.actor.owner});
+
+        if(chatData.description.value === null){
+            return;
+        } else if (li.hasClass("expanded")){
+            let summary = li.children(".item-summary");
+            summary.slideUp(200, () => summary.remove());
+        } else {
+            let div = $(`<div class="item-summary">${chatData.description.value}</div>`);
+            let props = $(`<div class="item-properties"></div>`);
+            chatData.properties.forEach(p=> props.append(`<span class="tag">${p}</span>`));
+            div.append(props);
+            li.append(div.hide());
+            div.slideDown(200);
+        }
+        li.toggleClass("expanded");
     }
 
 

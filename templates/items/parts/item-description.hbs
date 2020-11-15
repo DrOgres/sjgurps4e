@@ -1,5 +1,4 @@
 <div class="tab flexrow active" data-group="primary" data-tab="description">
-    
         {{#unless isSkill}}
         <div class="item-properties">
             <div class="form-group">
@@ -38,6 +37,7 @@
         {{/if}}
         </div>
         {{/unless}}
-
-    {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    <div class = "mce-editor">
+    {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+    </div>
 </div>

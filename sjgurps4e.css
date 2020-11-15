@@ -55,8 +55,12 @@
 .sjgurps4e.sheet.item .nav-fix {
   max-height: 20px;
 }
+.sjgurps4e.sheet.item .sheet-body .item-properties {
+  max-width: 30%;
+}
 .sjgurps4e.sheet.item .sheet-body .editor {
-  min-height: 80px;
+  min-height: 200px;
+  height: 100%;
   flex-basis: 40%;
   padding: 5px;
 }
@@ -195,10 +199,10 @@
   font-weight: lighter;
   vertical-align: baseline;
 }
-.weapons h2 {
+.inventory h2 {
   display: flex;
   flex-direction: row;
 }
-.weapons h2 .item-create {
+.inventory h2 .item-create {
   margin-left: auto;
 }

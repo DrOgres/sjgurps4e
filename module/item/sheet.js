@@ -1,6 +1,10 @@
 
 export default class ItemSheetGurps extends ItemSheet{
 
+    constructor(...args) {
+        super(...args);
+    }
+
 
     static get defaultOptions(){
         return mergeObject(super.defaultOptions, {
@@ -18,9 +22,12 @@ export default class ItemSheetGurps extends ItemSheet{
         return `${path}/${this.item.data.type}.hbs`;
     }
 
-    getData() {
-        const data = super.getData();
+    async getData(options) {
+        const data = super.getData(options);
+        data.labels = this.item.labels;
         data.config = CONFIG.sjgurps4e;
+
+        //Item Type and details
         data.itemClass = data.item.type.titleCase();
        // console.log(data.itemClass + " itemClass data from itemsheet");        
         data.weaponType = data.item.data.weaponType;
@@ -59,7 +66,10 @@ export default class ItemSheetGurps extends ItemSheet{
         const data = item.data;
         //console.log(data.weaponType + " is ranged weapon");
         //console.log(item.weaponType);
-        return (data.weaponType === "weaponRanged");
+        if(data.itemType === "weaponRanged"){
+            data.isRangedWeapon = true;
+        }
+        return (data.isRangedWeapon);
     }
 
     _isSkill(type) {

@@ -2,12 +2,17 @@ import {sjgurps4e} from "./module/config.js";
 import sjgurps4eItemSheet from "./module/item/sheet.js";
 import sjgurps4eActorSheet from "./module/actor/sheet.js";
 import { preloadHandlebarsTemplates } from "./module/templates.js";
+import sjgurps4eActor from "./module/actor/entity.js";
+import sjgurps4eItem from "./module/item/entity.js";
 
 Hooks.once("init", function (){
     console.log("sjgurps4e | Initializing GURPS 4e");
     console.log(sjgurps4e.ASCII);
-    
+
+
     CONFIG.sjgurps4e = sjgurps4e;
+    CONFIG.Actor.entityClass = sjgurps4eActor;
+    CONFIG.Item.entityClass = sjgurps4eItem;
 
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("sjgurps4e", sjgurps4eItemSheet, {makeDefault: true});

@@ -64,7 +64,10 @@
         ],
         "templates":{
             "itemDescription":{
-               "description":"" 
+               "description": {
+                    "value" : "",
+                    "chat" : ""
+               }
             },
             "itemNotes":{
                 "notes":""
@@ -92,8 +95,8 @@
             },
             "itemType":{
                 "itemType" : [
-                "weapon-melee",
-                "weapon-ranged",
+                "weaponMelee",
+                "weaponRanged",
                 "skill",
                 "spell",
                 "equipment",

@@ -19,11 +19,8 @@
             <ul class = "summary flexrow">
             <li style="text-align: right;">
                 {{localize "sjgurps4e.itemProperties.tl"}}:</li>
-            <li style="color:black;" contenteditable="true" data-edit="data.itemTL"> 
-              {{data.itemTL}}</li></ul>
-               
-            
-            
+            <li style="color:black;" contenteditable="true" data-edit="data.tl"> 
+              {{data.tl}}</li></ul>
         </div>
     </header>
     {{!-- Item Sheet Navigation --}}
@@ -42,8 +39,8 @@
      {{!-- Weapon Type --}}
       <div class="form-group">
         <label>{{ localize "sjgurps4e.weaponType" }}</label>  
-        <select name="data.weaponType">
-          {{#select data.weaponType}}
+        <select name="data.itemType">
+          {{#select data.itemType}}
           {{#each config.weaponTypes as |name type|}}
           <option value="{{type}}"> {{localize name}}</option>
           {{/each}}

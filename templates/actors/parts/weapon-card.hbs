@@ -1,7 +1,7 @@
 <div class="weapon-card item" data-itemid="{{_id}}">
     <div class="weapon-info weapon-name">
         <p><img id="icon" src="{{img}}" height = "24px">
-        <a class="item-edit" >{{name}}</a></p>
+        <a class="item-detail">{{name}}</a></p>
     </div>
 
  
@@ -9,6 +9,10 @@
         <p>{{#localizeData "weaponSkill" data.skillUsed}}{{/localizeData}}
         {{data.weight}}
         {{data.cost}}
+
+        <a class="item-edit">
+            <i class="fas fa-edit"></i>
+        </a>
         <a class="item-delete">
             <i class="fas fa-trash"></i>
         </a>
