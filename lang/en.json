@@ -57,7 +57,7 @@
             "broadsword" : "Broadsword",
             "flail": "Flail",
             "forcesword": "Force Sword",
-            "garrote" : "garrote",
+            "garrote" : "Garrote",
             "knife": "Knife",
             "kusari": "Kusari",
             "lance": "Lance",
@@ -73,7 +73,37 @@
             "twoHandedAxeMace": "Two-Handed Axe/Mace",
             "twoHandedFlail": "Two-Handed Flail",
             "twoHandedSword": "Two-Handed Sword",
-            "whip": "Whip"
+            "whip": "Whip",
+            "blowpipe": "Blowpipe",
+            "bolas": "Bolas",
+            "bow": "Bow",
+            "cloak": "Cloak",
+            "crossbow": "Crossbow",
+            "lasso": "Lasso",
+            "net": "Net",
+            "sling": "Sling",
+            "spearThrower": "Spear Thrower",
+            "thrownWeaponAxeMace": "Thrown Weapon (Axe/Mace)",
+            "thrownWeaponHarpoon": "Thrwon Weapon (Harpoon)",
+            "thrownWeaponKnife": "Thrown Weapon (Knife)",
+            "thrownWeaponShuriken": "Thrown Weapon (Shuriken)",
+            "thrownWeaponSpear": "Thrown Weapon (Spear)",
+            "throwing" : "Throwing",
+            "gunsPistol": "Guns (Pistol)",
+            "gunsGyroc": "Guns (Gyroc)",
+            "gunsSmg": "Guns(SMG)",
+            "gunsMusket": "Guns (Musket)",
+            "gunsRifle": "Guns(Rifle)",
+            "gunsShotgun": "Guns (Shotgun)",
+            "beamWeaponsPistol" : "Beam Weapons (Pistol)",
+            "beamWeaponsRifle": "Beam Weapons (Rifle)",
+            "artilleryGuidedMissile": "Artillery (Guided Missile)",
+            "gunnerCatapult": "Gunner (Catapult)",
+            "gunnerMachineGun": "Gunner (Machine Gun)",
+            "gunsGrenadeLauncher": "Guns (Grenade Launcher)",
+            "gunsLaw": "Guns (LAW)",
+            "gunsLmg": "Guns (LMG)",
+            "liquidProjectorFlamethrower": "Liquid Projector (Flamethrower)"
         },
         
         "rangedWeaponSkill" : {
@@ -197,9 +227,21 @@
         "dr": "Damage Resistance",
         "db": "Defense Bonus",
         "itemHP": "Item HP",
-        "lc": "Legality Class"
+        "lc": "Legality Class",
 
+        "sheet":{
+            "weapons": "Weapons",
+            "equipment": "Armor and Equipment",
+            "addWeapon": "Add New Weapon",
+            "addEquip": "Add New Equipment",
+            "newItem": "New Item",
+            "skills": "Skills"
+        }
+
+    
     }
+
+
 }
 
 

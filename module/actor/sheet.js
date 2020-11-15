@@ -4,34 +4,96 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             template: "systems/sjgurps4e/templates/actors/actor-sheet.hbs",
-            classes: ["sjgurps4e", "sheet", "character"],
-            scrollY: [".tab.details"],
+            classes: ["sjgurps4e", "sheet", "actor", "character"],
+            scrollY: [".tab.core"],
             tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "core"}]
         });
+    }
+
+    get template() {
+        const path = "systems/sjgurps4e/templates/actors";
+        return `${path}/${this.actor.data.type}.hbs`;
     }
 
     getData() {
         const data = super.getData();
         data.config = CONFIG.sjgurps4e;
-        //console.log(data.attributes.ST.value);
-       // data.item = data.types.titleCase();
-       // data.weapons = data.items.filter(function(item) {return item.types == "weapon"});
+        // gather up the weapon items
+        data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
+        
+        //gather up the eqipment items
+        data.equips = data.items.filter(function(item) {return item.type == "equipment"});
+
+        //gather up the skill items  -- we need to peel off spells?
+        data.skills = data.items.filter(function(item) {return item.type == "skill"});        
+        
+        //console.log(data.weapons[0].data);
+        //console.log(data.weapons.length + " items are weapons");     
+         for (let n = 0; n < data.weapons.length; n++) {
+            const element = data.weapons[n];
+            const dataset = element.data;
+            //console.log(" weight :" + n + " is " + element.data.weight);
+        } 
+        //console.log(sheetData.weapons[n].type);
         return data;
     }
 
 
     activateListeners(html){
         html.find('.rollable').click(this._onRoll.bind(this));
+        html.find('.item-create').click(this._onItemCreate.bind(this));
+        html.find('.item-edit').click(this._onItemEdit.bind(this));
+        html.find('.item-delete').click(this._onItemDelete.bind(this));
+        html.find('.inline-edit').change(this._onInlineEdit.bind(this));
 
 
         super.activateListeners(html);
         //console.log("*-* activated listener");
 
-        if (!this.options.editable) {
-            //console.log("*-* editable");
-            return;
-        }
+
     }
+
+
+    _onItemEdit(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        let itemId = element.closest(".item").dataset.itemid;
+        //console.log("***---***" + itemId);
+        let item = this.actor.getOwnedItem(itemId);
+
+        item.sheet.render(true);
+    }
+
+    _onInlineEdit(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        let itemId = element.closest(".item").dataset.itemid;
+        //console.log("***---***" + itemId);
+        let item = this.actor.getOwnedItem(itemId);
+        let field = element.dataset.field;
+
+        return item.update({ [field]: element.value});
+    }
+
+    _onItemCreate(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+
+        let itemData = {
+            name: game.i18n.localize("sjgurps4e.sheet.newItem"),
+            type: element.dataset.type
+        };
+        return this.actor.createOwnedItem(itemData);
+    }
+
+    _onItemDelete(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        let itemId = element.closest(".item").dataset.itemid;
+        //console.log("***---***" + itemId);
+        return this.actor.deleteOwnedItem(itemId);
+    }
+
 
     _onRoll(event){
        // Show(event);
@@ -66,7 +128,14 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             }
     }
 
-    
+    _prepareItems(data) {
+        const inventory = {
+            weapon: {label: "weapons", items: [], dataset: {type: "weapon"} },
+            equipment: { label: "DND5E.ItemTypeEquipmentPl", items: [], dataset: {type: "equipment"} } 
+        
+        };
+        data.inventory = Object.values(inventory);
+    }
 
 
 }
@@ -86,6 +155,9 @@ async function getModifier() {
                     buttons: {
                         ok:{
                             label: "ok",
+                        },
+                        cancel:{
+                            label: "cancel",
                         }
                     },
                     default: "ok",
@@ -95,6 +167,7 @@ async function getModifier() {
                                         console.log("we have set the modifier to "+ html.find('[name="data.modifier"]')[0].value);
                                     }
                 });
+
             d.render(true);
             setTimeout(function() {document.getElementById("roll_modifier").focus();}, 300);
             setTimeout(function(){}, 2000 );

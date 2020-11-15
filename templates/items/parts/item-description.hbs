@@ -14,8 +14,8 @@
         {{#unless isRangedWeapon}}
         <div class="form-group">
         <label>{{localize "sjgurps4e.itemProperties.skill"}} </label>
-        <select name="data.weaponSkill">
-        {{#select data.weaponSkill}}
+        <select name="data.skillUsed">
+        {{#select data.skillUsed}}
         {{#each config.weaponSkill as |name skill|}}
         <option value="{{skill}}">{{localize name}}</option>
         {{/each}}
@@ -27,8 +27,8 @@
         {{#if isRangedWeapon}}
         <div class="form-group">
         <label>{{localize "sjgurps4e.itemProperties.skill"}}</label>
-        <select name="data.weaponSkill">
-        {{#select data.weaponSkill}}
+        <select name="data.skillUsed">
+        {{#select data.skillUsed}}
         {{#each config.rangedWeaponSkill as |name skill|}}
         <option value="{{skill}}">{{localize name}}</option>
         {{/each}}

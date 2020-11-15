@@ -1,0 +1,14 @@
+<div>
+    <div class="skills">  
+    <h2>
+    <div>{{localize "sjgurps4e.sheet.skills"}}</div>
+    <a class="item-create" data-type="skill" title="{{localize "sjgurps4e.sheet.addSkill"}}" >
+        <i class="fas fa-plus"></i>
+    </a>
+    </h2> 
+    <section class="skill-list">
+       {{#each skills as |skill id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/skill-card.hbs" skill}}
+       {{/each}}
+    </section></div>
+</div>

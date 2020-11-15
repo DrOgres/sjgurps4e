@@ -9,11 +9,14 @@
             </td>
             <td class="sep"> / </td> 
             <td class="statvalue multiple">
+                
             <input name="data.HP.max" type="text" value="{{data.HP.max}}" placeholder="10" data-dtype="Number">
             </td>
             <td>
                 <div class = "pointvalue">
-                0 
+                {{#statValue data.HP.max "HP" data.ST.value}}
+                0
+                {{/statValue}}
                 </div>
             </td>
         </tr>
@@ -74,7 +77,9 @@
             </td>
             <td>
                 <div class = "pointvalue">
-                0 
+                {{#statValue data.FP.max "FP" data.HT.value}}
+                0
+                {{/statValue}}
                 </div>
             </td>
         </tr>

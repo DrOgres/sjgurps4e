@@ -76,7 +76,7 @@
                 "weight":0
             },
             "itemSkill":{
-                "sillUsed":""
+                "skillUsed":""
             },
             "itemTL":{
                 "tl":0
@@ -91,27 +91,28 @@
                 "minST": 10
             },
             "itemType":{
-                "weapon-melee": "Melee Weapon",
-                "weapon-ranged": "Ranged Weapon",
-                "skill": "Skill",
-                "spell": "Spell",
-                "equipment": "Equipment",
-                "advantage": "Advantage",
-                "disadvantage": "Disadvantage",
-                "perk": "Perk",
-                "quirk": "Quirk",
-                "template": "Character Template"
+                "itemType" : [
+                "weapon-melee",
+                "weapon-ranged",
+                "skill",
+                "spell",
+                "equipment",
+                "advantage",
+                "disadvantage",
+                "perk",
+                "quirk",
+                "template"]
             },
             "itemPoints": 0
         },
 
         "skill" : {
             "templates": ["itemType", "itemDescription", "itemPoints"],
-            "stat" : "DX",
+            "stat" : "",
             "difficulty": "Average",
             "level" : 0,
-
-            "defaults": "stat or skills to use as default"
+            "defaults": "stat or skills to use as default",
+            "isSpell": false
         },
         "weapon-melee" : {
             "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
@@ -133,8 +134,20 @@
         "trait": {
             "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints"]
         }, 
-        "template":{
+        "charTemplate":{
             "templates": ["itemType", "itemDescription"]
+        },
+        "weapon" : {
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
+            "reach": 1,
+            "parryType": "",
+            "acc": 0,
+            "range": "x4",
+            "rof": 1,
+            "shots": 1,
+            "bulk": -6,
+            "properties": {}, 
+            "isRangedWeapon": false
         }
 
         

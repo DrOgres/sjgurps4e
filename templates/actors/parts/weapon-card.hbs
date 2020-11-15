@@ -1,9 +1,18 @@
-<div class="weapon-card">
-    <h4> item called weapon card</h4>
+<div class="weapon-card item" data-itemid="{{_id}}">
     <div class="weapon-info weapon-name">
-        <p>{{name}}</p>
+        <p><img id="icon" src="{{img}}" height = "24px">
+        <a class="item-edit" >{{name}}</a></p>
     </div>
-    <div class="weapon-info" "weapon-stats">
-        <p>{{data.weaponSkill}}</p>
+
+ 
+    <div class="weapon-info weapon-stats">
+        <p>{{#localizeData "weaponSkill" data.skillUsed}}{{/localizeData}}
+        {{data.weight}}
+        {{data.cost}}
+        <a class="item-delete">
+            <i class="fas fa-trash"></i>
+        </a>
+        </p>
     </div>
+
 </div>

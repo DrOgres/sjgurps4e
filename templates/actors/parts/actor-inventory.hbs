@@ -1,14 +1,26 @@
-<div>
 
-    <p>this is our inventory</p>
-<div class="weapons">
+<div class="inventory">
+<div class="weapons">  <h2>
+    <div>{{localize "sjgurps4e.sheet.weapons"}}</div>
+    <a class="item-create" data-type="weapon" title="{{localize "sjgurps4e.sheet.addWeapon"}}" >
+        <i class="fas fa-plus"></i>
+    </a>
+    </h2> 
     <section class="weapon-list">
-        
-        {{#each actor.items.item.itemType as |type id|}}
-        {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" type}}
-        {{/each}}
+       {{#each weapons as |weapon id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
+       {{/each}}
+    </section></div>
+<div class="equipment">
+    <h2>
+      <div>{{localize "sjgurps4e.sheet.equipment"}}</div>
+      <a class="item-create" data-type="equipment" title="{{localize "sjgurps4e.sheet.addEquip"}}">
+        <i class="fas fa-plus"></i></a>  
+    </h2>
+    <section class="armor-list">
+       {{#each equips as |equip id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/equip-card.hbs" equip}}
+       {{/each}}
     </section>
-
 </div>
-    
 </div>

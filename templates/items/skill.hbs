@@ -18,7 +18,7 @@
             </div>
             <ul class = "summary flexrow">
                 <li style="text-align: right;">
-                    {{ localize (lookup config.attributesAbrv data.attributesAbrv) }}
+                    {{ localize (lookup config.attributesAbrv data.stat) }}
                 </li>
                 <li>
                     {{ localize (lookup config.difficulties data.difficulty) }}
@@ -44,8 +44,8 @@
         <div class="tab details" data-group="primary" data-tab="details"> 
             {{!-- Controlling Attribute --}}
             <div class="form-group">
-                <select name="data.attributesAbrv">
-                  {{#select data.attributesAbrv}}
+                <select name="data.stat">
+                  {{#select data.stat}}
                   {{#each config.attributesAbrv as |name attribute|}}
                   <option value="{{attribute}}"> {{localize name}}</option>
                   {{/each}}

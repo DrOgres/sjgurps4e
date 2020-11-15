@@ -78,6 +78,10 @@
   font-family: Cinzel;
   src: url(fonts/Cinzel-VariableFont_wght.ttf);
 }
+.sep {
+  font-size: 18px;
+  color: slategrey;
+}
 .sjgurps4e.sheet.character .rollable:hover {
   text-shadow: 0 0 10px red;
   cursor: url(icons/3d6-black.svg), pointer;
@@ -190,4 +194,11 @@
   font-size: 10px;
   font-weight: lighter;
   vertical-align: baseline;
+}
+.weapons h2 {
+  display: flex;
+  flex-direction: row;
+}
+.weapons h2 .item-create {
+  margin-left: auto;
 }

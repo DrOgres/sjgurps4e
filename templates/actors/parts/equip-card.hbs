@@ -1,0 +1,13 @@
+<div class="equipment-card item" data-itemid="{{_id}}">
+    <div class="equip-info equip-name">
+        <p><img id="icon" src="{{img}}" height = "24px">
+        <a class="item-edit" >{{name}}</a></p>
+    </div>
+    <div class="equip-info" "equip-stats">
+        <p> {{#localizeData "itemLocation" data.location }}{{/localizeData}} | {{data.weight}} | {{data.cost}} | {{data.dr}} | 
+        <a class="item-delete">
+            <i class="fas fa-trash"></i>
+        </a>
+        </p>
+    </div>
+</div>

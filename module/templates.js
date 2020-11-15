@@ -14,6 +14,9 @@ export const preloadHandlebarsTemplates = async function() {
       "systems/sjgurps4e/templates/actors/parts/actor-inventory.hbs",
       "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs",
       "systems/sjgurps4e/templates/actors/parts/core-actor.hbs",
+      "systems/sjgurps4e/templates/actors/parts/equip-card.hbs",
+      "systems/sjgurps4e/templates/actors/parts/actor-skills.hbs",
+      "systems/sjgurps4e/templates/actors/parts/skill-card.hbs",
       //"systems/sjgurps4e/templates/actors/parts/actor-spellbook.html",
       //"systems/sjgurps4e/templates/actors/parts/actor-effects.html",
   

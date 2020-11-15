@@ -14,18 +14,25 @@ export default class ItemSheetGurps extends ItemSheet{
     }
 
     get template() {
-        const path = "systems/sjgurps4e/templates/items/";
+        const path = "systems/sjgurps4e/templates/items";
         return `${path}/${this.item.data.type}.hbs`;
     }
 
     getData() {
         const data = super.getData();
         data.config = CONFIG.sjgurps4e;
-        data.itemType = data.item.type.titleCase();
-        data.weaponType = data.item.type.weaponType;
+        data.itemClass = data.item.type.titleCase();
+       // console.log(data.itemClass + " itemClass data from itemsheet");        
+        data.weaponType = data.item.data.weaponType;
         data.isRangedWeapon = this._isRangedWeapon(data.item);
         data.isSkill = this._isSkill(data.item.type);
         data.isSpell = this.__isSpell(data.item.type);
+        //data.skillUsed = data.item.data.skillUsed;
+
+        //console.log(data.item.data.skillUsed + " item data from itemsheet");
+        //console.log(data.item.data.cost);
+        //console.log(data.item.data.weight);
+        //console.log(data.weaponType);
         //console.log(data.weaponType + " getdata()");
         //console.log(this.item.data.type  + " getdata()");
         //console.log(data.isSkill);
