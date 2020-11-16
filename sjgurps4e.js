@@ -57,7 +57,13 @@ Hooks.once("init", function (){
     });
 
     Handlebars.registerHelper('localizeData', function (locationString, datastring){
-      let localizationLocation = "sjgurps4e."+locationString+"."+datastring;
+      let localizationLocation = "";
+      //console.log(datastring);
+      if(datastring == ""){
+        localizationLocation = "sjgurps4e."+locationString+"."+"none";
+      } else {
+      localizationLocation = "sjgurps4e."+locationString+"."+datastring;
+      }
       //console.log(localizationLocation);
       return game.i18n.localize(localizationLocation);
 

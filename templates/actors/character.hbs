@@ -30,7 +30,7 @@
         <a class="item" data-tab="inventory">{{ localize "sjgurps4e.Inventory" }}</a>
         <a class="item" data-tab="skills">{{ localize "sjgurps4e.skills" }}</a>
         <a class="item" data-tab="spells">{{ localize "sjgurps4e.spells" }}</a>
-        <a class="item" data-tab="biography">{{ localize "sjgurps4e.Biography" }}</a>
+        <a class="item" data-tab="traits">{{ localize "sjgurps4e.traits" }}</a>
     </nav>
 
     <section class="sheet-body">
@@ -50,12 +50,12 @@
 
         {{!-- spells --}}
         <div class="tab spells flexrow" data-group="primary" data-tab="spells">
-            <p>things that are considered spells</p>
+            {{> "systems/sjgurps4e/templates/actors/parts/actor-spells.hbs"}}
         </div>
 
         {{!--biography--}}
-        <div class="tab biography flexrow" data-group="primary" data-tab="biography">
-            <p>details about the character</p>
+        <div class="tab traits flexrow" data-group="primary" data-tab="traits">
+            {{> "systems/sjgurps4e/templates/actors/parts/actor-traits.hbs"}}
         </div>
 
     </section>

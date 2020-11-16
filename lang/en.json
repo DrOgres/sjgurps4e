@@ -50,6 +50,7 @@
         },
 
         "weaponSkill" : {
+            "none": "None",
             "axeMace": "Axe/Mace",
             "boxing" : "Boxing",
             "brawling" : "Brawling",
@@ -183,6 +184,7 @@
         "charTemplate": "Character Template",
         "Inventory": "Inventory",
         "Biography": "Biography",
+        "traits": "Info",
         "core": "Core",
         "skills": "Skills",
         "spells": "Spells",
@@ -235,7 +237,9 @@
             "addWeapon": "Add New Weapon",
             "addEquip": "Add New Equipment",
             "newItem": "New Item",
-            "skills": "Skills"
+            "newSpell": "New Spell",
+            "addSkill": "New Skill",
+            "addSpell": "New Spell"
         }
 
     

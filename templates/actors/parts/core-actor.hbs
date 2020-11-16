@@ -1,3 +1,19 @@
-favorites | active defense</br>
-weaps     | movement </br>
-spells    | reaction mods </br>
+<div class="coreItems">
+    <div class="coreRollItems">
+        <div class = "favorites-header">favorites</div>
+        <div class = "favweapons">weapons</div>
+        <div class = "favskills">skills</div>
+        <div class = "favspells">spells</div>
+    </div>
+    <div class="coreInfoItems">
+        <div class = "activeDef"><h4>Active Defense</h4>
+            {{> "systems/sjgurps4e/templates/actors/parts/active-defense.hbs"}}
+        </div>
+        <div class = "encumbrance"><h4>Encumbrance</h4>
+            {{> "systems/sjgurps4e/templates/actors/parts/encumbrance.hbs"}}
+        </div>
+        <div class="movement">movement</div>
+        <div class = "reactions">reaction mods</div>
+    </div>
+</div>
+

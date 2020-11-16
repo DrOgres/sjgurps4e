@@ -1,0 +1,14 @@
+<div class="inventory">
+    <div class="spells">  
+    <h2>
+    <div>{{localize "sjgurps4e.spells"}}</div>
+    <a class="item-create" data-type="skill" data-spell="spell" title="{{localize "sjgurps4e.sheet.addSpell"}}" >
+        <i class="fas fa-plus"></i>
+    </a>
+    </h2> 
+    <section class="spell-list">
+       {{#each spells as |spell id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/skill-card.hbs" spell}}
+       {{/each}}
+    </section></div>
+</div>

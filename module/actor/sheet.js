@@ -24,9 +24,22 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //gather up the eqipment items
         data.equips = data.items.filter(function(item) {return item.type == "equipment"});
 
-        //gather up the skill items  -- we need to peel off spells?
-        data.skills = data.items.filter(function(item) {return item.type == "skill"});        
+        //gather up the skill items
+        data.allSkills = data.items.filter(function(item) {return item.type == "skill"}); 
+        //separate skills into skills and spells
+        data.skills = data.allSkills.filter(function(item) {return item.data.isSpell == false});
+        data.spells = data.allSkills.filter(function(item) {return item.data.isSpell == true});
+
+        //gather up the traits
+
+        //separate into Advantages, Disadvantages, Quirks and Perks
         
+        //calculate Basic Lift
+        data.actor.data.basicLift = this._basicLift(data.actor);
+        
+        //calculate Basic Speed
+        data.actor.data.base_speed = this._basicSpeed(data.actor); 
+
         //console.log(data.weapons[0].data);
         //console.log(data.weapons.length + " items are weapons");     
          for (let n = 0; n < data.weapons.length; n++) {
@@ -67,6 +80,19 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //console.log("*-* activated listener");
 
 
+    }
+
+    _basicSpeed(actor){
+        let speed = (actor.data.HT.value+actor.data.DX.value)/4
+        console.log(speed);
+        return speed;
+    }
+
+    _basicLift(actor){
+        
+        let lift = Math.floor((actor.data.ST.value*actor.data.ST.value)/5)
+        //console.log(lift);
+        return lift;
     }
 
     _onItemSummary(event){
@@ -116,11 +142,21 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     _onItemCreate(event){
         event.preventDefault();
         let element = event.currentTarget;
-
-        let itemData = {
+        let spellBool = element.dataset.spell;
+        let itemData = {};
+        //console.log(spellBool);
+        if (spellBool == "spell"){
+            itemData={
+                name: game.i18n.localize("sjgurps4e.sheet.newSpell"),
+                type: element.dataset.type,
+                "data.isSpell": true
+            };
+        } else {
+        itemData = {
             name: game.i18n.localize("sjgurps4e.sheet.newItem"),
             type: element.dataset.type
         };
+        }
         return this.actor.createOwnedItem(itemData);
     }
 
@@ -142,7 +178,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
              // check event for alt key
         if(event.altKey){
             modifier = getModifier();
-            console.log("alt modifier: " + modifier);
+           // console.log("alt modifier: " + modifier);
            /*  if(dataset.roll){
                 let roll = new Roll(dataset.roll, this.actor.data.data);
                 let label = dataset.label ? `Rolling ${dataset.label}, target is ${moded_roll}` : '';
@@ -183,7 +219,7 @@ async function getModifier() {
             let modifier=0;
             // if user presed that while clicking show a dialog to ask for modifier and or skill
             // then pass the changes from that form to the overall roll 
-            console.log("alt pressed");
+           // console.log("alt pressed");
             let d = new Dialog({
                     title: "Roll Modifiers",
                     content: `

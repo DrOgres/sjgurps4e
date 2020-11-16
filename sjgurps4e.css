@@ -136,6 +136,12 @@
   font-size: 30px;
   width: 300px;
 }
+.sjgurps4e.sheet.character .sheet-navigation {
+  border-bottom: groove;
+}
+.sjgurps4e.sheet.character .sheet-navigation .item {
+  font-size: 18px;
+}
 .sjgurps4e.sheet.character .sheet-top {
   display: flex;
   flex-direction: row;
@@ -205,4 +211,32 @@
 }
 .inventory h2 .item-create {
   margin-left: auto;
+}
+.coreItems {
+  display: flex;
+  flex-direction: row;
+}
+.coreItems .coreRollItems {
+  display: flex;
+  flex-direction: column;
+  min-width: 66%;
+}
+.coreItems .coreInfoItems {
+  max-width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+.background {
+  display: flex;
+  flex-direction: row;
+}
+.background .appAndbio {
+  display: flex;
+  flex-direction: column;
+  min-width: 60%;
+}
+.background .traits {
+  display: flex;
+  flex-direction: column;
+  min-width: 40%;
 }
