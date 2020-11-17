@@ -83,12 +83,12 @@ export default class ItemSheetGurps extends ItemSheet{
 
     
     _updateObject(event, formData){
-        console.log("*-* updated");
+        //console.log("*-* updated");
         // Update the Item
         super._updateObject(event, formData);
-        }
+    }
 
-        _onRoll(event){
+    _onRoll(event){
             event.preventDefault();
             const element = event.currentTarget;
             const dataset = element.dataset;
@@ -102,7 +102,7 @@ export default class ItemSheetGurps extends ItemSheet{
                 });
         
             }
-        }
+    }
 
 
 

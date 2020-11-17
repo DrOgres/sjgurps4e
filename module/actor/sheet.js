@@ -18,11 +18,14 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     getData() {
         const data = super.getData();
         data.config = CONFIG.sjgurps4e;
+
         // gather up the weapon items
         data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
         
         //gather up the eqipment items
         data.equips = data.items.filter(function(item) {return item.type == "equipment"});
+
+        //calculate the total weight for encumbrance 
 
         //gather up the skill items
         data.allSkills = data.items.filter(function(item) {return item.type == "skill"}); 
@@ -38,7 +41,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         data.actor.data.basicLift = this._basicLift(data.actor);
         
         //calculate Basic Speed
-        data.actor.data.base_speed = this._basicSpeed(data.actor); 
+        data.actor.data.baseSpeed = this._basicSpeed(data.actor); 
+
+        //calculate Basic Move
+        data.actor.data.basicMove = this._basicMove(data.actor);
 
         //console.log(data.weapons[0].data);
         //console.log(data.weapons.length + " items are weapons");     
@@ -82,8 +88,21 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
     }
 
+    _basicMove(actor){
+        let points = (actor.data.movePoints);
+        console.log(points);
+        let moveMod = (points/5);
+        console.log(moveMod);
+        let move = Math.floor(actor.data.baseSpeed)+moveMod;
+        return move;
+    }
+
     _basicSpeed(actor){
-        let speed = (actor.data.HT.value+actor.data.DX.value)/4
+        let points = (actor.data.speedPoints);
+        console.log(points);
+        let speedMod = (points/5)*.25;
+        console.log(speedMod);
+        let speed = ((actor.data.HT.value+actor.data.DX.value)/4)+speedMod;
         console.log(speed);
         return speed;
     }

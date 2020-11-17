@@ -196,6 +196,9 @@
   vertical-align: baseline;
   align-content: center;
 }
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue:hover {
+  box-shadow: 0 0 5px red;
+}
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue {
   text-align: right;
   padding: 3px;

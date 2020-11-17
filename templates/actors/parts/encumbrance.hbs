@@ -1,7 +1,12 @@
 <div class="basic-enc">
     <div class="lift">
         <p>Baisc Lift: {{actor.data.basicLift}}</p>
-        <p>Basic Speed: {{actor.data.base_speed}}</p>
+        <p>Basic Speed: {{actor.data.baseSpeed}} 
+        <input name="data.speedPoints" type="text" title = "{{localize "sjgurps4e.sheet.speedExpl"}}" value = "{{data.speedPoints}}" data-dtype="Number" /> 
+        </p>
+        <p>Basic Move (yards/sec): {{actor.data.basicMove}}
+        <input name="data.movePoints" type="text" title = "{{localize "sjgurps4e.sheet.moveExpl"}}" value = "{{data.movePoints}}" placeholder="0" data-dtype="Number" /> 
+        </p>
     </div>
 
 

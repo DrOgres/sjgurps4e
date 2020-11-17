@@ -239,7 +239,9 @@
             "newItem": "New Item",
             "newSpell": "New Spell",
             "addSkill": "New Skill",
-            "addSpell": "New Spell"
+            "addSpell": "New Spell",
+            "speedExpl": "+/-5 points per .25 Basic Speed Change",
+            "moveExpl": "+/- 5 points per yard/sec"
         }
 
     
