@@ -196,7 +196,7 @@
   vertical-align: baseline;
   align-content: center;
 }
-.sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue:hover {
+.sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue input:hover {
   box-shadow: 0 0 5px red;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .pointvalue {

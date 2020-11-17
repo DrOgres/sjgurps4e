@@ -41,7 +41,8 @@
                 "damageThr" : 0,
                 "damageSw" : 0,
                 "sizeMod" : 0,
-                "move" : 0
+                "move" : 0,
+                "totalweight" : 0
             }
         },
 
