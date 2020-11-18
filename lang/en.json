@@ -241,7 +241,26 @@
             "addSkill": "New Skill",
             "addSpell": "New Spell",
             "speedExpl": "+/-5 points per .25 Basic Speed Change",
-            "moveExpl": "+/- 5 points per yard/sec"
+            "moveExpl": "+/- 5 points per yard/sec",
+            "basicLift": "Basic Lift",
+            "basicSpeed": "Basic Speed", 
+            "basicMove": "Basic Move",
+            "distanceToolTipUS": "Yards Per Second",
+            "distanceToolTipMetric" : "Meters Per Second",
+            "move": "Move Speed",
+            "enc0": "None",
+            "enc1": "Light",
+            "enc2": "Medium",
+            "enc3": "Heavy",
+            "enc4": "X-Heavy",
+            "encumbrance": "Encumbrance",
+            "dodge": "Dodge",
+            "block": "Block",
+            "parry": "Parry",
+            "encHeader": "Encumbrance and Movement",
+            "actDefHeader": "Active Defense",
+            "damage": " Base Damage" 
+
         }
 
     

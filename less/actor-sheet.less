@@ -13,11 +13,26 @@
     color: slategrey;
 }
 
+input:hover{
+    box-shadow: 0 0 5px red;
+}
+
+select:hover{
+    box-shadow: 0 0 5px red;
+}
+
+.rollable:hover {
+    text-shadow: 0 0 10px red;
+    cursor: url(icons/3d6-black.svg), pointer;
+}
+
 .sjgurps4e.sheet.character {
-    .rollable:hover {
-        text-shadow: 0 0 10px red;
-        cursor: url(icons/3d6-black.svg), pointer;
+    .information.noneditable{
+        text-align: center;
+        font-size: 14px;
+        color: rgba(49, 49, 49, 0.719);
     }
+
 
     form{
         display: flex;
@@ -128,9 +143,7 @@
                         vertical-align: baseline;
                         align-content: center;
                     }
-                    input:hover{
-                        box-shadow: 0 0 5px red;
-                    }
+
                 }
 
                 .pointvalue{
@@ -146,4 +159,5 @@
             }
         }
     }
+
 }

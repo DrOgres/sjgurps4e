@@ -69,8 +69,20 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         data.actor.data.basicMove = this._basicMove(data.actor);
 
         //calculate encumbrance Level
+        data.actor.data.encumbrance = this._getEncumbrance(data.actor);
+        data.actor.data.encRef = "enc"+data.actor.data.encumbrance;
+        console.log("GURPS 4E |  current enc " + data.actor.data.encRef);
 
         //calculate current movement
+        data.actor.data.move = this._getMove(data.actor);
+
+        //calculate current dodge
+        data.actor.data.dodge = this._getDodge(data.actor);
+
+        //calculate current Parry by selected weapon
+
+        //calculate the current block by shield skill
+
 
         //lookup the base damage
         this._getBaseDamage(data.actor);
@@ -114,6 +126,63 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         super.activateListeners(html);
         //console.log("*-* activated listener");
 
+
+    }
+
+    _getDodge(actor){
+        let enc = actor.data.encumbrance;
+        let d = Math.round(actor.data.baseSpeed)+3;
+        if (enc == 0){
+            return d;
+        } else if (enc == 1){
+            return d-1;
+        } else if (enc == 2){
+            return d-2;
+        } else if (enc == 3){
+            return d-3;
+        } else if (enc == 4){
+            return d-4;
+        } else {
+            console.log("GURPS 4E |  Error: Enchumbrance out of range");
+        }
+    }
+
+    _getMove(actor){
+        let enc = actor.data.encumbrance;
+        let bm = actor.data.basicMove;
+        if (enc == 0){
+            return bm;
+        } else if (enc == 1){
+            return Math.round(bm*.8);
+        } else if (enc == 2) {
+            return Math.round(bm*.6);
+        } else if (enc == 3) {
+            return Math.round(bm*.4);
+        } else if (enc == 4){
+            return Math.round(bm*.2);
+        } else {
+            console.log("GURPS 4E |  Error: Enchumbrance out of range");
+        }
+    }
+
+    _getEncumbrance(actor){
+        let bl = actor.data.basicLift;
+        let tw = actor.data.totalweight;
+       
+
+        if(tw <= bl){
+            return 0;
+        } else if (tw <= bl*2){
+            return 1;
+        } else if (tw <= bl*3){
+            return 2;
+        } else if (tw <= bl*6){
+            return 3;
+        } else {
+            return 4;
+        }
+        
+        
 
     }
 

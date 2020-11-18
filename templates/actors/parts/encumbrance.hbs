@@ -1,12 +1,32 @@
 <div class="basic-enc">
-    <div class="lift">
-        <p>Baisc Lift: {{actor.data.basicLift}}</p>
-        <p>Basic Speed: {{actor.data.baseSpeed}} 
-        <input name="data.speedPoints" type="text" title = "{{localize "sjgurps4e.sheet.speedExpl"}}" value = "{{data.speedPoints}}" data-dtype="Number" /> 
-        </p>
-        <p>Basic Move (yards/sec): {{actor.data.basicMove}}
-        <input name="data.movePoints" type="text" title = "{{localize "sjgurps4e.sheet.moveExpl"}}" value = "{{data.movePoints}}" placeholder="0" data-dtype="Number" /> 
-        </p>
+    <div class="tabSectionHeader">
+        {{localize "sjgurps4e.sheet.encumbrance"}}
+    </div>
+    <div class="information noneditable">
+        {{#localizeData "sheet" actor.data.encRef }}{{/localizeData}} ({{data.totalweight}} lbs)
+    </div>
+    <div class="lift-speed-move">
+        <table><tr><td class="encBlock">
+        <div>
+            {{localize "sjgurps4e.sheet.basicLift"}}:</br> {{actor.data.basicLift}}
+        </div></td>
+        <td class="encBlock"><div>
+            {{localize "sjgurps4e.sheet.basicSpeed"}}:</br> {{actor.data.baseSpeed}} </br>
+            <input name="data.speedPoints" type="text" title = "{{localize "sjgurps4e.sheet.speedExpl"}}" value = "{{data.speedPoints}}" data-dtype="Number" /> points
+        </div></td>
+        <td class="encBlock"><div>
+            {{localize "sjgurps4e.sheet.basicMove"}}:</br> {{actor.data.basicMove}}</br>
+            <input name="data.movePoints" type="text" title = "{{localize "sjgurps4e.sheet.moveExpl"}}" value = "{{data.movePoints}}" placeholder="0" data-dtype="Number" />  points
+        </div>
+        </td></tr></table>
+    </div>
+    <div class="movement">
+        <div class="tabSectionHeader">
+            {{localize "sjgurps4e.sheet.move"}}
+        </div>
+        <div class="information noneditable">
+            {{actor.data.move}}
+        </div>
     </div>
 
 
