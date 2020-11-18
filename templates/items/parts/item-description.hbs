@@ -5,38 +5,12 @@
                 <label>{{localize "sjgurps4e.itemProperties.weight"}}</label>
                 <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number"/>
             </div>
-        <div class="form-group">
-            <label>{{localize "sjgurps4e.itemProperties.cost"}}</label>
-            <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
+            <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.cost"}}</label>
+                <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
+            </div>
         </div>
-        {{!-- Melee Weapon Skills List on Weapon Items--}}
-        {{#unless isRangedWeapon}}
-        <div class="form-group">
-        <label>{{localize "sjgurps4e.itemProperties.skill"}} </label>
-        <select name="data.skillUsed">
-        {{#select data.skillUsed}}
-        {{#each config.weaponSkill as |name skill|}}
-        <option value="{{skill}}">{{localize name}}</option>
-        {{/each}}
-        {{/select}}
-        </select>
-        </div>
-        {{/unless}}
-        {{!-- Ranged Weapon Skills List on Weapon Items--}}
-        {{#if isRangedWeapon}}
-        <div class="form-group">
-        <label>{{localize "sjgurps4e.itemProperties.skill"}}</label>
-        <select name="data.skillUsed">
-        {{#select data.skillUsed}}
-        {{#each config.rangedWeaponSkill as |name skill|}}
-        <option value="{{skill}}">{{localize name}}</option>
-        {{/each}}
-        {{/select}}
-        </select>
-        </div>
-        {{/if}}
-        </div>
-        {{/unless}}
+       {{/unless}} 
     <div class = "mce-editor">
     {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
     </div>

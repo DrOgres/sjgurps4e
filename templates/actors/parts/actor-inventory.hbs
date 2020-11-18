@@ -1,7 +1,8 @@
 
 <div class="inventory">
-<div class = "totals" style="text-align: right
-;"><h4>Total Weight {{actor.data.totalweight}}</h4></div>
+<div class = "totals" style="text-align: right;">
+    <h4>Total Weight {{actor.data.totalweight}}</h4>
+    </div>
 <div class="weapons">  <h2>
     <div>{{localize "sjgurps4e.sheet.weapons"}}</div>
     <a class="item-create" data-type="weapon" title="{{localize "sjgurps4e.sheet.addWeapon"}}" >
@@ -12,7 +13,8 @@
        {{#each weapons as |weapon id|}}
        {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
        {{/each}}
-    </section></div>
+    </section>
+</div>
 <div class="equipment">
     <h2>
       <div>{{localize "sjgurps4e.sheet.equipment"}}</div>

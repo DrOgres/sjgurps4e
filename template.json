@@ -53,7 +53,10 @@
             },
             "unspentPoints" :{
                 "value" : 0
-            }
+            },
+            "ownedSkillList": [
+                {"key": "", "item": "" }
+            ]
         }
     },
 
@@ -153,7 +156,8 @@
             "shots": 1,
             "bulk": -6,
             "properties": {}, 
-            "isRangedWeapon": false
+            "isRangedWeapon": false,
+            "skillMod": 0
         }
 
         

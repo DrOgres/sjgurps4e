@@ -27,7 +27,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         //calculate the total weight for encumbrance 
         data.actor.data.totalweight = 0;
-        console.log("GURPS 4E  |  " + data.actor.data.totalweight);
+        //console.log("GURPS 4E  |  " + data.actor.data.totalweight);
         let weightPool = 0;
         for (let n = 0; n < data.weapons.length; n++){
            // console.log("GURPS 4E  |  " + data.weapons[n].data.weight);
@@ -38,7 +38,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             weightPool += data.equips[n].data.weight;
         }
         data.actor.data.totalweight += weightPool
-        console.log("GURPS 4E  |  " + data.actor.data.totalweight);
+        //console.log("GURPS 4E  |  " + data.actor.data.totalweight);
         
 
         //gather up the skill items
@@ -46,7 +46,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //separate skills into skills and spells
         data.skills = data.allSkills.filter(function(item) {return item.data.isSpell == false});
         data.spells = data.allSkills.filter(function(item) {return item.data.isSpell == true});
-
+        
+ 
+        data.actor.data.ownedSkillList = this._getOwnedSkills(data);
+      
         //gather up the traits
         data.allTraits = data.items.filter(function(item) {return item.type == "trait"});
 
@@ -64,6 +67,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         //calculate Basic Move
         data.actor.data.basicMove = this._basicMove(data.actor);
+
+        //calculate encumbrance Level
+
+        //calculate current movement
 
         //lookup the base damage
         this._getBaseDamage(data.actor);
@@ -110,7 +117,22 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
     }
 
+    _getOwnedSkills(data){
+        console.log("GURPS 4E  |  " + data.skills);
+        const attributeList = ["ST", "DX", "IQ", "HT", "Will", "Per"];
+        let skillList = duplicate(attributeList);
+        for(let n = 0; n<data.skills.length; n++){
+        
+            console.log("GURPS 4E  |  " + data.skills[n].name);
+            
+            let skillName = data.skills[n].name;
 
+            let newskillList = skillList.push(skillName);
+        }
+        
+        console.log("GURPS 4E  |  " + skillList);
+        return skillList;
+    }
 
     _basicMove(actor){
         let points = (actor.data.movePoints);

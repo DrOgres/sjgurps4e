@@ -3,13 +3,26 @@
         <p><img id="icon" src="{{img}}" height = "24px">
         <a class="item-detail">{{name}}</a></p>
     </div>
-
- 
     <div class="weapon-info weapon-stats">
-        <p>{{#localizeData "weaponSkill" data.skillUsed}}{{/localizeData}}
-        {{data.weight}}
-        {{data.cost}}
-
+        <div class="skillToRoll">
+           <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.skill"}}</label>
+                <select name="data.skillUsed">
+                {{#select data.skillUsed}}
+                {{#each @root.actor.data.ownedSkillList as |skill name|}}
+                <option value="{{name}}">{{skill}}</option>
+                {{/each}}
+                {{/select}}
+                </select>
+            </div>
+            <div class="form-group">
+                <input name="data.skillMod" type="text" placeholder="0" value ="{{data.skillMod}}" data-dtype="Number" />
+            </div>
+       </div>
+        <p> 
+        Skill: {{data.skillUsed}}
+        Weight: {{data.weight}}
+        Cost: {{data.cost}}
         <a class="item-edit">
             <i class="fas fa-edit"></i>
         </a>
@@ -17,6 +30,6 @@
             <i class="fas fa-trash"></i>
         </a>
         </p>
-    </div>
-
 </div>
+
+

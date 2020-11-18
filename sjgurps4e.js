@@ -56,6 +56,12 @@ Hooks.once("init", function (){
       return getProperty(data, property);
     });
 
+    Handlebars.registerHelper('getSkillList', function(actor){
+      let ownedSkills = actor.data.skills;
+      console.log("GURPS 4E  |  " + ownedSkills[n]._id);
+      return ownedSkills.length;
+    });
+
     Handlebars.registerHelper('localizeData', function (locationString, datastring){
       let localizationLocation = "";
       //console.log(datastring);
