@@ -295,3 +295,18 @@ select:hover {
   flex-direction: column;
   min-width: 40%;
 }
+.weapon-card {
+  flex-direction: row;
+}
+.weapon-card .weapon-inline {
+  flex-direction: row;
+}
+.weapon-card .weapon-inline .inline-edit.select {
+  max-width: 30px;
+}
+.weapon-card .weapon-stats {
+  flex-direction: row;
+}
+.weapon-card .weapon-stats .skillToRoll .mod-number {
+  max-width: 50px;
+}

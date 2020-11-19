@@ -1,26 +1,26 @@
 <div class="weapon-card item" data-itemid="{{_id}}">
     <div class="weapon-info weapon-name">
-        <p><img id="icon" src="{{img}}" height = "24px">
-        <a class="item-detail">{{name}}</a></p>
+        <img id="icon" src="{{img}}" height = "24px">
+        <a class="item-detail">{{name}}</a>
     </div>
     <div class="weapon-info weapon-stats">
         <div class="skillToRoll">
-           <div class="form-group">
-                <label>{{localize "sjgurps4e.itemProperties.skill"}}</label>
-                <select name="data.skillUsed">
+           <div class="form-group weapon-inine">
+                <div class="skillselect"><label>{{localize "sjgurps4e.itemProperties.skill"}}</label>
+                <select class="inline-edit" name="data.skillUsed" data-field="data.skillUsed">
                 {{#select data.skillUsed}}
                 {{#each @root.actor.data.ownedSkillList as |skill name|}}
                 <option value="{{name}}">{{skill}}</option>
                 {{/each}}
                 {{/select}}
                 </select>
+                </div>
             </div>
-            <div class="form-group">
-                <input name="data.skillMod" type="text" placeholder="0" value ="{{data.skillMod}}" data-dtype="Number" />
+            <div class="form-group mod-number">
+                <input class="inline-edit" name="data.skillMod" data-field="data.skillMod" type="text" placeholder="0" value ="{{data.skillMod}}" data-dtype="Number" />
             </div>
        </div>
         <p> 
-        Skill: {{data.skillUsed}}
         Weight: {{data.weight}}
         Cost: {{data.cost}}
         <a class="item-edit">
