@@ -49,7 +49,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         
  
         data.actor.data.ownedSkillList = this._getOwnedSkills(data);
-      
         //gather up the traits
         data.allTraits = data.items.filter(function(item) {return item.type == "trait"});
 
@@ -57,7 +56,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         //gather up the templates
         data.charTemplates = data.items.filter(function(item) {return item.type == "template"});
-
         
         //calculate Basic Lift
         data.actor.data.basicLift = this._basicLift(data.actor);
@@ -71,7 +69,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //calculate encumbrance Level
         data.actor.data.encumbrance = this._getEncumbrance(data.actor);
         data.actor.data.encRef = "enc"+data.actor.data.encumbrance;
-        console.log("GURPS 4E |  current enc " + data.actor.data.encRef);
+       // console.log("GURPS 4E |  current enc " + data.actor.data.encRef);
 
         //calculate current movement
         data.actor.data.move = this._getMove(data.actor);
@@ -187,19 +185,14 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     }
 
     _getOwnedSkills(data){
-        console.log("GURPS 4E  |  " + data.skills);
         const attributeList = ["ST", "DX", "IQ", "HT", "Will", "Per"];
         let skillList = duplicate(attributeList);
         for(let n = 0; n<data.skills.length; n++){
-        
-            console.log("GURPS 4E  |  " + data.skills[n].name);
-            
+
             let skillName = data.skills[n].name;
 
             let newskillList = skillList.push(skillName);
         }
-        
-        console.log("GURPS 4E  |  " + skillList);
         return skillList;
     }
 
@@ -251,7 +244,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         li.toggleClass("expanded");
     }
 
-
     _onItemEdit(event){
         event.preventDefault();
         let element = event.currentTarget;
@@ -302,47 +294,130 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         return this.actor.deleteOwnedItem(itemId);
     }
 
-
     _onRoll(event){
        // Show(event);
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
+        let baseTarget = 0;
         let modifier = 0;
-             // check event for alt key
+        let skillUsedName = '';
+        //console.log(event);
+        // find out what kind of thing we are rolling on
+        // items, skills, spells, stats etc.
+        let itemId = '';
+        //for stats just pass the formula and target and roll
+        if (dataset.source == "stat"){
+            console.log("GURPS 4E  |  Roll on Stat ");
+            baseTarget = Number(dataset.target) 
+        } else {
+            //weapons and tools should get the applicable skill
+            
+            // get the item ID of the clicked item 
+            itemId = element.closest(".item").dataset.itemid;
+            // get the item object of the with this ID
+            let item = this.actor.getOwnedItem(itemId);
+            // get the skill mod of the item we clicked 
+            let skillMod = item.data.data.skillMod;
+            console.log("GURPS 4E |  skillMod " + skillMod);
+            // get the array index of the skill associated with this item
+            let skillUsedNumber = item.data.data.skillUsed;
+            // check to see if we need a skill or if a stat
+            // stats are <=5 skills are >=6
+            if(skillUsedNumber <=5){
+                // --- we are using a stat default not a skill so get the stat value
+                // stats are ordered as follows ST, DX, IQ, HT, Will, Per
+                // DX is most likely but hey who knows. 
+
+                switch (Number(skillUsedNumber)){
+                    case 0:
+                        baseTarget = this.actor.data.data.ST.value;
+                        modifier = skillMod;
+                        break;
+                    case 1:
+                        baseTarget = this.actor.data.data.DX.value;
+                        modifier = skillMod;
+                        break;
+                    case 2:
+                        baseTarget = this.actor.data.data.IQ.value;
+                        modifier = skillMod;
+                        break;
+                    case 3: 
+                        baseTarget = this.actor.data.data.HT.value;
+                        modifier = skillMod;
+                        break;
+                    case 4:
+                        baseTarget = this.actor.data.data.Will.value;
+                        modifier =  skillMod;
+                        break;
+                    case 5:
+                        baseTarget = this.actor.data.data.Per.value;
+                        modifier= skillMod;
+                        break;
+                }
+
+            } else {
+                    // --- we have a skill selected to be used by the item
+                // get the owned skills of the actor we are working with
+                let data = this.getData();
+                let skillList = data.actor.data.ownedSkillList;
+                let skillLevel = 0;
+                
+                // from the skillList of the actor get the name of the skill selected for use
+                //  by the item we clicked on
+                let skillName = skillList[skillUsedNumber];
+                
+                // get the full skill list that this actor owns ensuring that we dictch spells
+                let allSkills = this.actor.data.items.filter(function(item) {return item.type == "skill"}); 
+                let itemSkills = allSkills.filter(function(item) {return item.data.isSpell == false});
+                        
+                //find the skill we own with the name from our clicked item
+                itemSkills.forEach(element => {
+                    if (element.name === skillName) {
+                        // once we have the correct skill set the target information
+
+                        // first get the correct effective skill level
+                        skillLevel = element.data.level;
+                        
+
+                        baseTarget = Number(baseTarget) + Number(skillLevel)
+                        modifier = skillMod;
+                        skillUsedName = skillName;
+                    }
+
+                });
+            }
+
+        }// end else for non-stat rolls
+        
+        // check event for alt key which we will use to set the modifier data
         if(event.altKey){
             modifier = getModifier();
-           // console.log("alt modifier: " + modifier);
-           /*  if(dataset.roll){
-                let roll = new Roll(dataset.roll, this.actor.data.data);
-                let label = dataset.label ? `Rolling ${dataset.label}, target is ${moded_roll}` : '';
-                roll.roll().toMessage({
-                    speaker: ChatMessage.getSpeaker({ actor: this.actor}),
-                    flavor: label
-                }); 
-                
-            }*/
-
-            } else {       
+        } else {       
                 if(dataset.roll){
-                    let modedTarget = Number(dataset.target) + modifier;
+                    let modedTarget = Number(baseTarget) + Number(modifier);
+                    if (modedTarget < 5 ){
+                        modedTarget = "3 or 4 (Good Luck!)"
+                    }
                     let roll = new Roll(dataset.roll, this.actor.data.data);
-                    let label = dataset.label ? `Rolling ${dataset.label}, target is ` + modedTarget : '';
-                    roll.roll().toMessage({
-                    speaker: ChatMessage.getSpeaker({ actor: this.actor}),
-                    flavor: label
-                    });
-                }
-            }
-    }
+                    // set up chat message.  note if that dataset.label is null we make the string empty
+                    if(skillUsedName != ''){
+                        let label = dataset.label ? `<h1>${dataset.label} </h1> Using ` + skillUsedName + ` Skill </br> Target is ` + modedTarget  : '';
+                        
+                        roll.roll().toMessage({
+                        speaker: ChatMessage.getSpeaker({ actor: this.actor}),
+                        flavor: label
+                        });
+                    } else {
+                        let label = dataset.label ? `<h1>${dataset.label} </h1> Target is ` + modedTarget  : '';
+                        roll.roll().toMessage({
+                        speaker: ChatMessage.getSpeaker({ actor: this.actor}),
+                        flavor: label
+                        });
+                    }
 
-    _prepareItems(data) {
-        const inventory = {
-            weapon: {label: "weapons", items: [], dataset: {type: "weapon"} },
-            equipment: { label: "DND5E.ItemTypeEquipmentPl", items: [], dataset: {type: "equipment"} } 
-        
-        };
-        data.inventory = Object.values(inventory);
+                }
+        }
     }
 
     _getBaseDamage(actor) {

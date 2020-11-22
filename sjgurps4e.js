@@ -55,6 +55,10 @@ Hooks.once("init", function (){
     Handlebars.registerHelper('getProperty', function (data, property) {
       return getProperty(data, property);
     });
+
+    Handlebars.registerHelper('getRollTarget', function(data, item, skill, mod){
+      return;
+    })
  
     Handlebars.registerHelper('localizeData', function (locationString, datastring){
       let localizationLocation = "";
