@@ -4,13 +4,13 @@ This is a simple to use implementation of the 4E GURPS ruleset for use with Foun
 
 GURPS is a trademark of Steve Jackson Games, and its rules and art are copyrighted by Steve Jackson Games. All rights are reserved by Steve Jackson Games. This system is the original creation of David Rogers and is released for free distribution, and not for resale, under the permissions granted in the <a href="http://www.sjgames.com/general/online_policy.html">Steve Jackson Games Online Policy</a>.
 
-
-TODO - Skill Point and Effective Level Calculations
-TODO - prevent duplicate skills on character sheet
-TODO - Favorites on core tab
-TODO - character info Tab
-TODO - template item
-TODO - core packs
-
+<ul>
+<li>TODO - Skill Point and Effective Level Calculations </li>
+<li>TODO - prevent duplicate skills on character sheet </li>
+<li>TODO - Favorites on core tab </li>
+<li>TODO - character info Tab </li>
+<li>TODO - template item </li>
+<li>TODO - core packs </li>
+</ul>
 
 
