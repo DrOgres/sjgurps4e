@@ -32,12 +32,25 @@
         border-bottom-color: dimgray;
         color: dimgray;
     }
+    .two-wide{
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
 
-    .tabSectionHeader{
-        font-size: 16px;
-        color: rgb(31, 31, 31);
-        margin-left: 10px;
+
+        .mvencbox{
+            flex-grow: 1;
+            flex-basis: 50%;
+        }
+        .tabSectionHeader{
+            font-size: 16px;
+            color: rgb(31, 31, 31);
+            margin: 5px;
+            text-align: center;
+        }
     }
+    
 
     .lift-speed-move{
         text-align: center;

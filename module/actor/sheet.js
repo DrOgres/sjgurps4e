@@ -43,6 +43,113 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         //gather up the skill items
         data.allSkills = data.items.filter(function(item) {return item.type == "skill"}); 
+        //calculate those effective skill levels and point cost
+        for(let n=0; n<data.allSkills.length; n++){
+            let difficulty = data.allSkills[n].data.difficulty;
+            let stat = data.allSkills[n].data.stat;
+            let statValue = 0;
+            let statMod = 0;
+            let skillLevel = data.allSkills[n].data.level;
+            
+            // Calculate Point Cost
+             if(skillLevel<3){
+                //level 1 is 1 level 2 is 2 level 3 is 4
+                data.allSkills[n].data.points = skillLevel;
+            } else {
+                data.allSkills[n].data.points = (Number(skillLevel)-2)*4;
+            }
+            
+            if(difficulty === "EZ"){
+                statMod = Number(skillLevel)-1
+                // get the current stat
+                switch(stat) {
+                    case "ST":
+                        statValue = data.actor.data.ST.value;
+                        break;
+                    case "DX":
+                        statValue = data.actor.data.DX.value;
+                        break;
+                    case "IQ":
+                        statValue = data.actor.data.IQ.value;
+                        break;
+                    case "Will":
+                        statValue = data.actor.data.Will.value;
+                        break;
+                    case "Per":
+                        statValue = data.actor.data.Per.value;
+                        break;
+                }
+                
+            }else if  (difficulty === "AV"){
+                // Do the calculations for Effective Level
+                // get the current stat 
+                switch(stat) {
+                    case "ST":
+                        statValue = data.actor.data.ST.value;
+                        break;
+                    case "DX":
+                        statValue = data.actor.data.DX.value;
+                        break;
+                    case "IQ":
+                        statValue = data.actor.data.IQ.value;
+                        break;
+                    case "Will":
+                        statValue = data.actor.data.Will.value;
+                        break;
+                    case "Per":
+                        statValue = data.actor.data.Per.value;
+                        break;
+                }
+                statMod = Number(skillLevel)-2;
+
+
+            }else if (difficulty=== "HD"){
+                statMod = Number(skillLevel)-3
+                // get the current stat
+                switch(stat) {
+                    case "ST":
+                        statValue = data.actor.data.ST.value;
+                        break;
+                    case "DX":
+                        statValue = data.actor.data.DX.value;
+                        break;
+                    case "IQ":
+                        statValue = data.actor.data.IQ.value;
+                        break;
+                    case "Will":
+                        statValue = data.actor.data.Will.value;
+                        break;
+                    case "Per":
+                        statValue = data.actor.data.Per.value;
+                        break;
+                }
+            }else if (difficulty === "VH"){
+                
+                
+                // get the current stat             
+                switch(stat) {
+                    case "ST":
+                        statValue = data.actor.data.ST.value;
+                        break;
+                    case "DX":
+                        statValue = data.actor.data.DX.value;
+                        break;
+                    case "IQ":
+                        statValue = data.actor.data.IQ.value;
+                        break;
+                    case "Will":
+                        statValue = data.actor.data.Will.value;
+                        break;
+                    case "Per":
+                        statValue = data.actor.data.Per.value;
+                        break;
+                }
+                statMod = Number(skillLevel)-4
+                
+            }
+            data.allSkills[n].data.effective =  Number(statValue)+Number(statMod);
+        }
+        
         //separate skills into skills and spells
         data.skills = data.allSkills.filter(function(item) {return item.data.isSpell == false});
         data.spells = data.allSkills.filter(function(item) {return item.data.isSpell == true});
@@ -310,9 +417,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         if (dataset.source == "stat"){
             console.log("GURPS 4E  |  Roll on Stat ");
             baseTarget = Number(dataset.target) 
-        } else {
+        } else if (dataset.source == 'item'){
             //weapons and tools should get the applicable skill
-            
             // get the item ID of the clicked item 
             itemId = element.closest(".item").dataset.itemid;
             // get the item object of the with this ID
@@ -375,12 +481,14 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                 itemSkills.forEach(element => {
                     if (element.name === skillName) {
                         // once we have the correct skill set the target information
-
+                        console.log(element.data);
                         // first get the correct effective skill level
                         skillLevel = element.data.level;
-                        
+                        let stat = element.data.stat;
+                        let difficulty = element.data.difficulty;
+                        let effectiveTarget = this._getSkillTarget(skillLevel, stat, difficulty);
 
-                        baseTarget = Number(baseTarget) + Number(skillLevel)
+                        baseTarget = effectiveTarget;
                         modifier = skillMod;
                         skillUsedName = skillName;
                     }
@@ -388,7 +496,17 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                 });
             }
 
-        }// end else for non-stat rolls
+        } else if (dataset.source == 'skill'){
+            // clicking to roll a skill should get the skill target 
+            // for this we need the skill, its level, its stat and its difficulty
+            let data = this.getData();
+
+            itemId = element.closest(".item").dataset.itemid;
+            // get the item object of the with this ID
+            let item = this.actor.getOwnedItem(itemId);
+            let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
+            baseTarget = effectiveTarget;
+        }
         
         // check event for alt key which we will use to set the modifier data
         if(event.altKey){
@@ -685,6 +803,114 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     //console.log(actor.data.damageThr);
     
     
+    }
+
+    _getSkillTarget(skillLevel, stat, difficulty){
+        const data = this.getData();
+        let statValue = 10;
+        //console.log(stat);
+        if(difficulty === "EZ"){
+            
+            let statMod = skillLevel-1
+            // get the current stat
+            
+            switch(stat) {
+                case "ST":
+                    statValue = data.actor.data.ST.value;
+                    break;
+                case "DX":
+                    statValue = data.actor.data.DX.value;
+                    break;
+                case "IQ":
+                    statValue = data.actor.data.IQ.value;
+                    break;
+                case "Will":
+                    statValue = data.actor.data.Will.value;
+                    break;
+                case "Per":
+                    statValue = data.actor.data.Per.value;
+                    break;
+            }
+           
+           
+            return Number(statValue)+Number(statMod);
+
+        }else if  (difficulty === "AV"){
+            let statMod = Number(skillLevel)-2;
+            // get the current stat
+            
+            switch(stat) {
+                case "ST":
+                    statValue = data.actor.data.ST.value;
+                    break;
+                case "DX":
+                    statValue = data.actor.data.DX.value;
+                    break;
+                case "IQ":
+                    statValue = data.actor.data.IQ.value;
+                    break;
+                case "Will":
+                    statValue = data.actor.data.Will.value;
+                    break;
+                case "Per":
+                    statValue = data.actor.data.Per.value;
+                    break;
+            }
+            
+            return Number(statValue)+Number(statMod);
+
+
+        }else if (difficulty === "HD"){
+            let statMod = skillLevel-3
+            // get the current stat
+        
+            switch(stat) {
+                case "ST":
+                    statValue = data.actor.data.ST.value;
+                    break;
+                case "DX":
+                    statValue = data.actor.data.DX.value;
+                    break;
+                case "IQ":
+                    statValue = data.actor.data.IQ.value;
+                    break;
+                case "Will":
+                    statValue = data.actor.data.Will.value;
+                    break;
+                case "Per":
+                    statValue = data.actor.data.Per.value;
+                    break;
+            }
+            
+            return Number(statValue)+Number(statMod);
+
+
+
+        }else if (difficulty === "VH"){
+            let statMod = skillLevel-4
+            // get the current stat
+         
+            switch(stat) {
+                case "ST":
+                    statValue = data.actor.data.ST.value;
+                    break;
+                case "DX":
+                    statValue = data.actor.data.DX.value;
+                    break;
+                case "IQ":
+                    statValue = data.actor.data.IQ.value;
+                    break;
+                case "Will":
+                    statValue = data.actor.data.Will.value;
+                    break;
+                case "Per":
+                    statValue = data.actor.data.Per.value;
+                    break;
+            }
+            
+            return Number(statValue)+Number(statMod);
+        }
+
     }
 
 

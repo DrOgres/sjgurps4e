@@ -1,22 +1,31 @@
 .weapon-card{
+    display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 
-.weapon-inline{
-    flex-direction: row;
-    .inline-edit.select{
-        max-width: 30px;
+    .item {
+        width: 100%;
+        flex-grow: 1;
     }
-}
-
-.weapon-stats{
-    flex-direction: row;
-    .skillToRoll{
+    .weapon-info {
+        flex-basis: 5rem;
+    }
+    .weapon-inline{
         
-        .mod-number{
-            max-width: 50px;
+        .inline-edit.select{
+            max-width: 30px;
         }
-
     }
-}
+
+    .weapon-stats{
+        
+        .skillToRoll{
+            
+            .mod-number{
+                max-width: 50px;
+            }
+
+        }
+    }
 
 }

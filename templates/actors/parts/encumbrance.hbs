@@ -1,10 +1,23 @@
 <div class="basic-enc">
-    <div class="tabSectionHeader">
-        {{localize "sjgurps4e.sheet.encumbrance"}}
+    <div class="two-wide">
+    <div class="encumbrance mvencbox">
+        <div class="tabSectionHeader">
+            {{localize "sjgurps4e.sheet.encumbrance"}}
+        </div>
+        <div class="information noneditable">
+            {{#localizeData "sheet" actor.data.encRef }}{{/localizeData}} ({{data.totalweight}} lbs)
+        </div>
     </div>
-    <div class="information noneditable">
-        {{#localizeData "sheet" actor.data.encRef }}{{/localizeData}} ({{data.totalweight}} lbs)
+    <div class="movement mvencbox">
+        <div class="tabSectionHeader">
+            {{localize "sjgurps4e.sheet.move"}}
+        </div>
+        <div class="information noneditable">
+            {{actor.data.move}}
+        </div>
     </div>
+    </div>
+
     <div class="lift-speed-move">
         <table><tr><td class="encBlock">
         <div>
@@ -19,14 +32,6 @@
             <input name="data.movePoints" type="text" title = "{{localize "sjgurps4e.sheet.moveExpl"}}" value = "{{data.movePoints}}" placeholder="0" data-dtype="Number" />  points
         </div>
         </td></tr></table>
-    </div>
-    <div class="movement">
-        <div class="tabSectionHeader">
-            {{localize "sjgurps4e.sheet.move"}}
-        </div>
-        <div class="information noneditable">
-            {{actor.data.move}}
-        </div>
     </div>
 
 

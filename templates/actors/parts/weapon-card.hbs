@@ -1,6 +1,7 @@
-<div class="weapon-card item" data-itemid="{{_id}}">
+<div class="weapon-card">
+<div class="item" data-itemid="{{_id}}">
     <div class="weapon-info weapon-name">       
-        <img class="rollable" data-source="weapon" data-target="{{#getRollTarget}}{{/getRollTarget}}{{data.skillMod}}"  data-roll="3d6" data-label="{{name}} Attack!"id="icon" src="{{img}}" height = "24px">
+        <img class="rollable" data-source="item" data-target="{{#getRollTarget}}{{/getRollTarget}}{{data.skillMod}}"  data-roll="3d6" data-label="{{name}} Attack!"id="icon" src="{{img}}" height = "24px">
         <a class="item-detail">{{name}}</a>
     </div>
     <div class="weapon-info weapon-stats">
@@ -22,7 +23,6 @@
             </div>
        </div>
         <p> 
-        skill: {{data.skillUsed}}
         Weight: {{data.weight}}
         Cost: {{data.cost}}
         <a class="item-edit">
@@ -35,4 +35,4 @@
 </div>
 </div>
 
-
+</div>

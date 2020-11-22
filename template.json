@@ -122,7 +122,9 @@
             "stat" : "",
             "difficulty": "Average",
             "level" : 0,
+            "effective" : 0,
             "defaults": "stat or skills to use as default",
+            "points": 0,
             "isSpell": false
         },
         "weapon-melee" : {

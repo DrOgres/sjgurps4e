@@ -1,12 +1,16 @@
 <div class="skill-card item" data-itemid="{{_id}}">
     <div class="skill-info skill-name">
-        <p><img class="rollable" data-source="skill" data-label="{{name}}" data-roll="3d6" id="icon" src="{{img}}" height = "24px">
-        <a class="item-detail" >{{name}}</a></p>
+        <img class="rollable" data-source="skill" data-label="{{name}}" data-roll="3d6" id="icon" src="{{img}}" height = "24px">
+        <a class="item-detail" >{{name}}</a>
+        {{data.stat}}/{{data.difficulty}}
     </div>
     <div class="skill-info" "skill-stats">
         <div> 
-        <input class="inline-edit" data-field="data.level" name="data.level" type="text" value = "{{data.level}}" placeholder="" data-dtype="Number"/>   
-        <input class="inline-edit" data-field="data.points" name="data.points" type="text" value = "{{data.points}}" placeholder="" data-dtype="Number"/>
+        Skill Level <input class="inline-edit" data-field="data.level" name="data.level" type="text" value = "{{data.level}}" placeholder="" data-dtype="Number"/>   
+        Effective Level: {{data.effective}}</br>
+        
+        Point Cost {{data.points}}
+        
         <a class="item-edit">
             <i class="fas fa-edit"></i>
         </a>

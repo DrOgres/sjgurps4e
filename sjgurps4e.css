@@ -253,10 +253,20 @@ select:hover {
   border-bottom-color: dimgray;
   color: dimgray;
 }
-.coreItems .tabSectionHeader {
+.coreItems .two-wide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.coreItems .two-wide .mvencbox {
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+.coreItems .two-wide .tabSectionHeader {
   font-size: 16px;
   color: #1f1f1f;
-  margin-left: 10px;
+  margin: 5px;
+  text-align: center;
 }
 .coreItems .lift-speed-move {
   text-align: center;
@@ -296,16 +306,19 @@ select:hover {
   min-width: 40%;
 }
 .weapon-card {
+  display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
-.weapon-card .weapon-inline {
-  flex-direction: row;
+.weapon-card .item {
+  width: 100%;
+  flex-grow: 1;
+}
+.weapon-card .weapon-info {
+  flex-basis: 5rem;
 }
 .weapon-card .weapon-inline .inline-edit.select {
   max-width: 30px;
-}
-.weapon-card .weapon-stats {
-  flex-direction: row;
 }
 .weapon-card .weapon-stats .skillToRoll .mod-number {
   max-width: 50px;
