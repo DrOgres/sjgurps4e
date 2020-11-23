@@ -12,6 +12,7 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 <li>TODO - core packs </li>
 <li>TODO - Sucess/Failure and margin on Rolls</li>
 <li>TODO - Call out Crit/Fumble on rolls</li>
+<li>TODO - Beutification and Layout optimization</li>
 </ul>
 
 
