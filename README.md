@@ -6,12 +6,12 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 
 <ul>
 <li>TODO - prevent duplicate skills on character sheet </li>
-<li>TODO - Favorites on core tab </li>
+<li>TODO - Favorites on core tab 30% </li>
 <li>TODO - character info Tab </li>
 <li>TODO - template item </li>
 <li>TODO - core packs </li>
 <li>TODO - Sucess/Failure and margin on Rolls</li>
-<li>TODO - Call out Crit/Fumble</li>
+<li>TODO - Call out Crit/Fumble on rolls</li>
 </ul>
 
 

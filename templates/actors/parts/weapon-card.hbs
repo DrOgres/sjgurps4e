@@ -25,6 +25,17 @@
         <p> 
         Weight: {{data.weight}}
         Cost: {{data.cost}}
+        {{#unless data.isFav}}
+        <a class="item-favorite inline-edit">
+            <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+        </a>
+        {{/unless}}
+        {{#if data.isFav}}
+        <a class="item-favorite inline-edit" data-field="isFav" data-isFav="false">
+            <i class="fas fa-bookmark"></i>
+        </a>
+        {{/if}}
+        
         <a class="item-edit">
             <i class="fas fa-edit"></i>
         </a>

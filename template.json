@@ -114,11 +114,14 @@
                 "quirk",
                 "template"]
             },
-            "itemPoints": 0
+            "itemPoints": 0,
+            "itemFav" :{
+                "isFav": false
+            } 
         },
 
         "skill" : {
-            "templates": ["itemType", "itemDescription", "itemPoints"],
+            "templates": ["itemType", "itemDescription", "itemPoints", "itemFav"],
             "stat" : "",
             "difficulty": "Average",
             "level" : 0,
@@ -128,12 +131,12 @@
             "isSpell": false
         },
         "weapon-melee" : {
-            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST" , "itemFav"],
             "reach": 1,
             "parryType": ""
         },
         "weapon-ranged":{
-            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST", "itemFav"],
             "acc": 0,
             "range": "x4",
             "rof": 1,
@@ -141,17 +144,17 @@
             "bulk": -6
         }, 
         "equipment":{
-            "templates": ["itemCost", "itemDescription", "itemNotes", "itemWeight", "itemTL", "itemType"],
+            "templates": ["itemCost", "itemDescription", "itemNotes", "itemWeight", "itemTL", "itemType", "itemFav"],
             "location": ""
         },
         "trait": {
-            "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints"]
+            "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"]
         }, 
         "charTemplate":{
-            "templates": ["itemType", "itemDescription"]
+            "templates": ["itemType", "itemDescription" , "itemFav"]
         },
         "weapon" : {
-            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST"],
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST", "itemFav"],
             "reach": 1,
             "parryType": "",
             "acc": 0,

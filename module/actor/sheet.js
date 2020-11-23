@@ -40,7 +40,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         data.actor.data.totalweight += weightPool
         //console.log("GURPS 4E  |  " + data.actor.data.totalweight);
         
-
         //gather up the skill items
         data.allSkills = data.items.filter(function(item) {return item.type == "skill"}); 
         //calculate those effective skill levels and point cost
@@ -188,6 +187,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         //calculate the current block by shield skill
 
+        //gather up favorite items
+        this._getFavorites(data.actor);
 
         //lookup the base damage
         this._getBaseDamage(data.actor);
@@ -199,7 +200,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             const dataset = element.data;
             //console.log(" weight :" + n + " is " + element.data.weight);
         } 
-        //console.log(sheetData.weapons[n].type);
+  
         return data;
     }
 
@@ -226,6 +227,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         // Item summaries
         html.find('.item-detail').click(event => this._onItemSummary(event));
+
+        // set favorites
+        html.find('.item-favorite').click(this._onItemFavorite.bind(this));
 
 
         super.activateListeners(html);
@@ -301,6 +305,13 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let newskillList = skillList.push(skillName);
         }
         return skillList;
+    }
+
+    _getFavorites(actor){
+        // look through owned items for the isFav property 
+        // add those with this property to an array
+        // divide those items into tyepes
+        // return these arrays for display
     }
 
     _basicMove(actor){
@@ -399,6 +410,30 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let itemId = element.closest(".item").dataset.itemid;
         //console.log("***---***" + itemId);
         return this.actor.deleteOwnedItem(itemId);
+    }
+
+    _onItemFavorite(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        let itemId = element.closest(".item").dataset.itemid;
+        let item = this.actor.getOwnedItem(itemId);
+        
+        console.log(itemId);
+        console.log("GURPS 4e | current status of Fav: " + item.data.data.isFav);
+        console.log("GURPS 4e | yes on favorite toggle");
+        console.log(item.data.data.isFav);
+        if(item.data.data.isFav){
+            item.data.data.isFav = false;
+            item.update({ "data.isFav" : false});
+        } else {
+            item.data.data.isFav = true;
+            item.update({ "data.isFav" : true});
+        }
+        
+        console.log("GURPS 4e | current status of Fav: " + item.data.data.isFav);
+        console.log(item);
+
+
     }
 
     _onRoll(event){
@@ -950,5 +985,19 @@ async function getModifier() {
             console.log("got Modifier: " + modifier);
             // expected output: "resolved"
             return modifier;
+}
+
+async function addFavorite(app, html, data){
+    // Thisfunction is adaptedfrom the Favorites Item
+    // Tab Module created for Foundry VTT - by Felix Müller (Felix#6196 on Discord).
+    // It is licensed under a Creative Commons Attribution 4.0 International License
+    // and can be found at https://github.com/syl3r86/favtab.
+    let favItems = [];
+    let favSkills = [];
+    let favSpells = [];
+
+    let items = data.actor.items;
+
+
 }
 
