@@ -6,7 +6,6 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 
 <ul>
 <li>TODO - prevent duplicate skills on character sheet </li>
-<li>BUG - fix editor on equipment items</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
 <li>TODO - Roll action on active defense items
 <li>TODO - character info Tab </li>
@@ -16,6 +15,8 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 <li>TODO - Call out Crit/Fumble on rolls</li>
 <li>TODO - Beutification and Layout optimization</li>
 <li>TODO - DR locations and values</li>
+<li>TODO - add fields to spell items for extra data</li>
+<li>TODO - add info and layout items to the rolldown for owned items</li>
 </ul>
 
 
