@@ -188,7 +188,17 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //calculate the current block by shield skill
 
         //gather up favorite items
-        this._getFavorites(data.actor);
+            // get owned items filtered by the isFav property
+            data.favItems = data.items.filter(function(item) {return item.data.isFav == true});
+            console.log(data.items);
+            console.log(data.favItems);
+            // sort into weapons, skill, spells, equipment
+            data.favWeapons = data.favItems.filter(function(item) {return item.type == "weapon"});
+            data.favAllSkills = data.favItems.filter(function(item) {return item.type == "skill"});
+            data.favSkills = data.favAllSkills.filter(function(item) {return item.data.isSpell == false});
+            data.favSpells = data.favAllSkills.filter(function(item) {return item.data.isSpell == true});
+            data.favEquip = data.favItems.filter(function(item) {return item.type == "equipment"});
+            // that should do it
 
         //lookup the base damage
         this._getBaseDamage(data.actor);
@@ -305,13 +315,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let newskillList = skillList.push(skillName);
         }
         return skillList;
-    }
-
-    _getFavorites(actor){
-        // look through owned items for the isFav property 
-        // add those with this property to an array
-        // divide those items into tyepes
-        // return these arrays for display
     }
 
     _basicMove(actor){
@@ -987,17 +990,4 @@ async function getModifier() {
             return modifier;
 }
 
-async function addFavorite(app, html, data){
-    // Thisfunction is adaptedfrom the Favorites Item
-    // Tab Module created for Foundry VTT - by Felix Müller (Felix#6196 on Discord).
-    // It is licensed under a Creative Commons Attribution 4.0 International License
-    // and can be found at https://github.com/syl3r86/favtab.
-    let favItems = [];
-    let favSkills = [];
-    let favSpells = [];
-
-    let items = data.actor.items;
-
-
-}
 

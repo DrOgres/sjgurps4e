@@ -260,7 +260,8 @@
             "encHeader": "Encumbrance and Movement",
             "actDefHeader": "Active Defense",
             "damage": "Base Damage",
-            "skillMod": "Modifier" 
+            "skillMod": "Modifier",
+            "favorites": "Favorites" 
 
         }
 

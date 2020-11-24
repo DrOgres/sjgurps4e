@@ -1,0 +1,45 @@
+    <div class = "favorites-header">{{localize "sjgurps4e.sheet.favorites"}}</div>
+    <div class="weapons">
+     <h2>   
+    <div class = "favweapons">{{localize "sjgurps4e.sheet.weapons"}}
+        {{localize "sjgurps4e.sheet.damage"}}: Thr: {{data.damageThr}}, Sw: {{data.damageSw}}
+    </div> 
+    </h2> 
+    <section class="weapon-list">
+       {{#each favWeapons as |weapon id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
+       {{/each}}
+    </section>
+</div>
+<div class="equipment">
+    <h2>
+      <div>{{localize "sjgurps4e.sheet.equipment"}}</div>
+      </h2>
+    <section class="armor-list">
+       {{#each favEquip as |equip id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/equip-card.hbs" equip}}
+       {{/each}}
+    </section>
+</div>
+<div class="skills">  
+    <h2>
+    <div>{{localize "sjgurps4e.skills"}}</div>
+    </h2> 
+    <section class="skill-list">
+       {{#each favSkills as |skill id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/skill-card.hbs" skill}}
+       {{/each}}
+    </section></div>
+<div class="spells">  
+    <h2>
+    <div>{{localize "sjgurps4e.spells"}}</div>
+    </h2> 
+    <section class="spell-list">
+       {{#each favSpells as |spell id|}}
+       {{> "systems/sjgurps4e/templates/actors/parts/skill-card.hbs" spell}}
+       {{/each}}
+    </section>
+</div>
+
+
+        

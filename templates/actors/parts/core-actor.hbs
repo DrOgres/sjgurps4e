@@ -1,10 +1,6 @@
 <div class="coreItems">
     <div class="coreRollItems">
-        <div class = "favorites-header">favorites</div>
-        <div class = "favweapons">{{localize "sjgurps4e.sheet.weapons"}}  {{localize "sjgurps4e.sheet.damage"}}: Thr: {{data.damageThr}}, Sw: {{data.damageSw}}</div>
-        <div class = "favequip">equipment</div>
-        <div class = "favskills">skills</div>
-        <div class = "favspells">spells</div>
+       {{> "systems/sjgurps4e/templates/actors/parts/favorites.hbs"}}
     </div>
     <div class="coreInfoItems">
         <div class = "activeDef">
@@ -19,7 +15,7 @@
             </div>
             {{> "systems/sjgurps4e/templates/actors/parts/encumbrance.hbs"}}
         </div>
-        <div class = "reactions">reaction mods</div>
+        
     </div>
 </div>
 
