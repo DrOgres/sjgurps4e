@@ -190,8 +190,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //gather up favorite items
             // get owned items filtered by the isFav property
             data.favItems = data.items.filter(function(item) {return item.data.isFav == true});
-            console.log(data.items);
-            console.log(data.favItems);
+            //console.log(data.items);
+            //console.log(data.favItems);
             // sort into weapons, skill, spells, equipment
             data.favWeapons = data.favItems.filter(function(item) {return item.type == "weapon"});
             data.favAllSkills = data.favItems.filter(function(item) {return item.type == "skill"});
@@ -421,10 +421,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let itemId = element.closest(".item").dataset.itemid;
         let item = this.actor.getOwnedItem(itemId);
         
-        console.log(itemId);
-        console.log("GURPS 4e | current status of Fav: " + item.data.data.isFav);
-        console.log("GURPS 4e | yes on favorite toggle");
-        console.log(item.data.data.isFav);
+        //console.log(itemId);
+        //console.log("GURPS 4e | current status of Fav: " + item.data.data.isFav);
+        //console.log("GURPS 4e | yes on favorite toggle");
+        //console.log(item.data.data.isFav);
         if(item.data.data.isFav){
             item.data.data.isFav = false;
             item.update({ "data.isFav" : false});
@@ -433,8 +433,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             item.update({ "data.isFav" : true});
         }
         
-        console.log("GURPS 4e | current status of Fav: " + item.data.data.isFav);
-        console.log(item);
+       // console.log("GURPS 4e | current status of Fav: " + item.data.data.isFav);
+        //console.log(item);
 
 
     }
@@ -453,7 +453,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let itemId = '';
         //for stats just pass the formula and target and roll
         if (dataset.source == "stat"){
-            console.log("GURPS 4E  |  Roll on Stat ");
+            //console.log("GURPS 4E  |  Roll on Stat ");
             baseTarget = Number(dataset.target) 
         } else if (dataset.source == 'item'){
             //weapons and tools should get the applicable skill

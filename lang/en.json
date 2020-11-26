@@ -177,7 +177,7 @@
         }, 
 
         "itemName": "Name",
-        "relativeSkill": "Relative Skill",
+        "effectiveSkill": "Effective Skill",
         "pointCost": "Point Cost",
         "modTotal": "Modifier Total",
         "location": "Location",
@@ -261,7 +261,10 @@
             "actDefHeader": "Active Defense",
             "damage": "Base Damage",
             "skillMod": "Modifier",
-            "favorites": "Favorites" 
+            "favorites": "Favorites",
+            "totalWeight": "Total Weight",
+            "s-dif": "Stat/Difficulty",
+            "skillLevel": "Skill Level"
 
         }
 

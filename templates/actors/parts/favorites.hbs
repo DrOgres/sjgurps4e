@@ -1,45 +1,149 @@
-    <div class = "favorites-header">{{localize "sjgurps4e.sheet.favorites"}}</div>
-    <div class="weapons">
-     <h2>   
-    <div class = "favweapons">{{localize "sjgurps4e.sheet.weapons"}}
-        {{localize "sjgurps4e.sheet.damage"}}: Thr: {{data.damageThr}}, Sw: {{data.damageSw}}
-    </div> 
-    </h2> 
-    <section class="weapon-list">
-       {{#each favWeapons as |weapon id|}}
-       {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
-       {{/each}}
-    </section>
-</div>
-<div class="equipment">
-    <h2>
-      <div>{{localize "sjgurps4e.sheet.equipment"}}</div>
-      </h2>
-    <section class="armor-list">
-       {{#each favEquip as |equip id|}}
-       {{> "systems/sjgurps4e/templates/actors/parts/equip-card.hbs" equip}}
-       {{/each}}
-    </section>
-</div>
-<div class="skills">  
-    <h2>
-    <div>{{localize "sjgurps4e.skills"}}</div>
-    </h2> 
-    <section class="skill-list">
-       {{#each favSkills as |skill id|}}
+<div class = "favorites-header">{{localize "sjgurps4e.sheet.favorites"}}</div>
+<ol class = "favorites-list inventory-list">
+    <li class = "base-damage"> 
+            {{localize "sjgurps4e.sheet.damage"}}: Thr: {{data.damageThr}}, Sw: {{data.damageSw}}
+    </li>
+    <li class = "weapons inventory-header flexrow"> 
+        <h2 class ="item-name flexrow">  
+        {{localize "sjgurps4e.sheet.weapons"}}</h2> 
+        <div class="item-topic" style="min-width: 100px;">{{localize "sjgurps4e.itemProperties.skill"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.sheet.skillMod"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.itemProperties.weight"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+        <div class = "item-controls flexrow" style="max-width: 45px;"></div>
+    </li>
+    <ol class="item-list">
+        <section class="weapon-list">
+            {{#each favWeapons as |weapon id|}}
+            <li class="item flexrow" data-itemid="{{_id}}">
+            {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
+            <div class="item-controls flexrow">
+                {{#unless data.isFav}}
+                <a class="item-control item-favorite inline-edit">
+                    <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+                </a>
+                {{/unless}}
+                {{#if data.isFav}}
+                <a class="item-control item-favorite inline-edit" data-field="isFav" data-isFav="false">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+                {{/if}}
+                
+                <a class="item-control item-edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </div>
+            </li>
+            {{/each}}
+        </section>
+    </ol>
+    <li class="equipment inventory-header flexrow">
+        <h2 class="item-name flexrow">
+        {{localize "sjgurps4e.sheet.equipment"}}
+        </h2>
+        <div class="item-topic">Location</div>
+        <div class="item-topic">DR</div>
+        <div class="item-topic">{{localize "sjgurps4e.itemProperties.weight"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+        <div class = "item-controls flexrow" style="max-width: 45px;"></div>
+    </li>
+    <ol class = "item-list">
+        <section class="armor-list">
+        {{#each favEquip as |equip id|}}
+        <li class="item flexrow" data-itemid = "{{_id}}">
+        {{> "systems/sjgurps4e/templates/actors/parts/equip-card.hbs" equip}}
+         <div class = "item-controls flexrow">
+                {{#unless data.isFav}}
+                <a class="item-control item-favorite inline-edit">
+                    <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+                </a>
+                {{/unless}}
+                {{#if data.isFav}}
+                <a class="item-control item-favorite inline-edit" data-field="isFav" data-isFav="false">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+                {{/if}}
+                <a class="item-control item-edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </div>
+        </li>
+        {{/each}}
+        </section>
+    </ol>
+    <li class="skills inventory-header flexrow">
+        <h2 class="item-name flexrow">
+        {{localize "sjgurps4e.skills"}}
+        </h2>
+        <div class="item-topic">{{localize "sjgurps4e.sheet.s-dif"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.sheet.skillLevel"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.effectiveSkill"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.pointCost"}}</div>
+        <div class = "item-controls flexrow" style="max-width: 45px;"></div>
+    </li>
+    <ol class="item-list">
+        <section class="skill-list">
+        {{#each favSkills as |skill id|}}
+        <li class="item flexrow" data-itemid = "{{_id}}">
        {{> "systems/sjgurps4e/templates/actors/parts/skill-card.hbs" skill}}
-       {{/each}}
-    </section></div>
-<div class="spells">  
-    <h2>
-    <div>{{localize "sjgurps4e.spells"}}</div>
-    </h2> 
-    <section class="spell-list">
+        <div class="item-controls flexrow">
+        {{#unless data.isFav}}
+        <a class="item-control item-favorite inline-edit">
+            <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+        </a>
+        {{/unless}}
+        {{#if data.isFav}}
+        <a class="item-control item-favorite inline-edit" data-field="isFav" data-isFav="false">
+            <i class="fas fa-bookmark"></i>
+        </a>
+        {{/if}}
+        <a class="item-control item-edit">
+            <i class="fas fa-edit"></i>
+        </a>
+        </div>
+    </li>
+        {{/each}}
+        </section>
+    </ol>
+     <li class="spells inventory-header flexrow">  
+    <h2 class="item-name flexrow">
+    {{localize "sjgurps4e.spells"}}
+    </h2>
+    <div class="item-topic">{{localize "sjgurps4e.sheet.s-dif"}}</div>
+    <div class="item-topic">{{localize "sjgurps4e.sheet.skillLevel"}}</div>
+    <div class="item-topic">{{localize "sjgurps4e.effectiveSkill"}}</div>
+    <div class="item-topic">{{localize "sjgurps4e.pointCost"}}</div>
+    <div class = "item-controls flexrow">
+    <a class="item-control item-create" data-type="skill" data-spell="spell" title="{{localize "sjgurps4e.sheet.addSpell"}}" >
+        <i class="fas fa-plus"></i>
+    </a>
+     </div>
+    </li>
+    <ol class="item-list">
+       <section class="spell-list">
        {{#each favSpells as |spell id|}}
+    <li class="item flexrow" data-itemid = "{{_id}}">
        {{> "systems/sjgurps4e/templates/actors/parts/skill-card.hbs" spell}}
+        <div class="item-controls flexrow">
+        {{#unless data.isFav}}
+        <a class="item-control item-favorite inline-edit">
+            <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+        </a>
+        {{/unless}}
+        {{#if data.isFav}}
+        <a class="item-control item-favorite inline-edit" data-field="isFav" data-isFav="false">
+            <i class="fas fa-bookmark"></i>
+        </a>
+        {{/if}}
+        <a class="item-control item-edit">
+            <i class="fas fa-edit"></i>
+        </a>
+        </div>
+    </li>
        {{/each}}
     </section>
-</div>
+    </ol>
+</ol>
 
 
         

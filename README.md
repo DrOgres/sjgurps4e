@@ -13,10 +13,13 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 <li>TODO - core packs </li>
 <li>TODO - Sucess/Failure and margin on Rolls</li>
 <li>TODO - Call out Crit/Fumble on rolls</li>
-<li>TODO - Beutification and Layout optimization</li>
+<li>TODO - Beutification and Layout optimization - 80% complete</li>
 <li>TODO - DR locations and values</li>
 <li>TODO - add fields to spell items for extra data</li>
 <li>TODO - add info and layout items to the rolldown for owned items</li>
+<li>BUG - Roll-down on items appears at end of list rather than under </li>
+<li>TODO - verify all strings have been localized</li>
+<li>TODO - add money to the sheet somewhere </li>
 </ul>
 
 

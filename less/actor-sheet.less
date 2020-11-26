@@ -22,7 +22,9 @@ select:hover{
 }
 
 .rollable:hover {
-    text-shadow: 0 0 10px red;
+    color: #c53131;
+	font-weight: 700;
+	text-shadow: none;
     cursor: url(icons/3d6-black.svg), pointer;
 }
 
@@ -89,7 +91,19 @@ select:hover{
         .item{
             font-size: 18px;
         }
+        .item:hover{
+            color: #c53131;
+	        font-weight: 700;
+	        text-shadow: none;
+        }
+        .item.active{
+            color: #c53131;
+	        border-bottom: 3px solid #c53131;
+	        text-shadow: none;
+        }
     }
+
+    
     .sheet-top{
         display: flex;
         flex-direction: row;

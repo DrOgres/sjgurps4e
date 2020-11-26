@@ -93,7 +93,9 @@ select:hover {
   box-shadow: 0 0 5px red;
 }
 .rollable:hover {
-  text-shadow: 0 0 10px red;
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
   cursor: url(icons/3d6-black.svg), pointer;
 }
 .sjgurps4e.sheet.character .information.noneditable {
@@ -152,6 +154,16 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-navigation .item {
   font-size: 18px;
+}
+.sjgurps4e.sheet.character .sheet-navigation .item:hover {
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
+}
+.sjgurps4e.sheet.character .sheet-navigation .item.active {
+  color: #c53131;
+  border-bottom: 3px solid #c53131;
+  text-shadow: none;
 }
 .sjgurps4e.sheet.character .sheet-top {
   display: flex;
@@ -216,12 +228,83 @@ select:hover {
   font-weight: lighter;
   vertical-align: baseline;
 }
-.inventory h2 {
+.item-control {
+  padding: 0px 3px 0px 3px;
+  max-width: fit-content;
+}
+.item-control:hover {
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
+}
+.item-topic {
+  text-align: center;
+  justify-content: flex-end;
+  padding: 0px 2px 0px 2px;
+}
+h2.item-name {
+  margin: 0px;
+  font-family: Signika, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+.item-name {
+  flex-grow: 5;
+}
+.inventory-list {
+  font-family: "Signika", sans-serif;
+  font-size: 13px;
+  text-align: left;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0px 5px 0px 1px;
+}
+.inventory-list .inventory-totals {
+  text-align: right;
+}
+.inventory-list .inventory-header {
+  font-weight: normal;
+  color: #4a4b4c;
+  background: rgba(0, 0, 0, 0.2) !important;
+  margin: 1px 0px 0px 0px;
+  padding: 1px 0px 0px 5px;
+  border: none;
+  border-radius: 3px;
+  height: 28px;
+  align-content: center;
+  justify-content: flex-end;
+}
+.inventory-list .inventory-header .item-controls {
+  flex: 0 0 70px;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  color: #666;
+}
+.inventory-list .item {
+  flex: 0 1 30px;
+  height: 30px;
+  background-size: 30px;
+  background-position: center;
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  justify-content: flex-end;
+}
+.inventory-list .item .flexrow {
+  margin: 1px 0px 0px 0px;
+}
+.inventory-list .item-list .flexrow:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.07);
+  list-style-type: none;
+}
+.inventory-list h2 {
   display: flex;
   flex-direction: row;
 }
-.inventory h2 .item-create {
+.inventory-list h2 .item-create {
   margin-left: auto;
+  font-size: -7rem;
 }
 .coreItems {
   display: flex;
@@ -305,21 +388,6 @@ select:hover {
   flex-direction: column;
   min-width: 40%;
 }
-.weapon-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.weapon-card .item {
-  width: 100%;
-  flex-grow: 1;
-}
-.weapon-card .weapon-info {
-  flex-basis: 5rem;
-}
-.weapon-card .weapon-inline .inline-edit.select {
-  max-width: 30px;
-}
-.weapon-card .weapon-stats .skillToRoll .mod-number {
+.mod-number input {
   max-width: 50px;
 }

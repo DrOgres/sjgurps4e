@@ -1,30 +1,89 @@
 
-<div class="inventory">
-<div class = "totals" style="text-align: right;">
-    <h4>Total Weight {{actor.data.totalweight}}</h4>
-    </div>
-<div class="weapons">  <h2>
-    <div>{{localize "sjgurps4e.sheet.weapons"}}</div>
-    <a class="item-create" data-type="weapon" title="{{localize "sjgurps4e.sheet.addWeapon"}}" >
+<ol class="inventory-list">
+    
+<li class = "inventory-totals">
+    <h4>{{localize "sjgurps4e.sheet.totalWeight"}}: {{actor.data.totalweight}}</h4>
+</li>
+<li class="weapons inventory-header flexrow">  {{!-- category headers here --}}
+    <h2 class="item-name flexrow">
+    {{localize "sjgurps4e.sheet.weapons"}}</h2>
+    <div class="item-topic">{{localize "sjgurps4e.itemProperties.skill"}}</div>
+    <div class="item-topic">{{localize "sjgurps4e.sheet.skillMod"}}</div>
+    <div class="item-topic">{{localize "sjgurps4e.itemProperties.weight"}}</div>
+    <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+    <div class = "item-controls flexrow">
+    <a class="item-control item-create" data-type="weapon" title="{{localize "sjgurps4e.sheet.addWeapon"}}" >
         <i class="fas fa-plus"></i>
     </a>
-    </h2> 
+    </div>
+</li>
+<ol class="item-list">
     <section class="weapon-list">
        {{#each weapons as |weapon id|}}
+       <li class="item flexrow" data-itemid="{{_id}}">
        {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
+            <div class = "item-controls flexrow">
+                {{#unless data.isFav}}
+                <a class="item-control item-favorite inline-edit">
+                    <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+                </a>
+                {{/unless}}
+                {{#if data.isFav}}
+                <a class="item-control item-favorite inline-edit" data-field="isFav" data-isFav="false">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+                {{/if}}
+                
+                <a class="item-control item-edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a class="item-control item-delete ">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div> 
+       </li>
        {{/each}}
     </section>
-</div>
-<div class="equipment">
-    <h2>
-      <div>{{localize "sjgurps4e.sheet.equipment"}}</div>
-      <a class="item-create" data-type="equipment" title="{{localize "sjgurps4e.sheet.addEquip"}}">
-        <i class="fas fa-plus"></i></a>  
-    </h2>
-    <section class="armor-list">
-       {{#each equips as |equip id|}}
-       {{> "systems/sjgurps4e/templates/actors/parts/equip-card.hbs" equip}}
-       {{/each}}
-    </section>
-</div>
-</div>
+</ol> 
+    <li class="equipment inventory-header flexrow"> {{!-- category headers here --}}
+        <h2 class="item-name flexrow">{{localize "sjgurps4e.sheet.equipment"}}</h2>
+        <div class="item-topic">Location</div>
+        <div class="item-topic">DR</div>
+        <div class="item-topic">{{localize "sjgurps4e.itemProperties.weight"}}</div>
+        <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+        <div class = "item-controls flexrow">
+            <a class="item-control item-create" data-type="equipment" title="{{localize "sjgurps4e.sheet.addEquip"}}">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>  
+        
+    </li>
+    <ol class="item-list">
+        <section class="armor-list">
+        {{#each equips as |equip id|}}
+        <li class="item flexrow" data-itemid = "{{_id}}">
+            {{> "systems/sjgurps4e/templates/actors/parts/equip-card.hbs" equip}}
+            <div class = "item-controls flexrow">
+                {{#unless data.isFav}}
+                <a class="item-control item-favorite inline-edit">
+                    <i class="far fa-bookmark" data-field="isFav" data-isFav="true"></i>
+                </a>
+                {{/unless}}
+                {{#if data.isFav}}
+                <a class="item-control item-favorite inline-edit" data-field="isFav" data-isFav="false">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+                {{/if}}
+                <a class="item-control item-edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+                
+                <a class="item-control item-delete">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+        </li>
+        {{/each}}
+        </section>
+    </ol>
+</ol>

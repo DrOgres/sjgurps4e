@@ -124,7 +124,7 @@
             "templates": ["itemType", "itemDescription", "itemPoints", "itemFav"],
             "stat" : "",
             "difficulty": "Average",
-            "level" : 0,
+            "level" : 1,
             "effective" : 0,
             "defaults": "stat or skills to use as default",
             "points": 0,

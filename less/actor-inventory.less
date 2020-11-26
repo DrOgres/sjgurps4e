@@ -1,4 +1,90 @@
-.inventory{
+.item-control{
+    padding: 0px 3px 0px 3px;
+    max-width: fit-content; 
+}
+
+.item-control:hover{
+    color: #c53131;
+    font-weight: 700;
+    text-shadow: none;
+
+}
+
+.item-topic{
+    text-align: center;
+    justify-content: flex-end;
+    padding: 0px 2px 0px 2px;
+}
+
+h2.item-name{
+    margin: 0px;
+    font-family: Signika, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+.item-name{
+    flex-grow: 5;
+}
+
+.inventory-list{
+    font-family: "Signika", sans-serif;
+	font-size: 13px;
+	text-align: left;
+	overflow-x: hidden;
+	margin: 0;
+    padding: 0px 5px 0px 1px;
+
+    
+
+
+    .inventory-totals{
+        text-align: right;
+    }
+    
+    .inventory-header{
+        font-weight: normal;
+        color: #4a4b4c;
+        background: rgba(0, 0, 0, 0.2) !important;
+        margin: 1px 0px 0px 0px;
+        padding: 1px 0px 0px 5px;
+        border: none;
+        border-radius: 3px;
+        height: 28px;
+        align-content: center;
+        justify-content: flex-end;
+
+        
+        .item-controls{
+            flex: 0 0 70px;
+	        justify-content: center;
+	        text-align: center;
+	        margin: auto;
+	        color: #666;
+        }
+
+      
+
+    }
+
+    .item {
+        flex: 0 1 30px;
+        height: 30px;
+        background-size: 30px;
+        background-position: center;
+        border: none;
+        border-radius: 5px;
+        margin-right: 5px;
+        justify-content: flex-end;
+    }
+    .item .flexrow{
+        margin: 1px 0px 0px 0px;
+    }
+    .item-list .flexrow:nth-child(odd){
+        background: rgba(0, 0, 0, 0.07);
+        list-style-type: none;
+    }
 
 h2{
     display: flex;
@@ -6,6 +92,7 @@ h2{
 
     .item-create {
         margin-left: auto;
+        font-size: -7rem;
     }
 }
 

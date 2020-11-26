@@ -67,16 +67,6 @@
                 <input type="checkbox" name="data.isSpell" {{checked data.isSpell}}/> Spell?
                 </label>
             </div>
-            {{!-- Relative Skill --}}
-            <lable>{{localize "sjgurps4e.relativeSkill"}}</lable> 
-            <input name="data.level" type="text" value = "{{data.level}}" placeholder="" data-dtype="Number"/>
-            {{!-- point cost --}}
-            <lable>{{localize "sjgurps4e.pointCost"}}</lable> 
-            <input name="data.points" type="text" value = "{{data.points}}" placeholder="" data-dtype="Number"/>
-            {{!-- Modifier --}}
-            <lable>{{localize "sjgurps4e.modTotal"}}</lable> 
-            <input name="data.modifier" type="text" value = "{{data.modifier}}" placeholder="" data-dtype="Number"/>
-       
             {{!-- check to see if this is a spell, if so put spell stuff here --}}
             {{#if data.isSpell}}
             <p>this is a spell so have more stuff here: Class, College, Time to Cast, Duration, initial cost, maintenence cost</p>
