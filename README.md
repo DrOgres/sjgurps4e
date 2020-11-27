@@ -7,7 +7,8 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 <ul>
 <li>TODO - prevent duplicate skills on character sheet </li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
-<li>TODO - Roll action on active defense items
+<li>TODO - Roll action on active defense items</li>
+<li>TODO - add damage roll to chat card on weapon rolls</li>
 <li>TODO - character info Tab </li>
 <li>TODO - template item </li>
 <li>TODO - core packs </li>
@@ -16,8 +17,8 @@ GURPS is a trademark of Steve Jackson Games, and its rules and art are copyright
 <li>TODO - Beutification and Layout optimization - 80% complete</li>
 <li>TODO - DR locations and values</li>
 <li>TODO - add fields to spell items for extra data</li>
+<li>TODO - update weapon items with damage formula to facilitate roll generation</li>
 <li>TODO - add info and layout items to the rolldown for owned items</li>
-<li>BUG - Roll-down on items appears at end of list rather than under </li>
 <li>TODO - verify all strings have been localized</li>
 <li>TODO - add money to the sheet somewhere </li>
 </ul>

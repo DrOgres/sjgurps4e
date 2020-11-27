@@ -232,10 +232,15 @@
         "lc": "Legality Class",
 
         "sheet":{
+            "2ptCostExp": "+/- 2 Points per Level",
+            "3ptCostExp": "+/- 3 Points per Level",
+            "5ptCostExp": "+/- 5 Points per Level",
+            "10ptCostExp": "+/- 10 Points per Level",
+            "20ptCostExp": "+/- 20 Points per Level",
             "weapons": "Weapons",
             "equipment": "Armor and Equipment",
-            "addWeapon": "Add New Weapon",
-            "addEquip": "Add New Equipment",
+            "addWeapon": "New Weapon",
+            "addEquip": "New Equipment",
             "newItem": "New Item",
             "newSpell": "New Spell",
             "addSkill": "New Skill",
@@ -264,7 +269,13 @@
             "favorites": "Favorites",
             "totalWeight": "Total Weight",
             "s-dif": "Stat/Difficulty",
-            "skillLevel": "Skill Level"
+            "skillLevel": "Skill Level",
+            "currentHealth": "Current HP",
+            "currentFatigue": "Current FP",
+            "points": "Points",
+            "totalPoints": "Total Points",
+            "unspentPoints": "Unspent Points"
+
 
         }
 

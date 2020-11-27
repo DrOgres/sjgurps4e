@@ -18,7 +18,7 @@
     </div>
 </li>
 <ol class="item-list">
-    <section class="weapon-list">
+    
        {{#each weapons as |weapon id|}}
        <li class="item flexrow" data-itemid="{{_id}}">
        {{> "systems/sjgurps4e/templates/actors/parts/weapon-card.hbs" weapon}}
@@ -43,11 +43,11 @@
             </div> 
        </li>
        {{/each}}
-    </section>
+    
 </ol> 
     <li class="equipment inventory-header flexrow"> {{!-- category headers here --}}
         <h2 class="item-name flexrow">{{localize "sjgurps4e.sheet.equipment"}}</h2>
-        <div class="item-topic">Location</div>
+        <div class="item-topic">{{localize "sjgurps4e.location"}}</div>
         <div class="item-topic">DR</div>
         <div class="item-topic">{{localize "sjgurps4e.itemProperties.weight"}}</div>
         <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>

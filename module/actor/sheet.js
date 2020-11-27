@@ -358,6 +358,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let div = $(`<div class="item-summary">${chatData.description.value}</div>`);
             let props = $(`<div class="item-properties"></div>`);
             chatData.properties.forEach(p=> props.append(`<span class="tag">${p}</span>`));
+            
             div.append(props);
             li.append(div.hide());
             div.slideDown(200);

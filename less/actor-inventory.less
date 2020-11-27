@@ -1,3 +1,5 @@
+@import "./config.less";
+
 .item-control{
     padding: 0px 3px 0px 3px;
     max-width: fit-content; 
@@ -12,7 +14,6 @@
 
 .item-topic{
     text-align: center;
-    justify-content: flex-end;
     padding: 0px 2px 0px 2px;
 }
 
@@ -38,6 +39,15 @@ h2.item-name{
 
     
 
+    .item-summary {
+        flex: 0 0 100%;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 0.25em 0.5em;
+        color: #191813;
+        border-top: 1px solid #c9c7b8;
+      }
+
 
     .inventory-totals{
         text-align: right;
@@ -45,7 +55,7 @@ h2.item-name{
     
     .inventory-header{
         font-weight: normal;
-        color: #4a4b4c;
+        color: @light-color;
         background: rgba(0, 0, 0, 0.2) !important;
         margin: 1px 0px 0px 0px;
         padding: 1px 0px 0px 5px;
@@ -56,12 +66,12 @@ h2.item-name{
         justify-content: flex-end;
 
         
-        .item-controls{
+        .item .item-controls{
             flex: 0 0 70px;
 	        justify-content: center;
 	        text-align: center;
 	        margin: auto;
-	        color: #666;
+	        color: @light-color;
         }
 
       
@@ -70,7 +80,6 @@ h2.item-name{
 
     .item {
         flex: 0 1 30px;
-        height: 30px;
         background-size: 30px;
         background-position: center;
         border: none;

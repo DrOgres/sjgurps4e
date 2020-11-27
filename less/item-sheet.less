@@ -1,10 +1,11 @@
+@import "./config.less";
 
 .sjgurps4e.sheet.item{
 
     .sheet-header{
         .charname{
             input{
-                background-color: rgba(255, 255, 255, 0);
+                background-color: @transparent-color;
                 border: none;
                 font-family: Cinzel, serif;
                 font-size: 28px;
@@ -28,7 +29,7 @@
                 padding: 0;
                 font-weight: normal;
                 text-align: right;
-                color: #888;
+                color: @light-color;
                 
             }
         }
@@ -38,10 +39,10 @@
             margin: 0%;
             padding: 0;
             list-style: none;
-            border-top: 2px groove #eeede0;
+            border-top: 2px groove @accent-color;
             border-bottom: none;
             font-size: 20px;
-            color: #666;
+            color: @light-color;
             justify-content: flex-end;
             li{
                 padding:1px 3px;  

@@ -1,28 +1,21 @@
-@font-face{
-    font-family: SpaceMono;
-    src:url(fonts/SpaceMono-Bold.ttf);
-}
+@import "./config.less";
 
-@font-face{
-    font-family: Cinzel;
-    src:url(fonts/Cinzel-VariableFont_wght.ttf);
-}
 
 .sep{
     font-size: 18px;
-    color: slategrey;
+    color: @light-color;
 }
 
 input:hover{
-    box-shadow: 0 0 5px red;
+    box-shadow: 0 0 5px @highlight-color;
 }
 
 select:hover{
-    box-shadow: 0 0 5px red;
+    box-shadow: 0 0 5px @highlight-color;
 }
 
 .rollable:hover {
-    color: #c53131;
+    color: @highlight-color;
 	font-weight: 700;
 	text-shadow: none;
     cursor: url(icons/3d6-black.svg), pointer;
@@ -32,7 +25,7 @@ select:hover{
     .information.noneditable{
         text-align: center;
         font-size: 14px;
-        color: rgba(49, 49, 49, 0.719);
+        color: @mid-shadow-color;
     }
 
 
@@ -61,7 +54,7 @@ select:hover{
             font-size: 14px;
             text-align: right;
             input[type=text], select{
-                background-color: rgba(255, 255, 255, 0);
+                background-color: @transparent-color;
                 width: 15px;
                 display: inline-block;
                 border: none;
@@ -78,7 +71,7 @@ select:hover{
         }
         .charname{
             input{
-                background-color: rgba(255, 255, 255, 0);
+                background-color: @transparent-color;
                 border: none;
                 font-family: Cinzel, serif;
                 font-size: 30px;
@@ -92,13 +85,13 @@ select:hover{
             font-size: 18px;
         }
         .item:hover{
-            color: #c53131;
+            color: @highlight-color;
 	        font-weight: 700;
 	        text-shadow: none;
         }
         .item.active{
-            color: #c53131;
-	        border-bottom: 3px solid #c53131;
+            color: @highlight-color;
+	        border-bottom: 3px solid @highlight-color;
 	        text-shadow: none;
         }
     }
@@ -124,7 +117,7 @@ select:hover{
                 width: 100%;
                 flex-wrap: nowrap;
                 input[type=text], select{
-                    background-color: rgba(255, 255, 255, 0);
+                    background-color: @transparent-color;
                     width: 40px;
                     margin: 3px;
                     display: inline-block;
@@ -149,7 +142,7 @@ select:hover{
                     vertical-align: baseline;
                     padding-right: 10px;
                     input[type=text], select{
-                        background-color: rgba(255, 255, 255, 0);
+                        background-color: @transparent-color;
                         width: 40px;
                         margin: 3px;
                         display: inline-block;

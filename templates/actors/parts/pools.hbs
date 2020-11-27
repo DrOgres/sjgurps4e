@@ -5,12 +5,12 @@
                 <label class="statname" data-label="HP">HP</label>       
             </td>
             <td class="statvalue multiple">
-            <input name="data.HP.value" type="text" value="{{data.HP.value}}" placeholder="10" data-dtype="Number"> 
+            <input name="data.HP.value" type="text" value="{{data.HP.value}}" title="{{localize "sjgurps4e.sheet.currentHealth"}}" placeholder="10" data-dtype="Number"> 
             </td>
             <td class="sep"> / </td> 
             <td class="statvalue multiple">
                 
-            <input name="data.HP.max" type="text" value="{{data.HP.max}}" placeholder="10" data-dtype="Number">
+            <input name="data.HP.max" type="text" value="{{data.HP.max}}" title="{{localize "sjgurps4e.sheet.2ptCostExp"}}" placeholder="10" data-dtype="Number">
             </td>
             <td>
                 <div class = "pointvalue">
@@ -26,7 +26,7 @@
             </td>
             <td>
                 <div class = "statvalue">
-                    <input name="data.Will.value" type="text" placeholder="10" value = "{{data.Will.value}}" data-dtype="Number" />
+                    <input name="data.Will.value" type="text" placeholder="10" value = "{{data.Will.value}}" title="{{localize "sjgurps4e.sheet.5ptCostExp"}}" data-dtype="Number" />
                 </div>
             </td>
             <td>&nbsp;</td>
@@ -39,7 +39,7 @@
                 </div>
             </td>
             <td>
-                <div class="pointslabel">points</div>
+                <div class="pointslabel">{{localize "sjgurps4e.sheet.points"}}</div>
             </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
             </td>
             <td>
                 <div class = "statvalue">
-                    <input name="data.Per.value" type="text" placeholder="10" value = "{{data.Per.value}}" data-dtype="Number" />
+                    <input name="data.Per.value" type="text" placeholder="10" value = "{{data.Per.value}}" title="{{localize "sjgurps4e.sheet.5ptCostExp"}}" data-dtype="Number" />
                 </div>
             </td>
             <td>&nbsp;</td>
@@ -61,7 +61,7 @@
                 </div>
             </td>
             <td>
-                <div class="pointslabel">points</div>
+                <div class="pointslabel">{{localize "sjgurps4e.sheet.points"}}</div>
             </td>
         </tr>
         <tr>
@@ -69,11 +69,11 @@
                 <label class="statname" data-label="FP">FP</label>       
             </td>
             <td class="statvalue multiple">
-            <input name="data.FP.value" type="text" value="{{data.FP.value}}" placeholder="10" data-dtype="Number"> 
+            <input name="data.FP.value" type="text" value="{{data.FP.value}}" placeholder="10" title="{{localize "sjgurps4e.sheet.currentFatigue"}}" data-dtype="Number"> 
             </td>
             <td class="sep"> / </td> 
             <td class="statvalue multiple">
-            <input name="data.FP.max" type="text" value="{{data.FP.max}}" placeholder="10" data-dtype="Number">
+            <input name="data.FP.max" type="text" value="{{data.FP.max}}" title="{{localize "sjgurps4e.sheet.3ptCostExp"}}" placeholder="10" data-dtype="Number">
             </td>
             <td>
                 <div class = "pointvalue">

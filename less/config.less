@@ -1,0 +1,62 @@
+/* ----------------------------------------- */
+/*  Fonts                                    */
+/* ----------------------------------------- */
+
+
+@font-face{
+    font-family: SpaceMono;
+    src:url(fonts/SpaceMono-Bold.ttf);
+}
+
+@font-face{
+    font-family: Cinzel;
+    src:url(fonts/Cinzel-VariableFont_wght.ttf);
+}
+
+
+/* ----------------------------------------- */
+/*  Colors                                   */
+/* ----------------------------------------- */
+
+
+@highlight-color: #c53131;
+@accent-color: white;
+@light-color: dimgrey;
+@mid-shadow-color: #545454;
+@transparent-color: #ffffff00;
+
+/* ----------------------------------------- */
+/*  Flexbox                                  */
+/* ----------------------------------------- */
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  
+    > * {
+      flex: 1;
+    }
+  
+    .flex1 { flex: 1; }
+    .flex2 { flex: 2; }
+    .flex3 { flex: 3; }
+    .flex4 { flex: 4; }
+  }
+  
+  .flexcol {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  
+    > * {
+      flex: 1;
+    }
+  
+    .flex1 { flex: 1; }
+    .flex2 { flex: 2; }
+    .flex3 { flex: 3; }
+    .flex4 { flex: 4; }
+  }
+  

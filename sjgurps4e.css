@@ -1,9 +1,67 @@
+/* ----------------------------------------- */
+/*  Fonts                                    */
+/* ----------------------------------------- */
+@font-face {
+  font-family: SpaceMono;
+  src: url(fonts/SpaceMono-Bold.ttf);
+}
+@font-face {
+  font-family: Cinzel;
+  src: url(fonts/Cinzel-VariableFont_wght.ttf);
+}
+/* ----------------------------------------- */
+/*  Colors                                   */
+/* ----------------------------------------- */
+/* ----------------------------------------- */
+/*  Flexbox                                  */
+/* ----------------------------------------- */
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.flexrow > * {
+  flex: 1;
+}
+.flexrow .flex1 {
+  flex: 1;
+}
+.flexrow .flex2 {
+  flex: 2;
+}
+.flexrow .flex3 {
+  flex: 3;
+}
+.flexrow .flex4 {
+  flex: 4;
+}
+.flexcol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.flexcol > * {
+  flex: 1;
+}
+.flexcol .flex1 {
+  flex: 1;
+}
+.flexcol .flex2 {
+  flex: 2;
+}
+.flexcol .flex3 {
+  flex: 3;
+}
+.flexcol .flex4 {
+  flex: 4;
+}
 .sjgurps4e.sheet.item .sheet-header {
   align-items: flex-start;
   flex: 0;
 }
 .sjgurps4e.sheet.item .sheet-header .charname input {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #ffffff00;
   border: none;
   font-family: Cinzel, serif;
   font-size: 28px;
@@ -21,7 +79,7 @@
   padding: 0;
   font-weight: normal;
   text-align: right;
-  color: #888;
+  color: dimgrey;
 }
 .sjgurps4e.sheet.item .sheet-header .summary {
   flex: 0 1 100%;
@@ -29,10 +87,10 @@
   margin: 0%;
   padding: 0;
   list-style: none;
-  border-top: 2px groove #eeede0;
+  border-top: 2px groove white;
   border-bottom: none;
   font-size: 20px;
-  color: #666;
+  color: dimgrey;
   justify-content: flex-end;
 }
 .sjgurps4e.sheet.item .sheet-header .summary li {
@@ -74,23 +132,15 @@
 .sjgurps4e.sheet.item .sheet-body .form-group {
   overflow: hidden;
 }
-@font-face {
-  font-family: SpaceMono;
-  src: url(fonts/SpaceMono-Bold.ttf);
-}
-@font-face {
-  font-family: Cinzel;
-  src: url(fonts/Cinzel-VariableFont_wght.ttf);
-}
 .sep {
   font-size: 18px;
-  color: slategrey;
+  color: dimgrey;
 }
 input:hover {
-  box-shadow: 0 0 5px red;
+  box-shadow: 0 0 5px #c53131;
 }
 select:hover {
-  box-shadow: 0 0 5px red;
+  box-shadow: 0 0 5px #c53131;
 }
 .rollable:hover {
   color: #c53131;
@@ -101,7 +151,7 @@ select:hover {
 .sjgurps4e.sheet.character .information.noneditable {
   text-align: center;
   font-size: 14px;
-  color: rgba(49, 49, 49, 0.719);
+  color: #545454;
 }
 .sjgurps4e.sheet.character form {
   display: flex;
@@ -129,7 +179,7 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-header .pointvalue input[type=text],
 .sjgurps4e.sheet.character .sheet-header .pointvalue select {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #ffffff00;
   width: 15px;
   display: inline-block;
   border: none;
@@ -143,7 +193,7 @@ select:hover {
   flex: 0 0 0;
 }
 .sjgurps4e.sheet.character .sheet-header .charname input {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #ffffff00;
   border: none;
   font-family: Cinzel, serif;
   font-size: 30px;
@@ -189,7 +239,7 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline input[type=text],
 .sjgurps4e.sheet.character .sheet-top .statblock .statline select {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #ffffff00;
   width: 40px;
   margin: 3px;
   display: inline-block;
@@ -211,7 +261,7 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue input[type=text],
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue select {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #ffffff00;
   width: 40px;
   margin: 3px;
   display: inline-block;
@@ -239,7 +289,6 @@ select:hover {
 }
 .item-topic {
   text-align: center;
-  justify-content: flex-end;
   padding: 0px 2px 0px 2px;
 }
 h2.item-name {
@@ -259,12 +308,20 @@ h2.item-name {
   margin: 0;
   padding: 0px 5px 0px 1px;
 }
+.inventory-list .item-summary {
+  flex: 0 0 100%;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0.25em 0.5em;
+  color: #191813;
+  border-top: 1px solid #c9c7b8;
+}
 .inventory-list .inventory-totals {
   text-align: right;
 }
 .inventory-list .inventory-header {
   font-weight: normal;
-  color: #4a4b4c;
+  color: dimgrey;
   background: rgba(0, 0, 0, 0.2) !important;
   margin: 1px 0px 0px 0px;
   padding: 1px 0px 0px 5px;
@@ -274,16 +331,15 @@ h2.item-name {
   align-content: center;
   justify-content: flex-end;
 }
-.inventory-list .inventory-header .item-controls {
+.inventory-list .inventory-header .item .item-controls {
   flex: 0 0 70px;
   justify-content: center;
   text-align: center;
   margin: auto;
-  color: #666;
+  color: dimgrey;
 }
 .inventory-list .item {
   flex: 0 1 30px;
-  height: 30px;
   background-size: 30px;
   background-position: center;
   border: none;
@@ -333,8 +389,8 @@ h2.item-name {
   box-sizing: border-box;
   border-bottom-width: thin;
   border-bottom-style: solid;
-  border-bottom-color: dimgray;
-  color: dimgray;
+  border-bottom-color: dimgrey;
+  color: dimgrey;
 }
 .coreItems .two-wide {
   display: flex;
