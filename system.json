@@ -33,6 +33,6 @@
     "secondaryTokenAttribute": "FP",
     "inititive" : "@base_speed",
     "url": "https://github.com/DrOgres/sjgurps4e",
-    "manifest": "https://raw.githubusercontent.com/DrOgres/sjgurps4e/master/system.json",
+    "manifest": "https://github.com/DrOgres/sjgurps4e/raw/master/system.json",
     "download": "https://github.com/DrOgres/sjgurps4e/archive/master.zip"
 }
