@@ -2,20 +2,26 @@
     <table><tr>
     <td class="dodge-block defBlock">
     <div >
-        <div class="def-header rollable"> {{localize "sjgurps4e.sheet.dodge"}}:</div> 
+        <div class="def-header rollable" data-source="dodge" data-target="{{data.dodge}}" data-roll="3d6" data-label="{{localize "sjgurps4e.sheet.dodge"}}!"> {{localize "sjgurps4e.sheet.dodge"}}:</div> 
         <div class="information noneditable">{{data.dodge}}</div>
     </div>
     </td><td class="parry-block defBlock">
     <div>
-        <div class="def-header rollable">
-            {{localize "sjgurps4e.sheet.parry"}}: (weap) set up select and localize me
+        <div class="def-header flexcol">
+            <div class="def-parry rollable" data-source="parry" data-target="{{data.parry}}" data-roll="3d6" data-label="{{localize "sjgurps4e.sheet.parry"}}!">
+                {{localize "sjgurps4e.sheet.parry"}}:
+            </div>
+            <div class="parry-value inline-edit" contenteditable title="3+1/2 weapon or unarmed skill" data-edit="data.parry">{{data.parry}}</div>
         </div>
     </div>
     </td><td class="block-block defBlock">
     <div>
-        <div class="def-header rollable">
-            {{localize "sjgurps4e.sheet.block"}}:
-        </div> 
+        <div class="def-header flexcol">
+            <div class="def-block rollable" data-source="block" data-target="{{data.block}}" data-roll="3d6" data-label="{{localize "sjgurps4e.sheet.block"}}!">
+                {{localize "sjgurps4e.sheet.block"}}:
+            </div>
+            <div class="block-value inline-edit" contenteditable title="3+1/2 Shield skill" data-edit="data.block">{{data.block}}</div>
+        </div>
     </div>
     </td></tr></table>
 </div>

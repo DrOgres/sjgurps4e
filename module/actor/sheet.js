@@ -21,7 +21,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
         // gather up the weapon items
         data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
-        
+        console.log(data.weapons);
         //gather up the eqipment items
         data.equips = data.items.filter(function(item) {return item.type == "equipment"});
 
@@ -567,6 +567,12 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let item = this.actor.getOwnedItem(itemId);
             let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
             baseTarget = effectiveTarget;
+        } else if (dataset.source == 'dodge'){
+            baseTarget = Number(dataset.target); 
+        } else if (dataset.source == 'parry'){
+            baseTarget =Number(dataset.target);
+        } else if (dataset.source == 'block'){
+            baseTarget =Number(dataset.target);
         }
         
         // check event for alt key which we will use to set the modifier data
