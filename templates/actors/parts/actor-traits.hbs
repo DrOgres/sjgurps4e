@@ -1,29 +1,315 @@
-<div class="background">
+<div class="info">
     <div class="appAndbio">
-        appearance
-        reaction modifiers
-        tl
-        cultures
-        languages
-        bio
-        notes
+        <div class="section-titles biopage">{{localize "sjgurps4e.appearance"}}</div>
+        {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}       
+        <div class="physical-traits" style="max-width: 100%;">
+        <div class="section-titles biopage ">{{localize "sjgurps4e.physical"}}</div>   
+        <div class="trait-group flexrow">
+        <label>{{localize "sjgurps4e.height"}}: </label><input type="text" name="data.height" value="{{data.height}}"/>
+        <label>{{localize "sjgurps4e.weight"}}: </label><input type="text" name="data.weight" value="{{data.weight}}"/>
+        <lable>{{localize "sjgurps4e.size"}}: </lable><input type="text" name="data.size" value="{{data.size}}"/>
+        <label>{{localize "sjgurps4e.age"}}: </label><input type="text" name="data.age" value="{{data.age}}"/>
+        </div>
+        </div>
+        <div class="twoby flexrow">
+        <div class="reaction-traits" style="max-width: 50%; padding: 0px 3px 10px 0px;">
+        <div class="section-titles biopage ">{{localize "sjgurps4e.reactionMod"}}</div>
+        <ol class="inventory-list">
+            <li class="reactions inventory-header flexrow">
+                <h2 class="react-name flexrow">
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.Description-Tab"}}</div>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                
+            </li>
+            <ol class="item-list">
+            <li class="item flexrow" >
+                <div class="trait-info trait-name react-name">{{localize "sjgurps4e.appearance"}}</div>
+                <div class="item-topic app-desc">
+                     <input type="text" name="data.appDesc" value="{{data.appDesc}}" placeholder="Average" />
+                </div>
+                <div class="item-topic point-cost">
+                    <input type="text" name="data.appCost" value="{{data.appCost}}" placeholder="0" />
+                </div> 
+            </li>
+            <li class="item flexrow" >
+                <div class="trait-info trait-name react-name">{{localize "sjgurps4e.status"}}</div>
+                <div class="item-topic app-desc">
+                     <input type="text" name="data.statusDesc" value="{{data.statusDesc}}" placeholder="none" />
+                </div>
+                <div class="item-topic point-cost">
+                    <input type="text" name="data.statusCost" value="{{data.statusCost}}" placeholder="0" />
+                </div> 
+            </li>
+            <li class="item flexrow" >
+                <div class="trait-info trait-name react-name">{{localize "sjgurps4e.reputation"}}</div>
+                <div class="item-topic app-desc">
+                     <input type="text" name="data.repDesc" value="{{data.repDesc}}" placeholder="none" />
+                </div>
+                <div class="item-topic point-cost">
+                    <input type="text" name="data.repCost" value="{{data.repCost}}" placeholder="0" />
+                </div> 
+            </li>
+            <li class="item flexrow" >
+                <div class="trait-info trait-name react-name inline-edit" data-edit="data.react1" contenteditable>{{data.react1}}</div>
+                <div class="item-topic app-desc">
+                     <input type="text" name="data.react1Desc" value="{{data.react1Desc}}" placeholder="none" />
+                </div>
+                <div class="item-topic point-cost">
+                    <input type="text" name="data.react1Cost" value="{{data.react1Cost}}" placeholder="0" />
+                </div> 
+            </li>
+            </ol>
+        </ol>
+        </div>
+        <div class="culture-traits" style="max-width: 50%; padding: 0px 10px 0px 3px;">
+        <div class="section-titles biopage ">{{localize "sjgurps4e.cultureHeader"}}</div>
+        <div class="trait-group flexrow">
+            <label style="text-align: right; align-self:flex-end; padding: 0px 0px 2px 3px;">TL: </label>
+            <input type="text" name="data.tl.value" value="{{data.tl.value}}" title="If your TL is +/- the world standard be sure to apply the appropriate advantage or disadvantage!"/>
+        </div>
+        <ol class="inventory-list">
+            <li class="cultures inventory-header flexrow">
+                <h2 class="item-name flexrow">
+                {{localize "sjgurps4e.cultureItem"}}
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                <div class = "item-controls flexrow">
+                    <a class="item-control item-create" data-type="trait" data-trait="traitCulture" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </li>
+            <ol class="item-list">
+                {{#each cultures as |culture id|}}
+                <li class="item flexrow" data-itemid="{{_id}}">
+                    <div class="trait-info trait-name item-name">
+                        <a class="item-detail" >{{name}}</a>
+                    </div>
+                    <div class="item-topic point-cost"> 
+                        {{data.cost}}
+                    </div>
+                    <div class = "item-controls flexrow">
+                        <a class="item-control item-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="item-control item-delete ">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div> 
+                </li>
+                {{/each}}
+            </ol>
+        </ol>
+        </div>
+        </div>
+        <div class="language-traits" style="max-width: 100%;">
+        <div class="section-titles biopage">{{localize "sjgurps4e.sheet.languages"}}</div>
+        <ol class="inventory-list">
+            <li class="languages inventory-header flexrow">
+                <h2 class="item-name flexrow">
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.spoken"}}</div>
+                <div class="item-topic">{{localize "sjgurps4e.written"}}</div>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                <div class = "item-controls flexrow">
+                    <a class="item-control item-create" data-type="trait" data-trait="traitLanguage" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </li>
+            <ol class="item-list">
+                <li class="item flexrow">
+                <div class="trait-info trait-name item-name inline-edit" data-edit="data.primeLang" contenteditable>{{data.primeLang}}</div>
+                <div class="item-topic spoken-comp">{{localize "sjgurps4e.langComp.native"}}</div>
+                <div class="item-topic written-comp">{{localize "sjgurps4e.langComp.native"}}</div>
+                <div class="item-topic point-cost">-</div>
+                <div class = "item-controls flexrow"></div>
+                </li>
+                {{#each languages as |language id|}}
+                <li class="item flexrow" data-itemid="{{_id}}">
+                    <div class="trait-info trait-name item-name">
+                        <a class="item-detail" >{{name}}</a>
+                    </div>
+                    <div class="item-topic spoken-comp">
+                        <select class="inline-edit" name="data.spokenComp" data-field="data.spokenComp">
+                        {{#select data.spokenComp}}
+                        {{#each @root.config.languageComprehension as |comp name|}}
+                        <option value="{{name}}"> {{localize comp}}</option>
+                        {{/each}}
+                        {{/select}}
+                        </select>
 
-        
+                    </div>
+                    <div class="item-topic written-comp">
+                        <select class="inline-edit" name="data.writtenComp" data-field="data.writtenComp">
+                        {{#select data.writtenComp}}
+                        {{#each @root.config.languageComprehension as |comp name|}}
+                        <option value="{{name}}"> {{localize comp}}</option>
+                        {{/each}}
+                        {{/select}}
+                        </select>
+
+                    </div>
+                    <div class="item-topic point-cost"> 
+                        {{data.cost}}
+                    </div>
+                    <div class = "item-controls flexrow">
+                        <a class="item-control item-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="item-control item-delete ">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div> 
+                </li>
+                {{/each}}
+            </ol>
+        </ol>
+        </div>
+        <div class="section-titles biopage">{{localize "sjgurps4e.biography"}}</div>
+        {{editor content=data.bio.value target="data.bio.value" button=true owner=owner editable=editable}}
     </div>
     <div class="traits">
-        <div class = "adv-perks">
-           <p> Advantages - cards</p>
-            <p>perks - cards</p>
-        </div>
-        <div class = "dis-quirks">
-            <p>Disadvantages - cards</p>
-            <p>quirks - cards</p>
-        </div>
+        <ol class="inventory-list">
+            {{!-- Advantages --}}
+            <li class="advantages inventory-header flexrow">
+                <h2 class="item-name flexrow">
+                {{localize "sjgurps4e.sheet.advantages"}}
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                <div class = "item-controls flexrow">
+                    <a class="item-control item-create" data-type="trait" data-trait="traitAdvantage" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </li>
+            <ol class="item-list">
+                {{#each advantages as |advantage id|}}
+                <li class="item flexrow" data-itemid="{{_id}}">
+                    <div class="trait-info trait-name item-name">
+                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <a class="item-detail" >{{name}}</a>
+                    </div>
+                    <div class="item-topic point-cost"> 
+                        {{data.cost}}
+                    </div>
+                    <div class = "item-controls flexrow">
+                        <a class="item-control item-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="item-control item-delete ">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div> 
+                </li>
+                {{/each}}
+            </ol>
+            {{!-- Perks --}}
+            <li class="perks inventory-header flexrow">
+                <h2 class="item-name flexrow">
+                {{localize "sjgurps4e.sheet.perks"}}
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                <div class = "item-controls flexrow">
+                    <a class="item-control item-create" data-type="trait" data-trait="traitPerk" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </li>
+            <ol class="item-list">
+                {{#each perks as |perk id|}}
+                <li class="item flexrow" data-itemid="{{_id}}">
+                    <div class="trait-info trait-name item-name">
+                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <a class="item-detail" >{{name}}</a>
+                    </div>
+                    <div class="item-topic point-cost"> 
+                        {{data.cost}}
+                    </div>
+                    <div class = "item-controls flexrow">
+                        <a class="item-control item-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="item-control item-delete ">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div> 
+                </li>
+                {{/each}}
+            </ol>
+            <li class="divider"></li>
+            {{!-- Disadvantages --}}
+            <li class="disadvantages inventory-header flexrow">
+                <h2 class="item-name flexrow">
+                {{localize "sjgurps4e.sheet.disadvantages"}}
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                <div class = "item-controls flexrow">
+                    <a class="item-control item-create" data-type="trait" data-trait="traitDisadvantage" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </li>
+            <ol class="item-list">
+                {{#each disadvantages as |disadvantage id|}}
+                <li class="item flexrow" data-itemid="{{_id}}">
+                    <div class="trait-info trait-name item-name">
+                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <a class="item-detail" >{{name}}</a>
+                    </div>
+                    <div class="item-topic point-cost"> 
+                        {{data.cost}}
+                    </div>
+                    <div class = "item-controls flexrow">
+                        <a class="item-control item-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="item-control item-delete ">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div> 
+                </li>
+                {{/each}}
+            </ol>
+            {{!-- Quirks --}}
+            <li class="quirks inventory-header flexrow">
+                <h2 class="item-name flexrow">
+                {{localize "sjgurps4e.sheet.quirks"}}
+                </h2>
+                <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
+                <div class = "item-controls flexrow">
+                    <a class="item-control item-create" data-type="trait" data-trait="traitQuirk" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </li>
+            <ol class="item-list">
+                {{#each quirks as |quirk id|}}
+                <li class="item flexrow" data-itemid="{{_id}}">
+                    <div class="trait-info trait-name item-name">
+                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <a class="item-detail" >{{name}}</a>
+                    </div>
+                    <div class="item-topic point-cost"> 
+                        {{data.cost}}
+                    </div>
+                    <div class = "item-controls flexrow">
+                        <a class="item-control item-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="item-control item-delete ">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div> 
+                </li>
+                {{/each}}
+            </ol>
+
+        </ol>
+
         <div class = "templates">
         <p>character templates</p>
         </div>
     </div>
-
-
-
 </div>

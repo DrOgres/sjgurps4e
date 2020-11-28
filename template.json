@@ -58,7 +58,18 @@
             },
             "ownedSkillList": [
                 {"key": "", "item": "" }
-            ]
+            ],
+            "description": {
+                "value" : "Description"
+           },
+           "bio": {
+               "value" : "Biography"
+           },
+           "tl":{
+               "value": 0
+           },
+           "primeLang" : "Primary Language"
+
         }
     },
 
@@ -148,7 +159,8 @@
             "location": ""
         },
         "trait": {
-            "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"]
+            "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"],
+            "traitType" : ""
         }, 
         "charTemplate":{
             "templates": ["itemType", "itemDescription" , "itemFav"]

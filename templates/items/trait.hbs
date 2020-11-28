@@ -4,7 +4,12 @@
         <h1 class = "charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
         <div class="item-subtitle">
               <h4 class="item-type">
+                  {{#if isLanguage}}
+                  {{localize "sjgurps4e.lang"}}
+                  {{/if}}
+                  {{#unless isLanguage}}
                   {{localize "sjgurps4e.trait"}}
+                  {{/unless}}
               </h4>
             </div>
     
@@ -13,7 +18,7 @@
     <section class="sheet-body">
     <div class="tab flexrow active" data-group="primary" data-tab="description">
         <div class="item-properties">
-         {{!-- Choose Advantage, Disadvantage, Quir or Perk--}}
+         {{!-- Choose Culture, Language, Advantage, Disadvantage, Quirk or Perk--}}
          <div class="form-group">
         <label>{{localize "sjgurps4e.itemProperties.trait"}} </label>
         <select name="data.traitType">
@@ -28,6 +33,8 @@
             <label>{{localize "sjgurps4e.pointCost"}}</label>
             <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
         </div>
+       
+       
         </div>
         <div class = "mce-editor">
             {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}

@@ -129,7 +129,9 @@ sjgurps4e.traitType = {
     "traitAdvantage" : "sjgurps4e.traitGroup.adv",
     "traitDisadvantage" : "sjgurps4e.traitGroup.dis",
     "traitPerk" : "sjgurps4e.traitGroup.perk",
-    "traitQuirk" : "sjgurps4e.traitGroup.qrk"
+    "traitQuirk" : "sjgurps4e.traitGroup.qrk",
+    "traitCulture": "sjgurps4e.traitGroup.cult",
+    "traitLanguage": "sjgurps4e.traitGroup.lang"
 };
 
 sjgurps4e.description = {
@@ -170,4 +172,11 @@ sjgurps4e.expandedLocations ={
     "belt": "sjgurps4e.itemLocation.belt",
     "none": "sjgurps4e.itemLocation.none"
 };
+
+sjgurps4e.languageComprehension ={
+    "none" : "sjgurps4e.langComp.none",
+    "broken" : "sjgurps4e.langComp.broken",
+    "accented" : "sjgurps4e.langComp.accented",
+    "native" : "sjgurps4e.langComp.native"
+}
 

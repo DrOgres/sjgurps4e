@@ -1,21 +1,36 @@
 @import "./config.less";
 
 
-.background{
+.item-list{
+    list-style: none;
+    padding-left: 0;
+}
+
+.info{
 
     display: flex;
-    flex-direction: row;
+    
     .appAndbio{
         display: flex;
         flex-direction: column;
-        min-width: 60%;
+        min-width: 65%;
+        padding: 0px 10px 0px 10px;
+
+        .mods-etc{
+            .full{
+                width: 100%;
+            }
+            .half{
+                width: 50%;
+            }
+        }
 
     }
 
     .traits{
         display: flex;
         flex-direction: column;
-        min-width: 40%;
+        min-width: 35%;
     }
 
 }

@@ -156,19 +156,11 @@
             "tox" : "Toxic"
         },
         
-        "Description-Tab": "Description",
-        "Details" : "Details",
-        "weaponType" : "Weapon Type",
         "weaponGroup" : {
             "melee" : "Melee Weapon",
             "ranged" : "Ranged Weapon"
         },
-        
-        "skill": "Skill",
-        "spell": "Spell",
-        "attribute": "Attribute",
-        "difficulty": "Difficulty",
-        
+          
         "difficulties": {
             "EZ": "Easy",
             "AV": "Average",
@@ -176,29 +168,14 @@
             "VH": "Very Hard"
         }, 
 
-        "itemName": "Name",
-        "effectiveSkill": "Effective Skill",
-        "pointCost": "Point Cost",
-        "modTotal": "Modifier Total",
-        "location": "Location",
-        "charTemplate": "Character Template",
-        "Inventory": "Inventory",
-        "Biography": "Biography",
-        "traits": "Info",
-        "core": "Core",
-        "skills": "Skills",
-        "spells": "Spells",
-        "weapon": "weapon",
-
         "traitGroup" : {
             "adv" : "Advantage",
             "dis" : "Disadvantage",
             "perk" : "Perk",
-            "qrk" : "Quirk"
+            "qrk" : "Quirk",
+            "cult": "Culture",
+            "lang": "Language"
         },
-        
-        "trait": "Trait",
-        "equip": "Equipment",
 
         "itemLocation": {
             "head" : "Head",
@@ -224,12 +201,13 @@
             "pack": "Pack",
             "belt": "Belt",
             "none": "None"
+        },
+        "langComp":{
+            "none" : "None",
+            "broken": "Broken",
+            "accented": "Accented",
+            "native": "Native"
         }, 
-
-        "dr": "Damage Resistance",
-        "db": "Defense Bonus",
-        "itemHP": "Item HP",
-        "lc": "Legality Class",
 
         "sheet":{
             "2ptCostExp": "+/- 2 Points per Level",
@@ -245,6 +223,7 @@
             "newSpell": "New Spell",
             "addSkill": "New Skill",
             "addSpell": "New Spell",
+            "addTrait": "New Trait",
             "speedExpl": "+/-5 points per .25 Basic Speed Change",
             "moveExpl": "+/- 5 points per yard/sec",
             "basicLift": "Basic Lift",
@@ -269,17 +248,59 @@
             "favorites": "Favorites",
             "totalWeight": "Total Weight",
             "s-dif": "Stat/Difficulty",
-            "skillLevel": "Skill Level",
+            "skillLevel": "Level",
             "currentHealth": "Current HP",
             "currentFatigue": "Current FP",
             "points": "Points",
             "totalPoints": "Total Points",
-            "unspentPoints": "Unspent Points"
-
-
-        }
-
-    
+            "unspentPoints": "Unspent Points",
+            "advantages": "Advantages",
+            "quirks": "Quirks",
+            "perks": "Perks",
+            "disadvantages": "Disadvantages",
+            "languages": "Languages"
+        },
+        "itemName": "Name",
+        "effectiveSkill": "Target",
+        "pointCost": "Cost",
+        "modTotal": "Modifier Total",
+        "location": "Location",
+        "charTemplate": "Character Template",
+        "Inventory": "Inventory",
+        "biography": "Biography",
+        "traits": "Traits & Info",
+        "core": "Core",
+        "skills": "Skills",
+        "spells": "Spells",
+        "weapon": "weapon",
+        "dr": "Damage Resistance",
+        "db": "Defense Bonus",
+        "itemHP": "Item HP",
+        "lc": "Legality Class",
+        "trait": "Trait",
+        "lang": "Language",
+        "spoken": "Spoken",
+        "written": "Written",
+        "equip": "Equipment",
+        "skill": "Skill",
+        "spell": "Spell",
+        "attribute": "Attribute",
+        "difficulty": "Difficulty",
+        "Description-Tab": "Description",
+        "Details" : "Details",
+        "weaponType" : "Weapon Type",
+        "reactionMod": "Reaction Modifiers",
+        "height": "Height",
+        "weight": "Weight",
+        "size": "Size Mod",
+        "age": "Age",
+        "physical": "Physical Characteristics",
+        "appearance" : "Appearance",
+        "cultureHeader": "TL & Culture",
+        "cultureItem": "Cultural Familiarities",
+        "status": "Status",
+        "reputation" : "Reputation",
+        "modifier" : "Modifier"
     }
 
 

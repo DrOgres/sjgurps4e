@@ -148,6 +148,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             }
             data.allSkills[n].data.effective =  Number(statValue)+Number(statMod);
         }
+        //uncomment to peek at data if needed
+        //console.log(data);
+        
         
         //separate skills into skills and spells
         data.skills = data.allSkills.filter(function(item) {return item.data.isSpell == false});
@@ -157,9 +160,19 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         data.actor.data.ownedSkillList = this._getOwnedSkills(data);
         //gather up the traits
         data.allTraits = data.items.filter(function(item) {return item.type == "trait"});
-
-        //separate into Advantages, Disadvantages, Quirks and Perks
-
+        //console.log(data.allTraits);
+        //separate into Cultures, Languages, Advantages, Disadvantages, Quirks and Perks
+        data.advantages = data.allTraits.filter(function (item) {return item.data.traitType == "traitAdvantage"});
+        //console.log(data.advantages);
+        data.perks = data.allTraits.filter(function(item) {return item.data.traitType == "traitPerk"});
+        //console.log(data.perks);
+        data.disadvantages = data.allTraits.filter(function(item) {return item.data.traitType == "traitDisadvantage"});
+        //console.log(data.disadvantages);
+        data.quirks = data.allTraits.filter(function(item) {return item.data.traitType == "traitQuirk"});
+        //console.log(data.quirks);
+        data.cultures = data.allTraits.filter(function(item){return item.data.traitType == "traitCulture"});
+        data.languages = data.allTraits.filter(function(item){return item.data.traitType == "traitLanguage"});
+        
         //gather up the templates
         data.charTemplates = data.items.filter(function(item) {return item.type == "template"});
         
@@ -391,9 +404,18 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         event.preventDefault();
         let element = event.currentTarget;
         let spellBool = element.dataset.spell;
+        let traitType = element.dataset.trait;
         let itemData = {};
-        //console.log(spellBool);
-        if (spellBool == "spell"){
+        if (element.dataset.type == "trait"){
+            //console.log("trait");
+            //console.log(element.dataset.trait);
+            itemData={
+                name: game.i18n.localize("sjgurps4e.sheet.addTrait"),
+                type: element.dataset.type,
+                "data.traitType": traitType
+            }
+            
+        } else if (spellBool == "spell"){
             itemData={
                 name: game.i18n.localize("sjgurps4e.sheet.newSpell"),
                 type: element.dataset.type,

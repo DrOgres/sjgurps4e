@@ -31,6 +31,7 @@
         <a class="item" data-tab="skills">{{ localize "sjgurps4e.skills" }}</a>
         <a class="item" data-tab="spells">{{ localize "sjgurps4e.spells" }}</a>
         <a class="item" data-tab="traits">{{ localize "sjgurps4e.traits" }}</a>
+        <a class="item" data-tab="notes">Notes</a>
     </nav>
 
     <section class="sheet-body">
@@ -58,6 +59,10 @@
             {{> "systems/sjgurps4e/templates/actors/parts/actor-traits.hbs"}}
         </div>
 
+        {{!--Private Notes--}}
+        <div class="tab biography flexrow" data-group="primary" data-tab="notes">
+            {{> "systems/sjgurps4e/templates/actors/parts/actor-notes.hbs"}}
+        </div>
     </section>
 
 

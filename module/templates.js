@@ -22,6 +22,7 @@ export const preloadHandlebarsTemplates = async function() {
       "systems/sjgurps4e/templates/actors/parts/active-defense.hbs",
       "systems/sjgurps4e/templates/actors/parts/encumbrance.hbs",
       "systems/sjgurps4e/templates/actors/parts/favorites.hbs",
+      "systems/sjgurps4e/templates/actors/parts/actor-notes.hbs",
       //"systems/sjgurps4e/templates/actors/parts/actor-spellbook.html",
       //"systems/sjgurps4e/templates/actors/parts/actor-effects.html",
   

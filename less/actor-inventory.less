@@ -6,7 +6,7 @@
 }
 
 .item-control:hover{
-    color: #c53131;
+    color: @highlight-color;
     font-weight: 700;
     text-shadow: none;
 
@@ -19,14 +19,22 @@
 
 h2.item-name{
     margin: 0px;
-    font-family: Signika, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
+    font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+	font-size: 17px;
+    font-weight: normal;
+    color: @black;
+    border-bottom: none;
     
 }
 
 .item-name{
     flex-grow: 5;
+}
+
+.react-name{
+    flex-grow: 1;
+    border-bottom: none;
+    align-content: flex-end;
 }
 
 .inventory-list{
@@ -44,13 +52,26 @@ h2.item-name{
         font-size: 12px;
         line-height: 16px;
         padding: 0.25em 0.5em;
-        color: #191813;
-        border-top: 1px solid #c9c7b8;
+        color: @dark-contrast;
+        border-top: 1px solid @offwhite;
       }
 
 
     .inventory-totals{
         text-align: right;
+        border-bottom: 1px solid @highlight-color;
+        .money{
+            max-width: 30%;
+            text-align: left;
+            input[type=text], select{
+                background-color: @transparent-color;
+                max-width: 25%;
+                max-height: 16px;
+                border: none;
+                font-size: 14px;
+            
+            }
+        }
     }
     
     .inventory-header{

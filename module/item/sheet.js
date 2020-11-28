@@ -34,6 +34,7 @@ export default class ItemSheetGurps extends ItemSheet{
         data.isRangedWeapon = this._isRangedWeapon(data.item);
         data.isSkill = this._isSkill(data.item.type);
         data.isSpell = this.__isSpell(data.item.type);
+        data.isLanguage = this._isLanguage(data.item);
         //data.skillUsed = data.item.data.skillUsed;
 
         //console.log(data.item.data.skillUsed + " item data from itemsheet");
@@ -62,6 +63,17 @@ export default class ItemSheetGurps extends ItemSheet{
 
     /** if this is a ranged weapon we want to know that so we can use the correct data fields */
     
+    _isLanguage(item) {
+        const data = item.data;
+        console.log(data.traitType); 
+
+        if(data.traitType === "traitLanguage"){
+            data.isLanguage = true;
+        }
+
+        return data.isLanguage;
+
+    }
     _isRangedWeapon(item) {
         const data = item.data;
         //console.log(data.weaponType + " is ranged weapon");
