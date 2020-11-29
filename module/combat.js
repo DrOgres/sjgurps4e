@@ -1,3 +1,5 @@
+
+
 /**
  * Override the default Initiative formula to customize special behaviors of the system.
  * if requested
@@ -8,7 +10,7 @@ export const _getInitiativeFormula = function(combatant) {
     if ( !actor ) return actor.data.data.baseSpeed;
     const init = actor.data.data.baseSpeed;
 
-    console.log(actor);
+    //console.log(actor);
   
     let nd = 1;
     let mods = "";
@@ -17,7 +19,8 @@ export const _getInitiativeFormula = function(combatant) {
     // Optionally apply Dexterity tiebreaker
     const tiebreaker = game.settings.get("sjgurps4e", "initTieBreaker");
     if ( tiebreaker ) parts.push("1d6/100");
-    console.log(parts);
+    //console.log("SJGURPS4E  |  inititieve parts " + parts);
+    //console.log("SJGURPS4E  |  Combat" + Combat);
     
     return parts.filter(p => p !== null).join(" + ");
   };

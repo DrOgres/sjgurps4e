@@ -210,7 +210,9 @@
         }, 
 
         "sheet":{
+            "hpCostExp": "+/- 2 Points per Level Difference to ST",
             "2ptCostExp": "+/- 2 Points per Level",
+            "fpCostExp": "+/- 3 Points per Level Difference to HT",
             "3ptCostExp": "+/- 3 Points per Level",
             "5ptCostExp": "+/- 5 Points per Level",
             "10ptCostExp": "+/- 10 Points per Level",
@@ -226,6 +228,7 @@
             "addTrait": "New Trait",
             "speedExpl": "+/-5 points per .25 Basic Speed Change",
             "moveExpl": "+/- 5 points per yard/sec",
+            "moveExplMetric" : "+/- 5 points per meter/sec",
             "basicLift": "Basic Lift",
             "basicSpeed": "Basic Speed", 
             "basicMove": "Basic Move",

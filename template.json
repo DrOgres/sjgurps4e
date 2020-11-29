@@ -161,7 +161,8 @@
         },
         "trait": {
             "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"],
-            "traitType" : ""
+            "traitType" : "",
+            "points": 0
         }, 
         "charTemplate":{
             "templates": ["itemType", "itemDescription" , "itemFav"]

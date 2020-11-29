@@ -31,8 +31,8 @@ Hooks.once("init", function (){
     // Register System Settings
     registerSystemSettings();
 
-     // Patch Core Functions
-     CONFIG.Combat.initiative.formula = String("@baseSpeed + (1d6/100)");
+     // set up the baseline inititive formula
+     CONFIG.Combat.initiative.formula = String("@baseSpeed + (1d6/1000)");
      Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
 
     Items.unregisterSheet("core", ItemSheet);
@@ -47,6 +47,8 @@ Hooks.once("init", function (){
      //calculate point costs for attribute values
     Handlebars.registerHelper("statValue", function(n, string, ST = 10){
       let result = '';
+      // yeah yeah I know it's a multiplier... it used to be a division thing but I changed it and 
+      // was too lazy to change the code :P
       let divisor = '';
       let baseValue = 10;
       if(string === "ST" || string === "HT"){
@@ -67,7 +69,6 @@ Hooks.once("init", function (){
       result = (n-baseValue)*divisor;
       //console.log("*-* value of n in handlebarhelper " + n);
       //console.log("*-* value of divisor in helper " + divisor);
-      updateTotal();
       return result;
     });  
 
@@ -100,7 +101,3 @@ Hooks.once("setup", function(){
 
 })
 
-function updateTotal(){
-  //update the points total for the character sheet  call this after we change points
-  return;
-}

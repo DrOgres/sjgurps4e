@@ -13,7 +13,7 @@ export const registerSystemSettings = function() {
         choices: {
             "basic": "SETTINGS.hitScopeBasic",
             "intermediate" : "SETTINGS.hitScopeIntermediate",
-            "Detailed": "SETTINGS.hitScopeDetailed"
+            "detailed": "SETTINGS.hitScopeDetailed"
         }
 
     });

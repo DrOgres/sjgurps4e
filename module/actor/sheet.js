@@ -6,7 +6,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             template: "systems/sjgurps4e/templates/actors/actor-sheet.hbs",
             classes: ["sjgurps4e", "sheet", "actor", "character"],
             scrollY: [".tab.core"],
-            tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "core"}]
+            tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "core"}],
+            width: 800,
+            height: 800
         });
     }
 
@@ -18,6 +20,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     getData() {
         const data = super.getData();
         data.config = CONFIG.sjgurps4e;
+
+        data["hitLocationScope"] = game.settings.get("sjgurps4e", "hitLocationScope");
+        console.log("SJGURPS4E  | hitLocationScope: " + data.hitLocationScope);
 
         //uncomment to peek at data if needed
         console.log(data);
@@ -198,9 +203,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //calculate current dodge
         data.actor.data.dodge = this._getDodge(data.actor);
 
-        //calculate current Parry by selected weapon
+        //TODO calculate current Parry by selected weapon
 
-        //calculate the current block by shield skill
+        //TODO calculate the current block by shield skill
 
         //gather up favorite items
             // get owned items filtered by the isFav property
@@ -988,36 +993,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 async function getModifier() {
             
             let modifier=0;
-            // if user presed that while clicking show a dialog to ask for modifier and or skill
-            // then pass the changes from that form to the overall roll 
-           // console.log("alt pressed");
-            let d = new Dialog({
-                    title: "Roll Modifiers",
-                    content: `
-                        <div style='height: 25px; line-height: 25px; font-size: 20px; margin-bottom: 10px; text-align: center;'>
-                           Modify Target by: <input id='roll_modifier' name='data.modifier' type='text' style='width: 150px; height: 30px;' value='0' onfocus='this.select()'>
-                        </div>`,
-                    buttons: {
-                        ok:{
-                            label: "ok",
-                        },
-                        cancel:{
-                            label: "cancel",
-                        }
-                    },
-                    default: "ok",
-                    render: html => console.log("Register interactivity in the rendered dialog"),
-                    close: html =>  {   
-                                        modifier = html.find('[name="data.modifier"]')[0].value;
-                                        console.log("we have set the modifier to "+ html.find('[name="data.modifier"]')[0].value);
-                                    }
-                });
-
-            d.render(true);
-            setTimeout(function() {document.getElementById("roll_modifier").focus();}, 300);
-            setTimeout(function(){}, 2000 );
-            console.log("got Modifier: " + modifier);
-            // expected output: "resolved"
             return modifier;
 }
 
