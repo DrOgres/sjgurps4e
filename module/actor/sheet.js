@@ -19,12 +19,16 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         const data = super.getData();
         data.config = CONFIG.sjgurps4e;
 
+        //uncomment to peek at data if needed
+        console.log(data);
+        
+
         // gather up the weapon items
         data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
-        console.log(data.weapons);
+        //console.log(data.weapons);
         //gather up the eqipment items
         data.equips = data.items.filter(function(item) {return item.type == "equipment"});
-
+        //console.log(data.equips);
         //calculate the total weight for encumbrance 
         data.actor.data.totalweight = 0;
         //console.log("GURPS 4E  |  " + data.actor.data.totalweight);
@@ -148,9 +152,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             }
             data.allSkills[n].data.effective =  Number(statValue)+Number(statMod);
         }
-        //uncomment to peek at data if needed
-        //console.log(data);
-        
+      
         
         //separate skills into skills and spells
         data.skills = data.allSkills.filter(function(item) {return item.data.isSpell == false});

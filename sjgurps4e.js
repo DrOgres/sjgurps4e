@@ -4,15 +4,36 @@ import sjgurps4eActorSheet from "./module/actor/sheet.js";
 import { preloadHandlebarsTemplates } from "./module/templates.js";
 import sjgurps4eActor from "./module/actor/entity.js";
 import sjgurps4eItem from "./module/item/entity.js";
+import { registerSystemSettings } from "./module/settings.js";
+import { _getInitiativeFormula } from "./module/combat.js";
 
 Hooks.once("init", function (){
     console.log("sjgurps4e | Initializing GURPS 4e");
     console.log(sjgurps4e.ASCII);
 
+    game.sjgurps4e ={
+      applications: {
+        sjgurps4eActor,
+        sjgurps4eActorSheet
+      },
+      config: sjgurps4e,
+      entities: {
+        sjgurps4eActor,
+        sjgurps4eItem,
+        }
+
+    }
 
     CONFIG.sjgurps4e = sjgurps4e;
     CONFIG.Actor.entityClass = sjgurps4eActor;
     CONFIG.Item.entityClass = sjgurps4eItem;
+
+    // Register System Settings
+    registerSystemSettings();
+
+     // Patch Core Functions
+     CONFIG.Combat.initiative.formula = String("@baseSpeed + (1d6/100)");
+     Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
 
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet("sjgurps4e", sjgurps4eItemSheet, {makeDefault: true});
@@ -20,10 +41,8 @@ Hooks.once("init", function (){
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("sjgurps4e", sjgurps4eActorSheet, {makeDefault: true});
 
-
-      // Preload Handlebars Templates
-     preloadHandlebarsTemplates();
-
+    // Preload Handlebars Templates
+    preloadHandlebarsTemplates();
 
      //calculate point costs for attribute values
     Handlebars.registerHelper("statValue", function(n, string, ST = 10){
@@ -75,7 +94,11 @@ Hooks.once("init", function (){
 
 })
 
+Hooks.once("setup", function(){
 
+
+
+})
 
 function updateTotal(){
   //update the points total for the character sheet  call this after we change points

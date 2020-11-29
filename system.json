@@ -31,7 +31,7 @@
     "gridUnits": "yd",
     "primaryTokenAttribute" : "HP",
     "secondaryTokenAttribute": "FP",
-    "inititive" : "@base_speed",
+    "inititive" : "@baseSpeed + (1d6/100)",
     "url": "https://github.com/DrOgres/sjgurps4e",
     "manifest": "https://github.com/DrOgres/sjgurps4e/raw/master/system.json",
     "download": "https://github.com/DrOgres/sjgurps4e/archive/master.zip"

@@ -301,6 +301,17 @@
         "status": "Status",
         "reputation" : "Reputation",
         "modifier" : "Modifier"
+    },
+
+    "SETTINGS" : {
+        "hitScopeBasic": "Basic - All to Torso",
+        "hitScopeIntermediate" : "Intermediate - 6 Hit Locations",
+        "hitScopeDetailed" : "Detailed - 12 Hit Locations",
+        "hitLocationScope": "Hit Location Scope",
+        "InitTBL": "increase decimal portion of speed with a 1d6 roll by default.",
+        "InitTBN": "Initiative Tiebreaker"
+
+
     }
 
 

@@ -156,7 +156,8 @@
         }, 
         "equipment":{
             "templates": ["itemCost", "itemDescription", "itemNotes", "itemWeight", "itemTL", "itemType", "itemFav"],
-            "location": ""
+            "location": "",
+            "dr" : ""
         },
         "trait": {
             "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"],
