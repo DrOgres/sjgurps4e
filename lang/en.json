@@ -46,6 +46,9 @@
             "skill" : "Skill",
             "minSTR": "Minimum ST",
             "location": "Location",
+            "secondLocation" : "Second Location",
+            "piercingDR" : "Piercing/Cutting DR",
+            "crushingDR" : "Crushing DR",
             "trait" : "Trait Type"
         },
 
@@ -210,6 +213,8 @@
         }, 
 
         "sheet":{
+            "equipHint": "Toggle Equiped Status",
+            "favHint" : "Add/Remove this item from your Favorites",
             "hpCostExp": "+/- 2 Points per Level Difference to ST",
             "2ptCostExp": "+/- 2 Points per Level",
             "fpCostExp": "+/- 3 Points per Level Difference to HT",

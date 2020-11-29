@@ -36,16 +36,16 @@
                 <label>{{localize "sjgurps4e.itemProperties.cost"}}</label>
                 <input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
             </div>
-             <div class="form-group">
+              <div class="form-group">
                 <label>{{localize "sjgurps4e.itemProperties.location"}} </label>
-        <select name="data.location">
-        {{#select data.location}}
-        {{#each config.locations as |name location|}}
-        <option value="{{location}}">{{localize name}}</option>
-        {{/each}}
-        {{/select}}
-        </select>
-        </div> 
+                <select name="data.location">
+                {{#select data.location}}
+                {{#each config.locations as |name location|}}
+                <option value="{{location}}">{{localize name}}</option>
+                {{/each}}
+                {{/select}}
+                </select>
+              </div> 
         </div>
         <div class = "mce-editor">
           {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
@@ -81,6 +81,36 @@
                 <label>{{localize "sjgurps4e.dr"}}</label>
                 <input type="text" name="data.dr" value="{{data.dr}}" data-dtype="Number"/>
         </div>
+        <div class="armor-options form-fields">
+          <label class="checkbox">
+            <input type="checkbox" name="data.concealable" {{checked data.concealable}}/> Concealable 
+            </label>
+          <label class="checkbox">
+            <input type="checkbox" name="data.flexable" {{checked data.flexable}}/> Flexable 
+            </label>
+            <label class="checkbox">
+            <input type="checkbox" name="data.splitDR" {{checked data.splitDR}}/> Split DR 
+            </label>
+        </div>
+        <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.secondLocation"}} </label>
+                <select name="data.secondLocation">
+                {{#select data.secondLocation}}
+                {{#each config.locations as |name location|}}
+                <option value="{{location}}">{{localize name}}</option>
+                {{/each}}
+                {{/select}}
+                </select>
+              </div> 
+        {{#if data.splitDR}}
+        <div class="form-group">
+                <label>{{localize "sjgurps4e.itemProperties.crushingDR"}}</label>
+                <input type="text" name="data.crushingDR" value="{{data.crushingDR}}" data-dtype="Number"/>
+                <label>{{localize "sjgurps4e.itemProperties.piercingDR"}}</label>
+                <input type="text" name="data.piercingDR" value="{{data.piercingDR}}" data-dtype="Number"/>
+            </div>
+            
+        {{/if}}
       {{/if}}
       {{#if data.hasDb}}
         <div class="form-group">

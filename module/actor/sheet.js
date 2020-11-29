@@ -261,6 +261,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         // set favorites
         html.find('.item-favorite').click(this._onItemFavorite.bind(this));
 
+        //equip an equipable item
+        html.find('.item-equip').click(this._onItemEquip.bind(this));
+
 
         super.activateListeners(html);
         //console.log("*-* activated listener");
@@ -467,6 +470,22 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //console.log(item);
 
 
+    }
+
+    _onItemEquip(event){
+        event.preventDefault();
+        let element = event.currentTarget;
+        let itemId = element.closest(".item").dataset.itemid;
+        let item = this.actor.getOwnedItem(itemId);
+
+        if(item.data.data.equiped){
+            item.data.data.equiped = false;
+            item.update({"data.equiped" : false});
+
+        }else {
+            item.data.data.equiped = true;
+            item.update({ "data.equiped" : true});
+        }
     }
 
     _onRoll(event){

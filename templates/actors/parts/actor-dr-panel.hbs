@@ -1,9 +1,20 @@
 <div class="dr-panel">
-    <div class="panel-header">{{localize "sjgurps4e.dr"}}</div>
+    <div class ="core-header section-titles">
+        {{localize "sjgurps4e.dr"}}
+    </div>
 
     {{!-- Simple One Location DR Panel --}}
     {{#if (eq hitLocationScope "basic")}}
-    <div class="single-location-dr panel-body">{{localize "sjgurps4e.itemLocation.body"}}: CALC DR</div>
+    <div class="single-location-dr panel-body flexcol">
+        <div class="location">
+        <div class="body">   
+            {{localize "sjgurps4e.itemLocation.body"}}:
+        </div> 
+        <div>
+            {{data.singleDR}}
+        </div>
+        </div>
+    </div>
     {{/if}}
     {{!-- Intermediate 6 location DR Panel --}}
     {{#if (eq hitLocationScope "intermediate")}}

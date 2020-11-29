@@ -10,6 +10,8 @@ export default class ActorGurps extends Actor {
         actorData.data.baseSpeed = this._basicSpeed(actorData);
         actorData.data.totalPoints.value = this._computePoints(actorData);
 
+        actorData.data.singleDR = this._computeDR(actorData);
+
     }
 
 
@@ -124,6 +126,40 @@ export default class ActorGurps extends Actor {
         return points;
     }
 
+    _computeDR(actorData){
+        // determine settings for the dr scope and set up variables for each location
 
+        //fullsuit covers all locations
+        //body covers neck torso groin
+        //head covers eyes face skull
+        //limbs covers arms and legs
+
+        //we need a base dr for flexable armor in case we have layerd it
+        let flexdr = 0;
+        // a single location dr for the highest dr torso armor item
+        let dr= 0;
+        //get the highest DR from equiped items on Torso location
+        const equip = "equipment"
+        for(let n = 0; n<actorData.items.length; n++){
+            let currentItem =  actorData.items[n];
+            if(currentItem.data.equiped){
+                if(currentItem.data.location == "torso"){
+                    if(currentItem.data.flexable && currentItem.data.concealable){
+                        if(currentItem.data.dr> flexdr){
+                            flexdr = currentItem.data.dr
+                        }
+                    }else{
+                        if(currentItem.data.dr > dr){
+                            dr = currentItem.data.dr;
+                    }}
+                }
+            }
+        }
+        // if we are dealing with a single location for scope
+        //just return dr 
+        dr = dr+flexdr;
+        return dr;
+
+    }
     
 }

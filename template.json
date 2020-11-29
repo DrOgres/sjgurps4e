@@ -68,7 +68,8 @@
            "tl":{
                "value": 0
            },
-           "primeLang" : "Primary Language"
+           "primeLang" : "Primary Language",
+           "singleDR" : 0
 
         }
     },
@@ -157,7 +158,14 @@
         "equipment":{
             "templates": ["itemCost", "itemDescription", "itemNotes", "itemWeight", "itemTL", "itemType", "itemFav"],
             "location": "",
-            "dr" : ""
+            "dr" : "",
+            "equiped" : false,
+            "concealable": false,
+            "flexable" : false,
+            "secondLocation": "",
+            "splitDR" : false,
+            "crushingDR" : 0,
+            "piercingDR" : 0
         },
         "trait": {
             "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"],
