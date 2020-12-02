@@ -17,7 +17,7 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - prevent duplicate skills on character sheet </li>
 <li>TODO - Sucess/Failure and margin on Rolls</li>
 <li>TODO - Call out Crit/Fumble on rolls</li>
-<li>TODO - Beutification and Layout optimization - 90% complete</li>
+<li>TODO - Beutification and Layout optimization - 50% complete</li>
 <li>TODO - add fields to spell items for extra data</li>
 <li>TODO - add info and layout items to the rolldown for owned items</li>
 <li>TODO - verify all strings have been localized</li>
