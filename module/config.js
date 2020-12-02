@@ -95,6 +95,13 @@ sjgurps4e.rangedWeaponSkill = {
     "liquidProjectorFlamethrower": "sjgurps4e.rangedWeaponSkill.liquidProjectorFlamethrower"
 };
 
+sjgurps4e.damageFormula={
+    "swing" : "Swing", 
+    "thrust" : "Thrust",
+    "die" : "Die Roll",
+    "spec" : "Special"
+}
+
 sjgurps4e.damageType = {
     "aff": "sjgurps4e.damageType.aff",
     "burn": "sjgurps4e.damageType.burn",

@@ -2,12 +2,52 @@
 
 .sjgurps4e.sheet.item{
 
+    .damage-parts{
+        padding-left: 0;
+        list-style: none;
+       
+        
+    }
+
+    input:hover{
+        box-shadow: 0 0 5px @highlight-color;
+    }
+    
+    select:hover{
+        box-shadow: 0 0 5px @highlight-color;
+    }
+
+    .damage-control:hover{
+        color: @highlight-color;
+        font-weight: 700;
+        text-shadow: none;
+    
+    }
+
+
+    .sheet-navigation{
+        border-bottom: groove;
+        margin-bottom: 10px;
+        .item{
+            font-size: 16px;
+        }
+        .item:hover{
+            color: @highlight-color;
+	        font-weight: 700;
+	        text-shadow: none;
+        }
+        .item.active{
+            color: @highlight-color;
+	        border-bottom: 3px solid @highlight-color;
+	        text-shadow: none;
+        }
+    }
+
     .sheet-header{
         .charname{
             input{
                 background-color: @transparent-color;
                 border: none;
-                font-family: Cinzel, serif;
                 font-size: 28px;
                 width: 300px;
             }
@@ -54,6 +94,42 @@
         margin: 5px;
         td{
             padding: 3px;
+        }
+    }
+    .common-weapon-header{
+        flex: 1;
+        margin: 0px 5px 0px 5px;
+        .header-item{
+            font-family: Signika, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: @black;
+            text-align: left;
+            padding: 0px 3px 0px 0px;
+        }
+        .plus{
+            min-width: 15px;
+            max-width: 15px;
+        }
+    }
+    .common-weapon-info{
+        flex: 1 1 0;
+        margin: 5px;
+        
+        .data-item{
+            font-family: Signika, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: @black;
+            text-align: center;
+            padding: 0px 3px 0px 0px;   
+
+        }
+        .plus{
+              
+            min-width: 15px;
+            max-width: 15px;
+            
         }
     }
 

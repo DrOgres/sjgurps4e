@@ -23,6 +23,10 @@ export default class ItemGurps extends Item {
     return data;
   }
 
+  get hasDamage() {
+    return !!(this.data.data.damage && this.data.data.damage.bits.length);
+  }
+
   prepareData(){
       super.prepareData();
 
@@ -30,8 +34,16 @@ export default class ItemGurps extends Item {
       const data = itemData.data;
       const C = CONFIG.sjgurps4e;
       const labels = {};
-
+      // Damage
+      let dam = data.damage || {};
+      if ( dam.bits ) {
+        labels.damageBase = dam.bits.map(d => d[0]).join(" + ").replace(/\+ -/g, "- ");
+        labels.damageModifier = dam.bits.map(d=> d[1]).join(" + ").replace(/\+ -/g, "- ");
+        labels.damageType = dam.bits.map(d => C.damageTypes[d[1]]).join(", ");
+      }
       this.labels = labels
+
+
   }
     
 }

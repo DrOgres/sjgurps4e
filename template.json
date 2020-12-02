@@ -104,11 +104,11 @@
             "itemTL":{
                 "tl":0
             },
-            "itemDamage":{
-                "damage": "sw or th"
-            },
-            "itemDamageType":{
-                "damageType": ""
+            "itemDamage": {
+                "damage": {
+                    "parts": []
+
+                }   
             },
             "itemST":{
                 "minST": 10
@@ -143,12 +143,12 @@
             "isSpell": false
         },
         "weapon-melee" : {
-            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST" , "itemFav"],
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage",  "itemST" , "itemFav"],
             "reach": 1,
             "parryType": ""
         },
         "weapon-ranged":{
-            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST", "itemFav"],
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage",  "itemST", "itemFav"],
             "acc": 0,
             "range": "x4",
             "rof": 1,
@@ -176,7 +176,7 @@
             "templates": ["itemType", "itemDescription" , "itemFav"]
         },
         "weapon" : {
-            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemDamageType", "itemST", "itemFav"],
+            "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage", "itemST", "itemFav"],
             "reach": 1,
             "parryType": "",
             "acc": 0,

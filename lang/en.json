@@ -1,5 +1,7 @@
 {
     "sjgurps4e" : {
+        "none" : "None",
+
         "attributes" : {
             "ST": "Strength",
             "DX": "Dexterity",
@@ -35,8 +37,9 @@
         },
 
         "itemProperties" : {
-            "damage": "Damage",
+            "damage": "Base Damage",
             "damageType" : "Damage Type",
+            "modifier" : "Modifier",
             "name": "Name",
             "weight": "Weight",
             "cost": "Cost",
@@ -280,7 +283,7 @@
         "core": "Core",
         "skills": "Skills",
         "spells": "Spells",
-        "weapon": "weapon",
+        "weapon": "Weapon",
         "dr": "Damage Resistance",
         "db": "Defense Bonus",
         "itemHP": "Item HP",

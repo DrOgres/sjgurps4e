@@ -56,6 +56,38 @@
 .flexcol .flex4 {
   flex: 4;
 }
+.sjgurps4e.sheet.item .damage-parts {
+  padding-left: 0;
+  list-style: none;
+}
+.sjgurps4e.sheet.item input:hover {
+  box-shadow: 0 0 5px #c53131;
+}
+.sjgurps4e.sheet.item select:hover {
+  box-shadow: 0 0 5px #c53131;
+}
+.sjgurps4e.sheet.item .damage-control:hover {
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
+}
+.sjgurps4e.sheet.item .sheet-navigation {
+  border-bottom: groove;
+  margin-bottom: 10px;
+}
+.sjgurps4e.sheet.item .sheet-navigation .item {
+  font-size: 16px;
+}
+.sjgurps4e.sheet.item .sheet-navigation .item:hover {
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
+}
+.sjgurps4e.sheet.item .sheet-navigation .item.active {
+  color: #c53131;
+  border-bottom: 3px solid #c53131;
+  text-shadow: none;
+}
 .sjgurps4e.sheet.item .sheet-header {
   align-items: flex-start;
   flex: 0;
@@ -63,7 +95,6 @@
 .sjgurps4e.sheet.item .sheet-header .charname input {
   background-color: #ffffff00;
   border: none;
-  font-family: Cinzel, serif;
   font-size: 28px;
   width: 300px;
 }
@@ -102,6 +133,38 @@
 }
 .sjgurps4e.sheet.item .weapon-data-table td {
   padding: 3px;
+}
+.sjgurps4e.sheet.item .common-weapon-header {
+  flex: 1;
+  margin: 0px 5px 0px 5px;
+}
+.sjgurps4e.sheet.item .common-weapon-header .header-item {
+  font-family: Signika, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  text-align: left;
+  padding: 0px 3px 0px 0px;
+}
+.sjgurps4e.sheet.item .common-weapon-header .plus {
+  min-width: 15px;
+  max-width: 15px;
+}
+.sjgurps4e.sheet.item .common-weapon-info {
+  flex: 1 1 0;
+  margin: 5px;
+}
+.sjgurps4e.sheet.item .common-weapon-info .data-item {
+  font-family: Signika, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  padding: 0px 3px 0px 0px;
+}
+.sjgurps4e.sheet.item .common-weapon-info .plus {
+  min-width: 15px;
+  max-width: 15px;
 }
 .sjgurps4e.sheet.item .item-TL {
   display: flex;
@@ -151,20 +214,32 @@ select:hover {
 .dr-panel {
   align-self: end;
 }
-.single-location-dr {
+.dr-panel .dr-header {
+  display: block;
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+  height: 25px;
+  max-height: 25px;
+  margin: 0px 0px 4px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  /*2px groove;*/
+}
+.dr-panel .single-location-dr {
   text-align: center;
   background-image: url(icons/kevlar.svg);
   background-repeat: no-repeat;
   background-size: 120px 120px;
 }
-.single-location-dr .location {
+.dr-panel .single-location-dr .location {
   font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
   font-size: 22px;
   opacity: 1;
   min-height: 120px;
   align-self: center;
 }
-.single-location-dr .location .body {
+.dr-panel .single-location-dr .location .body {
   padding-top: 25px;
 }
 .sjgurps4e .section-titles {
@@ -174,6 +249,7 @@ select:hover {
   font-weight: normal;
   text-align: center;
   height: 25px;
+  width: 99%;
   max-height: 25px;
   margin: 0px 0px 4px 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -448,7 +524,7 @@ h2.item-name {
   min-width: 66%;
 }
 .coreItems .coreInfoItems {
-  max-width: 33%;
+  min-width: 33%;
   display: flex;
   flex-direction: column;
 }
@@ -524,6 +600,14 @@ h2.item-name {
 }
 .info .appAndbio .mods-etc .half {
   width: 50%;
+}
+.info .appAndbio .physical-traits .characteristic-item {
+  margin: 0px 5px 0px 5px;
+  text-align: right;
+}
+.info .appAndbio .physical-traits .characteristic-item label {
+  font-size: 12px;
+  margin-right: 3px;
 }
 .info .traits {
   display: flex;

@@ -22,8 +22,21 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - add info and layout items to the rolldown for owned items</li>
 <li>TODO - verify all strings have been localized</li>
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
+<li>TODO - Implement Psionics</li>
+<li>TODO - Implement Techniques</li>
 <li>TODO - system settings - skin system based on 'theme' </li>
 <li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
 </ul>
+
+
+<h3>0.6.0</h3>
+
+<ul>
+    <li> this is considered the first playable implementation - All core rules are usable with this sheet</li>
+    <li> Implemented single location DR</li>
+    <li> Updated css layout to make sheet more organized</li>
+    <li> Implemented all rollable items</li>
+</ul>
+
 
 

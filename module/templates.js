@@ -31,6 +31,7 @@ export const preloadHandlebarsTemplates = async function() {
       //"systems/sjgurps4e/templates/items/parts/item-action.html",
       //"systems/sjgurps4e/templates/items/parts/item-activation.html",
       "systems/sjgurps4e/templates/items/parts/item-description.hbs",
+      "systems/sjgurps4e/templates/items/parts/common-weapon-data.hbs"
       //"systems/sjgurps4e/templates/items/parts/item-mountable.html"
     ];
   

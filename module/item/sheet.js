@@ -26,6 +26,9 @@ export default class ItemSheetGurps extends ItemSheet{
         const data = super.getData(options);
         data.labels = this.item.labels;
         data.config = CONFIG.sjgurps4e;
+        
+        //uncomment to debug item data
+        //console.log("SJGURPS 4E   |    Item Data: " + data.data.damageFormula);
 
         //Item Type and details
         data.itemClass = data.item.type.titleCase();
@@ -48,15 +51,38 @@ export default class ItemSheetGurps extends ItemSheet{
 
     }
 
+     /* -------------------------------------------- */
+  /*  Form Submission                             */
+	/* -------------------------------------------- */
+
+  /** @override */
+  _getSubmitData(updateData={}) {
+
+    // Create the expanded update data object
+    const fd = new FormDataExtended(this.form, {editors: this.editors});
+    let data = fd.toObject();
+    if ( updateData ) data = mergeObject(data, updateData);
+    else data = expandObject(data);
+
+    // Handle Damage array
+    const damage = data.data?.damage;
+    if ( damage ) damage.parts = Object.values(damage?.parts || {}).map(d => [d[0] || "", d[1] || "", d[2] || ""]);
+
+    // Return the flattened submission data
+    return flattenObject(data);
+  }
+
     activateListeners(html){
-        html.find('.rollable').click(this._onRoll.bind(this));
-
-
         super.activateListeners(html);
         //console.log("*-* activated listener");
 
-        if (!this.options.editable) {
-            //console.log("*-* editable");
+        if ( this.isEditable ) {
+            html.find('.rollable').click(this._onRoll.bind(this));
+            html.find('.damage-control').click(this._onDamageControl.bind(this));
+            }
+
+        if (!this.isEditable) {
+            //console.log("*-* not editable");
             return;
         }
     }
@@ -65,7 +91,7 @@ export default class ItemSheetGurps extends ItemSheet{
     
     _isLanguage(item) {
         const data = item.data;
-        console.log(data.traitType); 
+        //console.log(data.traitType); 
 
         if(data.traitType === "traitLanguage"){
             data.isLanguage = true;
@@ -116,6 +142,40 @@ export default class ItemSheetGurps extends ItemSheet{
             }
     }
 
+     /**
+   * Add or remove a damage part from the damage formula
+   * @param {Event} event     The original click event
+   * @return {Promise}
+   * @private
+   */
+    async _onDamageControl(event) {
+    event.preventDefault();
+    const a = event.currentTarget;
+        console.log(this.item.data.data);
+    // Add new damage component
+    
+    if ( a.classList.contains("add-damage") ) {
+        await this._onSubmit(event);  // Submit any unsaved changes
+        const damage = this.item.data.data.damage;
+        //console.log("peeking" + damage);
+        return this.item.update({"data.damage.parts": damage.parts.concat([["", "", ""]])});
+      }
+  
+      // Remove a damage component
+      if ( a.classList.contains("delete-damage") ) {
+        await this._onSubmit(event);  // Submit any unsaved changes
+        const li = a.closest(".damage-part");
+        const damage = duplicate(this.item.data.data.damage);
+        damage.parts.splice(Number(li.dataset.damagePart), 1);
+        return this.item.update({"data.damage.parts": damage.parts});
+      }
+  }
+
+ 
+    async _onSubmit(...args) {
+    if ( this._tabs[0].active === "details" ) this.position.height = "auto";
+    await super._onSubmit(...args);
+  }
 
 
 }
