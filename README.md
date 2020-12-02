@@ -29,6 +29,14 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 </ul>
 
 
+<h3>0.6.1</h3>
+<ul>
+    <li> updated data model for weapons to allow for multiple damage options</li>
+    <li> updated weapon item card to lay ground work for implementing proper damage rolls</li>
+    <li> added ability to add damage types to weapon items</li>
+</ul>
+
+
 <h3>0.6.0</h3>
 
 <ul>
