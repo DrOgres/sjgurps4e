@@ -215,6 +215,32 @@
             "native": "Native"
         }, 
 
+        "spellItems":{
+            "ench" : "Enchantment",
+            "info": "Information",
+            "regular" : "Regular",
+            "area" : "Area",
+            "special" : "Special",
+            "blocking" : "Blocking",
+            "melee" : "Melee",
+            "missile" : "Missile",
+            "bc" : "Body Control",
+            "ce" : "Communication/Empathay",
+            "know" : "Knowlege",
+            "ld" : "Light and Darkness",
+            "mc" : "Mind Control",
+            "meta" : "Meta-Spells",
+            "move" : "Movement",
+            "necro" : "Necromancy",
+            "pw" : "Protection and Warning",
+            "healing": "Healing",
+            "air": "Air",
+            "water" : "Water",
+            "fire" : "Fire",
+            "earth": "Earth",
+            "gate" : "Gate"
+        },
+
         "sheet":{
             "equipHint": "Toggle Equiped Status",
             "favHint" : "Add/Remove this item from your Favorites",
@@ -269,7 +295,13 @@
             "quirks": "Quirks",
             "perks": "Perks",
             "disadvantages": "Disadvantages",
-            "languages": "Languages"
+            "languages": "Languages",
+            "spellClass": "Spell Class",
+            "spellCollege": "Spell College",
+            "castingTime": "Casting Time",
+            "duration": "Duration",
+            "initCost": "Initial Cost",
+            "maintCost": "Maintenence Cost"
         },
         "itemName": "Name",
         "effectiveSkill": "Target",
@@ -311,7 +343,14 @@
         "cultureItem": "Cultural Familiarities",
         "status": "Status",
         "reputation" : "Reputation",
-        "modifier" : "Modifier"
+        "modifier" : "Modifier",
+        "min": "Minutes",
+        "sec": "Seconds",
+        "hour": "Hours",
+        "day": "Days",
+        "week": "Weeks",
+        "month": "Months",
+        "special": "Special"
     },
 
     "SETTINGS" : {

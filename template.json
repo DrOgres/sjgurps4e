@@ -129,11 +129,21 @@
             "itemPoints": 0,
             "itemFav" :{
                 "isFav": false
+            }, 
+            "itemSpell" : {
+                "class": "",
+                "college": "",
+                "castingTime" : "",
+                "castTimeUnit" : "",
+                "duration" : "",
+                "durationTimeUnit" : "",
+                "initialCost" : "",
+                "maintCost" : "" 
             } 
         },
 
         "skill" : {
-            "templates": ["itemType", "itemDescription", "itemPoints", "itemFav"],
+            "templates": ["itemType", "itemDescription", "itemPoints", "itemFav", "itemSpell"],
             "stat" : "",
             "difficulty": "Average",
             "level" : 1,

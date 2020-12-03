@@ -56,6 +56,10 @@
 .flexcol .flex4 {
   flex: 4;
 }
+.sjgurps4e.sheet.item .spell-parts {
+  padding-left: 0;
+  list-style: none;
+}
 .sjgurps4e.sheet.item .damage-parts {
   padding-left: 0;
   list-style: none;

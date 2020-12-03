@@ -1,0 +1,43 @@
+<div class="form-group-stacked">
+
+    <ol class="spell-parts">
+    <li class="flexrow"><lable>{{localize "sjgurps4e.sheet.spellClass"}}</lable><select name="data.class">
+        {{#select data.class}}
+        {{#each config.spellClass as |name class|}}
+        <option value="{{class}}"> {{localize name}}</option>
+        {{/each}}
+        {{/select}}
+     </select>
+     <label>{{localize "sjgurps4e.sheet.spellCollege"}}:</label>
+     <select name="data.college">
+        {{#select data.college}}
+        {{#each config.spellCollege as |name college|}}
+        <option value="{{college}}"> {{localize name}}</option>
+        {{/each}}
+        {{/select}}
+     </select>
+     </li>
+     <li class="flexrow">
+     <label>{{localize "sjgurps4e.sheet.castingTime"}}</label><input type="text" name="data.castingTime" value="{{data.castingTime}}" data-dtype="Number"/>
+     <select name="data.castTimeUnit">
+        {{#select data.castTimeUnit}}
+        {{#each config.timeUints as |name unit|}}
+        <option value="{{unit}}"> {{localize name}}</option>
+        {{/each}}
+        {{/select}}
+     </select>
+    <label>Duration</label><input type="text" name="data.duration" value="{{data.duration}}" data-dtype="Number"/>
+    <select name="data.durationTimeUnit">
+        {{#select data.durationTimeUnit}}
+        {{#each config.timeUints as |name unit|}}
+        <option value="{{unit}}"> {{localize name}}</option>
+        {{/each}}
+        {{/select}}
+     </select>
+     </li>
+     <li class="flexrow">
+    <label>{{localize "sjgurps4e.sheet.initCost"}}</label><input type="text" name="data.initialCost" value="{{data.initialCost}}"/>
+    <label>{{localize "sjgurps4e.sheet.maintCost"}}</label><input type="text" name="data.maintCost" value="{{data.maintCost}}"/>
+    </li>
+    </ol>
+</div>

@@ -118,6 +118,46 @@ sjgurps4e.damageType = {
     "tox": "sjgurps4e.damageType.tox"
 };
 
+sjgurps4e.spellClass ={
+    "ench": "sjgurps4e.spellItems.ench",
+    "info": "sjgurps4e.spellItems.info",
+    "regular" : "sjgurps4e.spellItems.regular",
+    "area" : "sjgurps4e.spellItems.area",
+    "special" : "sjgurps4e.spellItems.special",
+    "blocking" : "sjgurps4e.spellItems.blocking",
+    "melee" : "sjgurps4e.spellItems.melee",
+    "missile" : "sjgurps4e.spellItems.missile"
+}
+
+sjgurps4e.spellCollege ={
+    "bc" : "sjgurps4e.spellItems.bc",
+    "ce" : "sjgurps4e.spellItems.ce",
+    "ench": "sjgurps4e.spellItems.ench",
+    "know" : "sjgurps4e.spellItems.know",
+    "ld" : "sjgurps4e.spellItems.ld",
+    "mc" : "sjgurps4e.spellItems.mc",
+    "meta" : "sjgurps4e.spellItems.meta",
+    "move" : "sjgurps4e.spellItems.move",
+    "necro" : "sjgurps4e.spellItems.necro",
+    "pw" : "sjgurps4e.spellItems.pw",
+    "healing": "sjgurps4e.spellItems.healing",
+    "air": "sjgurps4e.spellItems.air",
+    "water" : "sjgurps4e.spellItems.water",
+    "fire" : "sjgurps4e.spellItems.fire",
+    "earth": "sjgurps4e.spellItems.earth",
+    "gate" : "sjgurps4e.spellItems.gate"
+}
+
+sjgurps4e.timeUints={
+    "min": "sjgurps4e.min",
+    "sec": "sjgurps4e.sec",
+    "hour": "sjgurps4e.hour",
+    "day": "sjgurps4e.day",
+    "week": "sjgurps4e.week",
+    "month": "sjgurps4e.month",
+    "special": "sjgurps4e.special"
+}
+
 sjgurps4e.itemType ={
     "trait": "sjgurps4e.trait",
     "skill": "sjgurps4e.skill",

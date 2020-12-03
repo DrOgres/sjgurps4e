@@ -8,17 +8,14 @@ Layout and HTML for the Notes tab was adapted from alt5e by Sky.
 https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
-<li>TODO - add equip toggle on inventory items </li>
 <li>TODO - calculate DR by location based on equiped status of appropriate items (currently implemented the most basic all damage to center mass rules</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
-<li>TODO - update weapon items with damage formula to facilitate roll generation</li>
 <li>TODO - add damage roll to chat card on weapon rolls</li>
 <li>TODO - create character template item </li>
 <li>TODO - prevent duplicate skills on character sheet </li>
 <li>TODO - Sucess/Failure and margin on Rolls</li>
 <li>TODO - Call out Crit/Fumble on rolls</li>
 <li>TODO - Beutification and Layout optimization - 50% complete</li>
-<li>TODO - add fields to spell items for extra data</li>
 <li>TODO - add info and layout items to the rolldown for owned items</li>
 <li>TODO - verify all strings have been localized</li>
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
@@ -26,6 +23,12 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - Implement Techniques</li>
 <li>TODO - system settings - skin system based on 'theme' </li>
 <li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
+</ul>
+
+<h3>0.6.2</h3>
+<ul>
+    <li> added spell information to data model
+    <li> added spell information fields to item sheet
 </ul>
 
 
