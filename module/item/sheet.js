@@ -29,6 +29,8 @@ export default class ItemSheetGurps extends ItemSheet{
         
         //uncomment to debug item data
         //console.log("SJGURPS 4E   |    Item Data: " + data.data.damageFormula);
+        data["hitLocationScope"] = game.settings.get("sjgurps4e", "hitLocationScope");
+        console.log("SJGURPS4E  | hitLocationScope: " + data.hitLocationScope);
 
         //Item Type and details
         data.itemClass = data.item.type.titleCase();
@@ -121,7 +123,7 @@ export default class ItemSheetGurps extends ItemSheet{
 
     
     _updateObject(event, formData){
-        //console.log("*-* updated");
+       
         // Update the Item
         super._updateObject(event, formData);
     }

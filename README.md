@@ -8,7 +8,7 @@ Layout and HTML for the Notes tab was adapted from alt5e by Sky.
 https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
-<li>TODO - calculate DR by location based on equiped status of appropriate items (currently implemented the most basic all damage to center mass rules</li>
+<li>TODO - add second location to equipment for DR application</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
 <li>TODO - add damage roll to chat card on weapon rolls</li>
 <li>TODO - create character template item </li>
@@ -21,8 +21,18 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
 <li>TODO - Implement Psionics</li>
 <li>TODO - Implement Techniques</li>
+<li>TODO - Implement NPC/Monser 'card' for a lightweight npc record</li>
 <li>TODO - system settings - skin system based on 'theme' </li>
 <li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
+</ul>
+
+<h3>0.6.3</h3>
+<ul>
+    <li> fixed equipment options checkboxes resetting when added to character sheet</li>
+    <li> settings for dr scope now reloads the app making changes happen on character sheets</li>
+    <li> armor now calculates dr based on location depending on scope.</li>
+    <li> Note armor items present valid locations based on scope moving scope will require that you set the correct scope</li>
+    <li> implemented flexable/concealable armor and applied the stacking of those dc's by location<li>
 </ul>
 
 <h3>0.6.2</h3>

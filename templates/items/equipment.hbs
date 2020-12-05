@@ -40,9 +40,21 @@
                 <label>{{localize "sjgurps4e.itemProperties.location"}} </label>
                 <select name="data.location">
                 {{#select data.location}}
+                {{#if (eq hitLocationScope "basic")}}
+                  {{#each config.basicLocations as |name location|}}
+                  <option value="{{location}}">{{localize name}}</option>
+                  {{/each}}
+                {{/if}}
+                {{#if (eq hitLocationScope "intermediate")}}
                 {{#each config.locations as |name location|}}
                 <option value="{{location}}">{{localize name}}</option>
                 {{/each}}
+                {{/if}}
+                {{#if (eq hitLocationScope "detailed")}}
+                {{#each config.expandedLocations as |name location|}}
+                <option value="{{location}}">{{localize name}}</option>
+                {{/each}}
+                {{/if}}
                 {{/select}}
                 </select>
               </div> 

@@ -69,7 +69,9 @@
                "value": 0
            },
            "primeLang" : "Primary Language",
-           "singleDR" : 0
+           "singleDR" : 0,
+           "intermediateDR" : [],
+           "detailedDR" : []
 
         }
     },
@@ -172,10 +174,15 @@
             "equiped" : false,
             "concealable": false,
             "flexable" : false,
-            "secondLocation": "",
+            "secondLocation": "none",
             "splitDR" : false,
             "crushingDR" : 0,
-            "piercingDR" : 0
+            "piercingDR" : 0,
+            "hasDr": false,
+            "hasDb": false,
+            "hasHp" : false,
+            "hasLc": false,
+            "isEquipable": false
         },
         "trait": {
             "templates" : ["itemDescription", "itemType", "itemNotes", "itemPoints", "itemFav"],

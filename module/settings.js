@@ -1,5 +1,7 @@
 export const registerSystemSettings = function() {
 
+    
+
     //ask for DR usage variant
     // Basic - all damage to center mass only use torso DR
     // Intermediate - expand to 6 hit locations arm/leg/foot/hand/head/toros
@@ -14,7 +16,8 @@ export const registerSystemSettings = function() {
             "basic": "SETTINGS.hitScopeBasic",
             "intermediate" : "SETTINGS.hitScopeIntermediate",
             "detailed": "SETTINGS.hitScopeDetailed"
-        }
+        },
+        onChange: s=> {location.reload();}
 
     });
 
@@ -41,6 +44,7 @@ export const registerSystemSettings = function() {
     config: true,
     default: false,
     type: Boolean
+    
   });
 
 }

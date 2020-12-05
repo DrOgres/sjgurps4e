@@ -185,13 +185,21 @@ sjgurps4e.description = {
     "description" : "sjgurps4e.Description-Tab"
 };
 
+sjgurps4e.basicLocations ={
+    "body" : "sjguprs4e.itemLocation.worn",
+    "back": "sjgurps4e.itemLocation.back",
+    "pack": "sjgurps4e.itemLocation.pack",
+    "belt": "sjgurps4e.itemLocation.belt",
+    "none": "sjgurps4e.itemLocation.none"
+}
+
 sjgurps4e.locations = {
    "head" : "sjgurps4e.itemLocation.head",
    "torso":  "sjgurps4e.itemLocation.torso",
-   "arm": "sjgurps4e.itemLocation.arm",
-   "hand": "sjgurps4e.itemLocation.hand",
-   "leg": "sjgurps4e.itemLocation.leg",
-   "foot": "sjgurps4e.itemLocation.foot", 
+   "arms": "sjgurps4e.itemLocation.arms",
+   "hands": "sjgurps4e.itemLocation.hands",
+   "legs": "sjgurps4e.itemLocation.legs",
+   "feet": "sjgurps4e.itemLocation.feet", 
    "back": "sjgurps4e.itemLocation.back",
    "pack": "sjgurps4e.itemLocation.pack",
    "belt": "sjgurps4e.itemLocation.belt",
@@ -200,6 +208,8 @@ sjgurps4e.locations = {
 
 sjgurps4e.expandedLocations ={
     "head" : "sjgurps4e.itemLocation.head",
+    "skull" : "sjgurps4e.itemLocation.skull",
+    "eyes": "sjgurps4e.itemLocation.eyes", 
     "body" : "sjgurps4e.itemLocation.body",
     "neck": "sjgurps4e.itemLocation.neck",
     "torso":  "sjgurps4e.itemLocation.torso",
@@ -213,6 +223,10 @@ sjgurps4e.expandedLocations ={
     "lHand": "sjgurps4e.itemLocation.lHand",
     "lLeg": "sjgurps4e.itemLocation.lLeg",
     "lFoot": "sjgurps4e.itemLocation.lFoot",
+    "arms": "sjgurps4e.itemLocation.arms",
+    "hands": "sjgurps4e.itemLocation.hands",
+    "legs": "sjgurps4e.itemLocation.legs",
+    "feet": "sjgurps4e.itemLocation.feet", 
     "fullSuit": "sjgurps4e.itemLocation.fullSuit",
     "back": "sjgurps4e.itemLocation.back",
     "pack": "sjgurps4e.itemLocation.pack",

@@ -185,11 +185,14 @@
 
         "itemLocation": {
             "head" : "Head",
+            "skull" : "Skull",
+            "eyes" : "Eyes",
+            "face" : "Face",
             "torso":  "Torso",
-            "arm": "Arms",
-            "hand": "Hands",
-            "leg": "Legs",
-            "foot": "Feet",
+            "arms": "Arms",
+            "hands": "Hands",
+            "legs": "Legs",
+            "feet": "Feet",
             "body" : "Body",
             "neck": "Neck",
             "groin": "Groin",
@@ -203,10 +206,11 @@
             "lLeg": "Left Leg",
             "lFoot": "Left Foot",
             "fullSuit": "Full Suit",
-            "back": "Back",
+            "back": "Carried",
             "pack": "Pack",
             "belt": "Belt",
-            "none": "None"
+            "none": "None",
+            "worn" : "Worn on Body"
         },
         "langComp":{
             "none" : "None",
@@ -354,9 +358,9 @@
     },
 
     "SETTINGS" : {
-        "hitScopeBasic": "Basic - All to Torso",
+        "hitScopeBasic": "Basic - All to Torso/body",
         "hitScopeIntermediate" : "Intermediate - 6 Hit Locations",
-        "hitScopeDetailed" : "Detailed - 12 Hit Locations",
+        "hitScopeDetailed" : "Detailed - 14 Hit Locations",
         "hitLocationScope": "Hit Location Scope",
         "InitTBL": "increase decimal portion of speed with a 1d6 roll by default.",
         "InitTBN": "Initiative Tiebreaker"
