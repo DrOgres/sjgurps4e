@@ -497,8 +497,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let modifier = 0;
         let skillUsedName = '';
         let damageFormulas = [];
-        let damageType = '';
+        let damageType = [];
+        let baseType =[];
         let isweapon = false;
+        let chatDesc ='';
         //console.log(event);
         // find out what kind of thing we are rolling on
         // items, skills, spells, stats etc.
@@ -515,6 +517,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             itemId = element.closest(".item").dataset.itemid;
             // get the item object of the with this ID
             let item = this.actor.getOwnedItem(itemId);
+            chatDesc = item.data.data.description.value;
             //if we are a weapon we need some information so test that 
             if(item.data.data.itemType == "weaponMelee" || item.data.data.itemType == "weaponRanged"){
                 isweapon = true;
@@ -526,16 +529,20 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                     if(currentParts[0] == "swing"){
                         console.log("GURPS 4E |  baseSW " + this.actor.data.data.damageSw);
                         damageFormulas[n] = this.actor.data.data.damageSw + "+" + currentParts[1];
-                        damageType = currentParts[2];
+                        damageType[n] = currentParts[2];
+                        baseType[n] = "Swing Damage";
                     } else if (currentParts[0] == "thrust"){
                         damageFormulas[n] = this.actor.data.data.damageThr + "+" + currentParts[1];
-                        damageType = currentParts[2];
+                        damageType[n] = currentParts[2];
+                        baseType[n] = "Thrust Damage";
                     } else if (currentParts[0] == "die"){
                         damageFormulas[n] = currentParts[1];
-                        damageType = currentParts[2];
+                        damageType[n] = currentParts[2];
+                        baseType[n] = "Damage";
                     } else if (currentParts[0] == "spec"){
                         damageFormulas[n] = '';
-                        damageType = "special";
+                        damageType[n] = "special";
+                        baseType[n] = "Special Damage See Notes.";
                     }
                 }
             }
@@ -625,6 +632,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let item = this.actor.getOwnedItem(itemId);
             let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
             baseTarget = effectiveTarget;
+            chatDesc = item.data.data.description.value;
+            //console.log(chatDesc);
         } else if (dataset.source == 'dodge'){
             baseTarget = Number(dataset.target); 
         } else if (dataset.source == 'parry'){
@@ -656,15 +665,31 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             <div class="sep">|</div>
                             <div>Target is ` + modedTarget +`</div>
                         </div>
-                        <div><button data-action="damage" data-roll="` + damageFormulas + `">Roll Damage!</button>
-                        </div>`  : '';
+                        <div>` + chatDesc + '</div>'  : '';
                         
                         roll.roll().toMessage({
                         speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
                         flavor: label
                         });
+                        for(let n=0; n<damageFormulas.length;n++){
+                        roll = new Roll(damageFormulas[n], this.actor.data.data);
+                        label = `<div class=flexrow><div>` + baseType[n] + `</div>
+                        <div> ` + damageType[n] + `</div></div>`; 
+                        roll.roll().toMessage({
+                            speaker:ChatMessage.getSpeaker({actor: this.actor}),
+                            flavor: label
+                        });
+                        }
                     } else {
-                        let label = dataset.label ? `<div class="chat-header flexrow"><img class="portrait" width="48" height="41.5"  src="` +this.actor.img+ `"/><h1>${dataset.label} </h1></div> Target is ` + modedTarget  : '';
+                        let label = dataset.label ? 
+                        `<div class="chat-header flexrow">
+                            <img class="portrait" width="48" height="41.5"  src="` +this.actor.img+ `"/>
+                            <h1>${dataset.label} </h1>
+                        </div>
+                        <div class="skill-info-chat flexrow"> 
+                        Target is ` + modedTarget + `
+                        </div>
+                        <div>` + chatDesc + `</div>`  : '';
                         roll.roll().toMessage({
                         speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor }),
                         flavor: label

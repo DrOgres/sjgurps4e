@@ -10,7 +10,7 @@ Layout and HTML for the Notes tab was adapted from alt5e by Sky.
 https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
-<li>TODO - add damage roll to chat card on weapon rolls</li>
+<li>TODO - beautify and consolidate items in chat cards</li>
 <li>TODO - add second location to equipment for DR application</li>
 <li>TODO - add damage formula as an option for spells as well as ranged or melee options</li>
 <li>TODO - add damage roll to chat card on spell rolls where applicable</li>
@@ -28,6 +28,11 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - Implement NPC/Monser 'card' for a lightweight npc record</li>
 <li>TODO - system settings - skin system based on 'theme' </li>
 <li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
+</ul>
+
+<h3>0.6.5</h3>
+<ul>
+    <li>Implemented absolute basic damage rolls on attacks. currently works only on weapons will add spells etc later</li>
 </ul>
 
 <h3>0.6.4</h3>

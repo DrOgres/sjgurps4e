@@ -251,7 +251,7 @@
   align-items: flex-end;
   border-color: #c53131;
   border-bottom-style: groove;
-  background-image: linear-gradient(#ffffff00, #c53131);
+  background-image: linear-gradient(#ffffff00, #c5313188);
 }
 .chat-header .portrait {
   max-width: 53px;
