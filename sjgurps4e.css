@@ -56,6 +56,38 @@
 .flexcol .flex4 {
   flex: 4;
 }
+.chat-message {
+  background-color: antiquewhite;
+  background-image: none;
+}
+.sidebar-tab {
+  background-color: dimgrey;
+  background-image: none;
+}
+.sidebar-tab button {
+  background: antiquewhite;
+}
+.sidebar-tab .directory-header .header-search {
+  color: antiquewhite;
+}
+.sidebar-tab .directory-header .header-search input {
+  background-color: antiquewhite;
+  background-image: none;
+}
+.sidebar-tab #chat-controls {
+  color: antiquewhite;
+}
+.sidebar-tab #chat-controls .roll-type-select {
+  background: antiquewhite;
+}
+.sidebar-tab #chat-message {
+  background-color: antiquewhite;
+  background-image: none;
+}
+.window-app .window-content {
+  background-color: antiquewhite;
+  background-image: url(./img/HEX.png);
+}
 .sjgurps4e.sheet.item .spell-parts {
   padding-left: 0;
   list-style: none;
@@ -122,7 +154,7 @@
   margin: 0%;
   padding: 0;
   list-style: none;
-  border-top: 2px groove white;
+  border-top: 2px groove antiquewhite;
   border-bottom: none;
   font-size: 20px;
   color: dimgrey;
@@ -198,6 +230,42 @@
 }
 .sjgurps4e.sheet.item .sheet-body .form-group {
   overflow: hidden;
+}
+.skill-info-chat {
+  flex: 1 0 auto;
+  justify-content: center;
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: center;
+}
+.skill-info-chat .sep {
+  max-width: 5px;
+}
+.fourteen-location-dr {
+  min-width: 170px;
+}
+.chat-header {
+  flex: 0 1 0;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border-color: #c53131;
+  border-bottom-style: groove;
+  background-image: linear-gradient(#ffffff00, #c53131);
+}
+.chat-header .portrait {
+  max-width: 53px;
+  border: none;
+  padding: 0 5px 0 0;
+}
+.chat-header h1 {
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 2em;
+  font-weight: 700;
+  text-align: right;
+  align-self: flex-end;
+  border: none;
+  color: black;
 }
 .sep {
   font-size: 18px;
@@ -414,34 +482,10 @@ select:hover {
   font-weight: lighter;
   vertical-align: baseline;
 }
-.item-control {
-  padding: 0px 3px 0px 3px;
-  max-width: fit-content;
-}
 .item-control:hover {
   color: #c53131;
   font-weight: 700;
   text-shadow: none;
-}
-.item-topic {
-  text-align: center;
-  padding: 0px 2px 0px 2px;
-}
-h2.item-name {
-  margin: 0px;
-  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-  font-size: 17px;
-  font-weight: normal;
-  color: black;
-  border-bottom: none;
-}
-.item-name {
-  flex-grow: 5;
-}
-.react-name {
-  flex-grow: 1;
-  border-bottom: none;
-  align-content: flex-end;
 }
 .inventory-list {
   font-family: "Signika", sans-serif;
@@ -464,6 +508,7 @@ h2.item-name {
   border-bottom: 1px solid #c53131;
 }
 .inventory-list .inventory-totals .money {
+  padding-top: 5px;
   max-width: 30%;
   text-align: left;
 }
@@ -484,39 +529,85 @@ h2.item-name {
   border: none;
   border-radius: 3px;
   height: 28px;
-  align-content: center;
+  align-items: center;
   justify-content: flex-end;
 }
-.inventory-list .inventory-header .item .item-controls {
-  flex: 0 0 70px;
-  justify-content: center;
+.inventory-list .inventory-header h2.item-name {
+  border-bottom: none;
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.inventory-list .inventory-header .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  text-align: left;
+  align-items: center;
+}
+.inventory-list .inventory-header .item-topic.item-skill {
+  flex: 0 0 80px;
+  border-left: 1px solid #88888855;
   text-align: center;
-  margin: auto;
-  color: dimgrey;
 }
-.inventory-list .item {
-  flex: 0 1 30px;
-  background-size: 30px;
-  background-position: center;
-  border: none;
-  border-radius: 5px;
-  margin-right: 5px;
-  justify-content: flex-end;
+.inventory-list .inventory-header .item-topic.item-mod {
+  flex: 0 0 80px;
+  border-left: 1px solid #88888855;
+  text-align: center;
 }
-.inventory-list .item .flexrow {
-  margin: 1px 0px 0px 0px;
+.inventory-list .inventory-header .item-topic {
+  flex: 0 0 60px;
+  border-left: 1px solid #88888855;
+  text-align: center;
+}
+.inventory-list .inventory-header .item-topic.item-diff {
+  flex: 0 0 100px;
+  border-left: 1px solid #88888855;
+  text-align: center;
+}
+.inventory-list .inventory-header .item-controls {
+  flex: 0 0 70px;
+  text-align: center;
+  border-left: 1px solid #88888855;
+}
+.inventory-list .item-list .item-name {
+  flex: 2;
+  margin: 0;
+  overflow: hidden;
+  text-align: left;
+  align-items: center;
+}
+.inventory-list .item-list .item-topic.item-skill {
+  flex: 0 0 80px;
+  border-left: 1px solid #88888855;
+  text-align: center;
+}
+.inventory-list .item-list .item-topic.item-mod {
+  flex: 0 0 80px;
+  border-left: 1px solid #88888855;
+  align-content: center;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.inventory-list .item-list .item-topic {
+  flex: 0 0 60px;
+  border-left: 1px solid #88888855;
+  text-align: center;
+}
+.inventory-list .item-list .item-topic.item-diff {
+  flex: 0 0 100px;
+  border-left: 1px solid #88888855;
+  text-align: center;
+}
+.inventory-list .item-list .item-controls {
+  flex: 0 0 70px;
+  text-align: center;
+  border-left: 1px solid #88888855;
 }
 .inventory-list .item-list .flexrow:nth-child(odd) {
   background: rgba(0, 0, 0, 0.07);
   list-style-type: none;
-}
-.inventory-list h2 {
-  display: flex;
-  flex-direction: row;
-}
-.inventory-list h2 .item-create {
-  margin-left: auto;
-  font-size: -7rem;
 }
 .coreItems {
   display: flex;
@@ -531,6 +622,11 @@ h2.item-name {
   min-width: 33%;
   display: flex;
   flex-direction: column;
+}
+.coreItems .coreInfoItems .base-damage-block {
+  text-align: center;
+  font-size: 1.5em;
+  color: #545454;
 }
 .coreItems .active-def-block {
   text-align: center;

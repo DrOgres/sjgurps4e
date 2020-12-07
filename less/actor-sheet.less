@@ -1,6 +1,53 @@
 @import "./config.less";
 
 
+
+
+.skill-info-chat{
+    flex: 1 0 auto;
+    justify-content: center;
+    font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    .sep{
+        max-width: 5px;
+    }
+}
+
+.fourteen-location-dr{
+    min-width: 170px;
+}
+.chat-header{
+    flex: 0 1 0;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-color: @highlight-color;
+    border-bottom-style: groove;
+    background-image: linear-gradient(@transparent-color, @highlight-color );
+
+    .portrait{
+        
+        max-width: 53px;
+        border: none;
+        padding: 0 5px 0 0;
+
+    }
+    h1{
+        font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+        font-size: 2em;
+        font-weight: 700;
+        text-align: right;
+        align-self: flex-end;
+        border: none;
+        
+        color: @black;
+    }
+    
+    
+
+}
+
 .sep{
     font-size: 18px;
     color: @light-color;
@@ -145,7 +192,7 @@ select:hover{
                 padding: 1px;
             }
         }
-
+ 
         img.logo {
             height: 100%;
             border: none;

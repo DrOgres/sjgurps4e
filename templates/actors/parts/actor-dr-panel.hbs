@@ -19,7 +19,7 @@
     {{!-- Intermediate 6 location DR Panel --}}
     {{#if (eq hitLocationScope "intermediate")}}
     <div class="six-location-dr panel-body"> 
-        <ol>
+        <ol class="item-list">
             <li>{{localize "sjgurps4e.itemLocation.head"}} : {{lookup data.intermediateDR 0}}</li>
             <li>{{localize "sjgurps4e.itemLocation.body"}} : {{lookup data.intermediateDR 1}}</li>
             <li>{{localize "sjgurps4e.itemLocation.arms"}} : {{lookup data.intermediateDR 2}}</li>
@@ -29,16 +29,18 @@
         </ol>
     </div>
     {{/if}}
-    {{!-- Detailed 12 location DR Panel  --}}
+    {{!-- Detailed 14 location DR Panel  --}}
     {{#if (eq hitLocationScope "detailed")}}
-    <div class="fourteen-location-dr panel-body"> 
-        <ol>
+    <div class="fourteen-location-dr panel-body flexrow"> 
+        <ol class="item-list">
             <li>{{localize "sjgurps4e.itemLocation.face"}}  : {{lookup data.detailedDR 0}}</li>
             <li>{{localize "sjgurps4e.itemLocation.eyes"}}  : {{lookup data.detailedDR 1}}</li>
             <li>{{localize "sjgurps4e.itemLocation.skull"}}  : {{lookup data.detailedDR 2}}</li>
             <li>{{localize "sjgurps4e.itemLocation.neck"}}  : {{lookup data.detailedDR 3}}</li>
             <li>{{localize "sjgurps4e.itemLocation.torso"}}  : {{lookup data.detailedDR 4}}</li>
             <li>{{localize "sjgurps4e.itemLocation.groin"}}  : {{lookup data.detailedDR 5}}</li>
+        </ol>
+        <ol class="item-list">    
             <li>{{localize "sjgurps4e.itemLocation.rArm"}}  : {{lookup data.detailedDR 6}}</li>
             <li>{{localize "sjgurps4e.itemLocation.lArm"}}  : {{lookup data.detailedDR 7}}</li>
             <li>{{localize "sjgurps4e.itemLocation.rHand"}} : {{lookup data.detailedDR 8}}</li>

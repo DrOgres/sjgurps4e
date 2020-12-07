@@ -52,7 +52,11 @@
             "secondLocation" : "Second Location",
             "piercingDR" : "Piercing/Cutting DR",
             "crushingDR" : "Crushing DR",
-            "trait" : "Trait Type"
+            "trait" : "Trait Type",
+            "concealable" : "Concealable",
+            "flexable" : "Flexable",
+            "splitDR" : "Split DR",
+            "spell" : "Spell"
         },
 
         "weaponSkill" : {
@@ -305,7 +309,8 @@
             "castingTime": "Casting Time",
             "duration": "Duration",
             "initCost": "Initial Cost",
-            "maintCost": "Maintenence Cost"
+            "maintCost": "Maintenence Cost",
+            "notes": "Notes"
         },
         "itemName": "Name",
         "effectiveSkill": "Target",

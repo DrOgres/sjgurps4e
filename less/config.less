@@ -20,8 +20,9 @@
 
 @black: black;
 @highlight-color: #c53131;
-@accent-color: white;
+@accent-color: antiquewhite;
 @light-color: dimgrey;
+@light-shade: #88888855;
 @mid-shadow-color: #545454;
 @transparent-color: #ffffff00;
 @offwhite: #c9c7b8;
@@ -62,4 +63,47 @@
     .flex3 { flex: 3; }
     .flex4 { flex: 4; }
   }
+
+
+  //override default settings of the foundry css
+.chat-message{
+  background-color: @accent-color;
+  background-image: none;
+}
   
+.sidebar-tab{
+
+  button{
+    background: @accent-color;
+  }
+  
+  .directory-header{
+  .header-search{
+    color: @accent-color;
+    input{
+      background-color: @accent-color;
+      background-image: none;
+    }
+  }
+}
+  background-color: @light-color;
+  background-image: none;
+  #chat-controls{
+    color: @accent-color;
+      .roll-type-select{
+        background: @accent-color;
+      }
+  }
+  #chat-message{
+    background-color: @accent-color;
+    background-image: none;
+  }
+    
+}
+
+.window-app .window-content{
+  background-color: @accent-color;
+  background-image: url(./img/HEX.png);
+  
+  
+}

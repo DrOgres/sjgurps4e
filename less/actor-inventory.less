@@ -1,9 +1,6 @@
 @import "./config.less";
 
-.item-control{
-    padding: 0px 3px 0px 3px;
-    max-width: fit-content; 
-}
+
 
 .item-control:hover{
     color: @highlight-color;
@@ -12,30 +9,8 @@
 
 }
 
-.item-topic{
-    text-align: center;
-    padding: 0px 2px 0px 2px;
-}
 
-h2.item-name{
-    margin: 0px;
-    font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-	font-size: 17px;
-    font-weight: normal;
-    color: @black;
-    border-bottom: none;
-    
-}
 
-.item-name{
-    flex-grow: 5;
-}
-
-.react-name{
-    flex-grow: 1;
-    border-bottom: none;
-    align-content: flex-end;
-}
 
 .inventory-list{
     font-family: "Signika", sans-serif;
@@ -61,6 +36,7 @@ h2.item-name{
         text-align: right;
         border-bottom: 1px solid @highlight-color;
         .money{
+            padding-top: 5px;
             max-width: 30%;
             text-align: left;
             input[type=text], select{
@@ -83,47 +59,111 @@ h2.item-name{
         border: none;
         border-radius: 3px;
         height: 28px;
-        align-content: center;
-        justify-content: flex-end;
+        align-items: center;
+        justify-content: flex-end;  
 
-        
-        .item .item-controls{
-            flex: 0 0 70px;
-	        justify-content: center;
-	        text-align: center;
-	        margin: auto;
-	        color: @light-color;
+        h2.item-name{
+            border-bottom: none;
+            font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+	        font-size: 1.2em;
+	        font-weight: 700;
         }
 
-      
+        .item-name{
+            flex: 2;
+            margin: 0;
+            overflow: hidden;
+            text-align: left;
+            align-items: center;
+        }
+
+        .item-topic.item-skill{
+            flex: 0 0 80px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+        }
+
+        .item-topic.item-mod{
+            flex: 0 0 80px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+
+        }
+
+        .item-topic{
+            flex: 0 0 60px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+        }
+
+        .item-topic.item-diff{
+            flex: 0 0 100px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+        }
+
+        .item-controls{
+            flex: 0 0 70px;
+            text-align: center;
+            border-left: 1px solid @light-shade;
+        }
+
 
     }
 
-    .item {
-        flex: 0 1 30px;
-        background-size: 30px;
-        background-position: center;
-        border: none;
-        border-radius: 5px;
-        margin-right: 5px;
-        justify-content: flex-end;
+    .item-list{
+        
+        .item-name{
+            flex: 2;
+            margin: 0;
+            overflow: hidden;
+            text-align: left;
+            align-items: center;
+            
+        }
+        .item-topic.item-skill{
+            flex: 0 0 80px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+        }
+        .item-topic.item-mod{
+            flex: 0 0 80px;
+            border-left: 1px solid @light-shade;
+            align-content: center;
+            text-align: center;
+            padding-left: 5px;
+            padding-right: 5px;
+
+        }
+
+        .item-topic{
+            flex: 0 0 60px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+        }
+        .item-topic.item-diff{
+            flex: 0 0 100px;
+            border-left: 1px solid @light-shade;
+            
+            text-align: center;
+        }
+
+        .item-controls{
+            flex: 0 0 70px;
+            text-align: center;
+            border-left: 1px solid @light-shade;
+        }
     }
-    .item .flexrow{
-        margin: 1px 0px 0px 0px;
-    }
+
     .item-list .flexrow:nth-child(odd){
         background: rgba(0, 0, 0, 0.07);
         list-style-type: none;
     }
-
-h2{
-    display: flex;
-    flex-direction: row;
-
-    .item-create {
-        margin-left: auto;
-        font-size: -7rem;
-    }
-}
 
 }

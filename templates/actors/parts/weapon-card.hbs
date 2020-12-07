@@ -2,7 +2,7 @@
     <img class="rollable" data-source="item" data-target="{{#getRollTarget}}{{/getRollTarget}}{{data.skillMod}}"  data-roll="3d6" data-label="{{name}} Attack!"id="icon" src="{{img}}" height = "24px">
     <a class="item-detail">{{name}}</a>   
 </div>
-    <div class="item-topic skillToRoll">
+    <div class="item-topic item-skill">
         <div class="form-group weapon-inine">
             <div class="skillselect">
                 <select class="inline-edit" name="data.skillUsed" data-field="data.skillUsed">
@@ -15,11 +15,10 @@
             </div>
         </div>
     </div>
-    <div class="item-topic skill-mod">
-        <div class="form-group mod-number">
-            <input class="inline-edit" name="data.skillMod" data-field="data.skillMod" type="text" placeholder="0" value ="{{data.skillMod}}" data-dtype="Number" />
-        </div>
+    <div class="form-group item-topic item-mod">
+        <input class="inline-edit" name="data.skillMod" data-field="data.skillMod" type="text" placeholder="0" value ="{{data.skillMod}}" data-dtype="Number" />
     </div>
+
     <div class="item-topic">
      {{data.weight}}
     </div>

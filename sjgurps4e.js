@@ -95,9 +95,13 @@ Hooks.once("init", function (){
 
 })
 
-Hooks.once("setup", function(){
 
-
-
+/**
+ * Set default values for new actors' tokens
+ */
+Hooks.on("preCreateActor", (createData) =>{
+  // Set custom default token
+  if (!createData.img)
+    createData.img = "systems/sjgurps4e/icons/new_actor.png"
 })
 
