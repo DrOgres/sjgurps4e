@@ -3,49 +3,9 @@
 
 
 
-.skill-info-chat{
-    flex: 1 0 auto;
-    justify-content: center;
-    font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-    font-size: 1.5em;
-    font-weight: 700;
-    text-align: center;
-    .sep{
-        max-width: 5px;
-    }
-}
 
 .fourteen-location-dr{
     min-width: 170px;
-}
-.chat-header{
-    flex: 0 1 0;
-    justify-content: flex-start;
-    align-items: flex-end;
-    border-color: @highlight-color;
-    border-bottom-style: groove;
-    background-image: linear-gradient(@transparent-color, @50-cent-highlight );
-
-    .portrait{
-        
-        max-width: 53px;
-        border: none;
-        padding: 0 5px 0 0;
-
-    }
-    h1{
-        font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-        font-size: 2em;
-        font-weight: 700;
-        text-align: right;
-        align-self: flex-end;
-        border: none;
-        
-        color: @black;
-    }
-    
-    
-
 }
 
 .sep{
@@ -73,7 +33,7 @@ select:hover{
     .dr-header{
         display: block;
 	    font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-	    font-size: 22px;
+	    font-size: 1.2rem;
 	    font-weight: normal;
 	    text-align: center;
         height: 25px;
@@ -88,11 +48,13 @@ select:hover{
         background-image: url(icons/kevlar.svg);
         background-repeat: no-repeat;
         background-size: 120px 120px;
+        min-width: 120px;
+        min-height: 120px;
         
 
         .location{
             font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-            font-size: 22px;
+            font-size: 1.2rem;
             opacity: 1.0;
             min-height: 120px;
             align-self: center;
@@ -107,7 +69,7 @@ select:hover{
 .sjgurps4e .section-titles {
 	display: inline-block;
 	font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-	font-size: 22px;
+	font-size: 1.2rem;
 	font-weight: normal;
 	text-align: center;
     height: 25px;
@@ -184,7 +146,7 @@ select:hover{
             text-align: right;
             input[type=text], select{
                 background-color: @transparent-color;
-                width: 15px;
+                width: 30px;
                 display: inline-block;
                 border: none;
                 vertical-align: baseline;
@@ -196,9 +158,36 @@ select:hover{
         img.logo {
             height: 100%;
             border: none;
-            flex: 0 0 0;
+            flex: 0 0 219px;
         }
+
+        .roll-mod{
+            flex:0 0 60px;
+            padding-left: 15px;
+            
+            .mod-header{
+                display: inline-block;
+                font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                text-align: center;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+                
+            }
+            .formgroup input{
+                text-align: center;
+                background-color: @transparent-color;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: 2px groove @highlight-color;
+                border-radius: 0;
+
+            }
+        }
+
         .charname{
+            flex: 0 0 300px;
             input{
                 background-color: @transparent-color;
                 border: none;
@@ -257,8 +246,8 @@ select:hover{
  
 
                 .statname{
-                    font-family: SpaceMono, sans-serif;
-                    font-size: 25px;
+                    font-family: "Monaco", "Courier New", monospace;
+                    font-size: 2rem;
                     font-weight: bold;
                     vertical-align: baseline;
                     padding: 0px 10px;

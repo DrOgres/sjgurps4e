@@ -488,8 +488,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         }
     }
 
-    _onRoll(event){
-       // Show(event);
+    async _onRoll(event){
+       
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
@@ -501,33 +501,27 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let baseType =[];
         let isweapon = false;
         let chatDesc ='';
-        //console.log(event);
-        // find out what kind of thing we are rolling on
+        
+        /** find out what kind of thing we are rolling on
         // items, skills, spells, stats etc.
+        // then set up the correct roll for that thing
+        */ 
+
         let itemId = '';
         //for stats just pass the formula and target and roll
-        if (dataset.source == "stat"){
-            //console.log("GURPS 4E  |  Roll on Stat ");
+        if (dataset.source == "stat"){        
             baseTarget = Number(dataset.target) 
         } else if (dataset.source == 'item'){
             //weapons and tools should get the applicable skill
-            
-          
-            // get the item ID of the clicked item 
             itemId = element.closest(".item").dataset.itemid;
-            // get the item object of the with this ID
             let item = this.actor.getOwnedItem(itemId);
             chatDesc = item.data.data.description.value;
-            //if we are a weapon we need some information so test that 
             if(item.data.data.itemType == "weaponMelee" || item.data.data.itemType == "weaponRanged"){
                 isweapon = true;
-                //and set up the damage formula
                 let damage = item.data.data.damage;
                 for(let n=0; n<damage.parts.length; n++){
-                    
                     let currentParts = damage.parts[n];
                     if(currentParts[0] == "swing"){
-                        console.log("GURPS 4E |  baseSW " + this.actor.data.data.damageSw);
                         damageFormulas[n] = this.actor.data.data.damageSw + "+" + currentParts[1];
                         damageType[n] = currentParts[2];
                         baseType[n] = "Swing Damage";
@@ -546,21 +540,14 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                     }
                 }
             }
-            console.log("GURPS4E    |  damageFormulas: " + damageFormulas);
 
             // get the skill mod of the item we clicked 
             let skillMod = item.data.data.skillMod;
-            console.log("GURPS 4E |  skillMod " + skillMod);
-            console.log("GURPS 4E |  itemType: " + item.data.data.itemType)
-            // get the array index of the skill associated with this item
             let skillUsedNumber = item.data.data.skillUsed;
-            // check to see if we need a skill or if a stat
             // stats are <=5 skills are >=6
             if(skillUsedNumber <=5){
                 // --- we are using a stat default not a skill so get the stat value
-                // stats are ordered as follows ST, DX, IQ, HT, Will, Per
-                // DX is most likely but hey who knows. 
-
+                // stats are ordered as follows ST, DX, IQ, HT, Will, Per 
                 switch (Number(skillUsedNumber)){
                     case 0:
                         baseTarget = this.actor.data.data.ST.value;
@@ -589,31 +576,20 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                 }
 
             } else {
-                    // --- we have a skill selected to be used by the item
-                // get the owned skills of the actor we are working with
+                // --- we have a skill selected to be used by the item
+                
                 let data = this.getData();
                 let skillList = data.actor.data.ownedSkillList;
                 let skillLevel = 0;
-                
-                // from the skillList of the actor get the name of the skill selected for use
-                //  by the item we clicked on
                 let skillName = skillList[skillUsedNumber];
-                
-                // get the full skill list that this actor owns ensuring that we dictch spells
                 let allSkills = this.actor.data.items.filter(function(item) {return item.type == "skill"}); 
                 let itemSkills = allSkills.filter(function(item) {return item.data.isSpell == false});
-                        
-                //find the skill we own with the name from our clicked item
                 itemSkills.forEach(element => {
                     if (element.name === skillName) {
-                        // once we have the correct skill set the target information
-                        console.log(element.data);
-                        // first get the correct effective skill level
                         skillLevel = element.data.level;
                         let stat = element.data.stat;
                         let difficulty = element.data.difficulty;
                         let effectiveTarget = this._getSkillTarget(skillLevel, stat, difficulty);
-
                         baseTarget = effectiveTarget;
                         modifier = skillMod;
                         skillUsedName = skillName;
@@ -626,14 +602,11 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             // clicking to roll a skill should get the skill target 
             // for this we need the skill, its level, its stat and its difficulty
             let data = this.getData();
-
             itemId = element.closest(".item").dataset.itemid;
-            // get the item object of the with this ID
             let item = this.actor.getOwnedItem(itemId);
             let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
             baseTarget = effectiveTarget;
             chatDesc = item.data.data.description.value;
-            //console.log(chatDesc);
         } else if (dataset.source == 'dodge'){
             baseTarget = Number(dataset.target); 
         } else if (dataset.source == 'parry'){
@@ -644,7 +617,95 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         
         // check event for alt key which we will use to set the modifier data
         if(event.altKey){
-            modifier = getModifier();
+
+                let modPromise = this.actor.data.data.rmod;
+            
+                
+                let mRoll = new Roll(dataset.roll, this.actor.data.data);
+                mRoll.evaluate();
+                let rollValue = mRoll.total;
+                let isSuccess = false;
+                let margin = 0;
+                let isCritSuccess = false;
+                let isCritFail = false;
+                let sucessLabel = "Failed by";
+                let cssResult = "fail-result";
+                
+                let rollTooltip = await Promise.resolve(mRoll.getTooltip());
+                modifier =  Number(modifier) + Number(modPromise);
+                
+                let modedTarget = Number(baseTarget) + Number(modifier);
+                    if (modedTarget < 5 ){
+                        modedTarget = 4;
+                    }
+                margin = modedTarget - rollValue;
+                console.log(margin);
+                if(rollValue <= modedTarget || rollValue <=4 && rollValue < 17){
+                    isSuccess = true;
+                    sucessLabel = "Sucess! by: ";
+                    cssResult = "sucess-result";
+                    if(modedTarget >= 16 && rollValue <= 6 ){
+                        isCritSuccess = true;
+                        sucessLabel = "Critical Sucess! by: ";
+                    } else if (modedTarget >= 15 && rollValue <= 5){
+                        isCritSuccess = true;
+                        sucessLabel = "Critical Sucess! by: ";
+                    } else if (rollValue <= 4){
+                        sucessLabel = "Critical Sucess! by: ";
+                        isCritSuccess = true;
+                    }
+                } else {
+                    isSuccess = false;
+                    sucessLabel = "Failure! by: ";
+                    cssResult = "fail-result";
+                    if(rollValue == 18){
+                        isCritFail = true;
+                        sucessLabel = "Critical Fail! by: ";
+                    } else if (modedTarget <= 15 && rollValue == 17){
+                        isCritFail = true;
+                        sucessLabel = "Critical Fail! by: ";
+                    } else if (rollValue >= modedTarget+10){
+                        sucessLabel = "Critical Fail! by: ";
+                        isCritFail = true;
+                    }
+                }
+                
+                let difficutFlavor = function (modedTarget) {if (modedTarget<5){return "3 or 4 <br>(Good Luck!)"}else{return modedTarget}};
+                let label = dataset.label ? 
+                `<span class="flavor-text">
+                    <div class="chat-header flexrow">
+                        <img class="portrait" width="48" height="41.5" src="` +this.actor.data.img+ `"/>
+                        <h1>${dataset.label} </h1>
+                    </div>
+                    <div class="skill-info-chat flexrow">
+                        <div class="skillname">Using ` + skillUsedName + ` Skill</div>
+                        <div class="sep">|</div>
+                        <div>Target is ` + difficutFlavor(modedTarget) +`</div>
+                    </div>
+                    <div class="use-desc">` + chatDesc + 
+                    `</div>
+                    <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
+                
+                let flavorText = label + `
+                <div class="dice-roll">
+                    <div class="dice-result">
+                        <div class="dice-formula">`+mRoll._formula+`</div>`
+                        +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4>`;
+                // chat message for sucess and by amount flagging crits 
+                ChatMessage.create({
+                    user: game.user._id,
+                    speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+                    content: flavorText,
+                    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+                    sound: "",
+                    isRoll: true,
+                    roll: mRoll
+
+
+                });
+                
+            
+
         } else {       
                 if(dataset.roll){
                     let modedTarget = Number(baseTarget) + Number(modifier);
@@ -665,12 +726,13 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             <div class="sep">|</div>
                             <div>Target is ` + modedTarget +`</div>
                         </div>
-                        <div>` + chatDesc + '</div>'  : '';
+                        <div class="use-desc">` + chatDesc + '</div>'  : '';
                         
                         roll.roll().toMessage({
                         speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
                         flavor: label
                         });
+
                         for(let n=0; n<damageFormulas.length;n++){
                         roll = new Roll(damageFormulas[n], this.actor.data.data);
                         label = `<div class=flexrow><div>` + baseType[n] + `</div>
@@ -1075,13 +1137,45 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
     }
 
-
+  
 }
 
-async function getModifier() {
+async function getModifier(dialogData) {
+    let modifier = 0;
+    let template = "systems/sjgurps4e/templates/chat/roll-dialog.html";
+    const html = await renderTemplate(template, dialogData)
+    let applyChange = false;
+        new Dialog({
+            title: "Modify Target Value",
+            content: html,
+            buttons: {
+                submit: {
+                    icon: "<i class='fas fa-check'></i>",
+                            label: "Submit",
+                            callback: () => applyChange = true
+                            
+                },
+                no: {
+                    icon: "<i class='fas fa-times'></i>",
+                    label: `Cancel`
+                },
+            },
+            defauly: "submit",
+            close: html => {
+                if (applyChange) {
+                    console.log("set the mod :" + html.find('[name="modifier"]')[0].value);
+                    modifier += html.find('[name="modifier"]')[0].value;
+                }
+            }
+        }).render(true);
+        //setTimeout(function() { document.getElementById("roll-mod").focus(); }, 10);
+   
+    return  new Promise((resoveFunc, rejectionFunc) => {
+        resoveFunc(modifier);
+
+    });
+
+}
             
-            let modifier=0;
-            return modifier;
-}
 
 

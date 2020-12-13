@@ -26,13 +26,13 @@
             </td>
             <td>
                 <div class = "statvalue">
-                    <input name="data.Will.value" type="text" placeholder="10" value = "{{data.Will.value}}" title="{{localize "sjgurps4e.sheet.5ptCostExp"}}" data-dtype="Number" />
+                    <input name="data.Will.value" type="text" placeholder="10" value = "{{data.Will.value}}" title="{{localize "sjgurps4e.sheet.5ptIQvarCost"}}" data-dtype="Number" />
                 </div>
             </td>
             <td>&nbsp;</td>
             <td>
                 <div class = "pointvalue">
-                {{#statValue data.Will.value "Will"}}
+                {{#statValue data.Will.value "Will" data.IQ.value}}
                 0
                 {{/statValue}}
                
@@ -48,13 +48,13 @@
             </td>
             <td>
                 <div class = "statvalue">
-                    <input name="data.Per.value" type="text" placeholder="10" value = "{{data.Per.value}}" title="{{localize "sjgurps4e.sheet.5ptCostExp"}}" data-dtype="Number" />
+                    <input name="data.Per.value" type="text" placeholder="10" value = "{{data.Per.value}}" title="{{localize "sjgurps4e.sheet.5ptIQvarCost"}}" data-dtype="Number" />
                 </div>
             </td>
             <td>&nbsp;</td>
             <td>
                 <div class = "pointvalue">
-                {{#statValue data.Per.value "Per"}}
+                {{#statValue data.Per.value "Per" data.IQ.value}}
                 0
                 {{/statValue}}
                

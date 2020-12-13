@@ -45,7 +45,7 @@ Hooks.once("init", function (){
     preloadHandlebarsTemplates();
 
      //calculate point costs for attribute values
-    Handlebars.registerHelper("statValue", function(n, string, ST = 10){
+    Handlebars.registerHelper("statValue", function(n, string, attribute = 10){
       let result = '';
       // yeah yeah I know it's a multiplier... it used to be a division thing but I changed it and 
       // was too lazy to change the code :P
@@ -57,13 +57,14 @@ Hooks.once("init", function (){
         divisor = 20;
       } else if (string === "Will" || string === "Per") {
         divisor = 5;
+        baseValue = attribute;
       } else if (string === "HP") {
         divisor = 2;
         //console.log("*-* ST is currently: " + ST);
-        baseValue = ST;
+        baseValue = attribute;
       } else if (string === "FP"){
         //console.log("*-* HT is currently: " + ST);
-        baseValue = ST;
+        baseValue = attribute;
         divisor = 3;
       }
       result = (n-baseValue)*divisor;

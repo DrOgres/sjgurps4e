@@ -71,7 +71,8 @@
            "primeLang" : "Primary Language",
            "singleDR" : 0,
            "intermediateDR" : [],
-           "detailedDR" : []
+           "detailedDR" : [],
+           "rmod": 0
 
         }
     },

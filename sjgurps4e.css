@@ -2,10 +2,6 @@
 /*  Fonts                                    */
 /* ----------------------------------------- */
 @font-face {
-  font-family: SpaceMono;
-  src: url(fonts/SpaceMono-Bold.ttf);
-}
-@font-face {
   font-family: Cinzel;
   src: url(fonts/Cinzel-VariableFont_wght.ttf);
 }
@@ -231,41 +227,8 @@
 .sjgurps4e.sheet.item .sheet-body .form-group {
   overflow: hidden;
 }
-.skill-info-chat {
-  flex: 1 0 auto;
-  justify-content: center;
-  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-  font-size: 1.5em;
-  font-weight: 700;
-  text-align: center;
-}
-.skill-info-chat .sep {
-  max-width: 5px;
-}
 .fourteen-location-dr {
   min-width: 170px;
-}
-.chat-header {
-  flex: 0 1 0;
-  justify-content: flex-start;
-  align-items: flex-end;
-  border-color: #c53131;
-  border-bottom-style: groove;
-  background-image: linear-gradient(#ffffff00, #c5313188);
-}
-.chat-header .portrait {
-  max-width: 53px;
-  border: none;
-  padding: 0 5px 0 0;
-}
-.chat-header h1 {
-  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-  font-size: 2em;
-  font-weight: 700;
-  text-align: right;
-  align-self: flex-end;
-  border: none;
-  color: black;
 }
 .sep {
   font-size: 18px;
@@ -289,7 +252,7 @@ select:hover {
 .dr-panel .dr-header {
   display: block;
   font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-  font-size: 22px;
+  font-size: 1.2rem;
   font-weight: normal;
   text-align: center;
   height: 25px;
@@ -303,10 +266,12 @@ select:hover {
   background-image: url(icons/kevlar.svg);
   background-repeat: no-repeat;
   background-size: 120px 120px;
+  min-width: 120px;
+  min-height: 120px;
 }
 .dr-panel .single-location-dr .location {
   font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-  font-size: 22px;
+  font-size: 1.2rem;
   opacity: 1;
   min-height: 120px;
   align-self: center;
@@ -317,7 +282,7 @@ select:hover {
 .sjgurps4e .section-titles {
   display: inline-block;
   font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
-  font-size: 22px;
+  font-size: 1.2rem;
   font-weight: normal;
   text-align: center;
   height: 25px;
@@ -385,7 +350,7 @@ select:hover {
 .sjgurps4e.sheet.character .sheet-header .pointvalue input[type=text],
 .sjgurps4e.sheet.character .sheet-header .pointvalue select {
   background-color: #ffffff00;
-  width: 15px;
+  width: 30px;
   display: inline-block;
   border: none;
   vertical-align: baseline;
@@ -395,7 +360,31 @@ select:hover {
 .sjgurps4e.sheet.character .sheet-header img.logo {
   height: 100%;
   border: none;
-  flex: 0 0 0;
+  flex: 0 0 219px;
+}
+.sjgurps4e.sheet.character .sheet-header .roll-mod {
+  flex: 0 0 60px;
+  padding-left: 15px;
+}
+.sjgurps4e.sheet.character .sheet-header .roll-mod .mod-header {
+  display: inline-block;
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.sjgurps4e.sheet.character .sheet-header .roll-mod .formgroup input {
+  text-align: center;
+  background-color: #ffffff00;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px groove #c53131;
+  border-radius: 0;
+}
+.sjgurps4e.sheet.character .sheet-header .charname {
+  flex: 0 0 300px;
 }
 .sjgurps4e.sheet.character .sheet-header .charname input {
   background-color: #ffffff00;
@@ -452,8 +441,8 @@ select:hover {
   align-content: center;
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .statname {
-  font-family: SpaceMono, sans-serif;
-  font-size: 25px;
+  font-family: "Monaco", "Courier New", monospace;
+  font-size: 2rem;
   font-weight: bold;
   vertical-align: baseline;
   padding: 0px 10px;
@@ -489,7 +478,7 @@ select:hover {
 }
 .inventory-list {
   font-family: "Signika", sans-serif;
-  font-size: 13px;
+  font-size: 0.8rem;
   text-align: left;
   overflow-x: hidden;
   margin: 0;
@@ -532,9 +521,12 @@ select:hover {
   align-items: center;
   justify-content: flex-end;
 }
+.inventory-list .inventory-header h2.react-name {
+  border-bottom: none;
+}
 .inventory-list .inventory-header h2.item-name {
   border-bottom: none;
-  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-family: "Monaco", "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
   font-size: 1.2em;
   font-weight: 700;
 }
@@ -716,4 +708,60 @@ select:hover {
 }
 .mod-number input {
   max-width: 50px;
+}
+.flavor-text .use-desc {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #2b2b2b;
+}
+.flavor-text .result-text.sucess-result {
+  color: #5b9647;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration-color: #545454;
+  text-decoration: underline overline;
+}
+.flavor-text .result-text.fail-result {
+  color: #c53131;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  text-decoration-color: #545454;
+  text-decoration: underline overline;
+}
+.flavor-text .skill-info-chat {
+  line-height: 20px;
+  color: #545454;
+  flex: 1 0 auto;
+  justify-content: center;
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+.flavor-text .skill-info-chat .sep {
+  max-width: 5px;
+}
+.flavor-text .chat-header {
+  flex: 0 1 0;
+  justify-content: flex-start;
+  align-items: flex-end;
+  border-color: #c53131;
+  border-bottom-style: groove;
+  background-image: linear-gradient(#ffffff00, #c5313144);
+}
+.flavor-text .chat-header .portrait {
+  max-width: 53px;
+  border: none;
+  padding: 0 5px 0 0;
+}
+.flavor-text .chat-header h1 {
+  font-family: "Modesto Condensed", "Nodesto", "Palatino Linotype", serif;
+  font-size: 2em;
+  font-weight: 700;
+  text-align: right;
+  align-self: flex-end;
+  border: none;
+  color: black;
 }

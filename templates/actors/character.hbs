@@ -2,6 +2,12 @@
     <header class="sheet-header">
         <img src="systems/sjgurps4e/img/GURPS_LOGO.png" class = "logo" title="logo" height = "72" width = "219"/>
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        <div class="roll-mod">
+            <div class="mod-header">{{localize "sjgurps4e.rmodifier"}}</div>
+            <div class = "formgroup">
+                <input type="text" class="inline-edit" name="data.rmod" data-field="data.rmod" value="{{data.rmod}}" data-dtype="Number" title="Hold the Alt key when clicking a roll to add the modifier to the target!"/>
+            </div>
+        </div>
         <div class="pointsbox" >
             {{!- toDo register a helper and fill this with the total of all points on the character --}}
             <div class = "pointvalue">{{localize "sjgurps4e.sheet.totalPoints"}} &nbsp;&nbsp;{{data.totalPoints.value}}</div>

@@ -11,7 +11,8 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
 <li>TODO - beautify and consolidate items in chat cards</li>
-<li>TODO - add second location to equipment for DR application</li>
+<li>TODO - use second equipment location for DR application</li>
+<li>TODO - set up DR Locations to be more attractive (stick figure locations?)</li>
 <li>TODO - add damage formula as an option for spells as well as ranged or melee options</li>
 <li>TODO - add damage roll to chat card on spell rolls where applicable</li>
 <li>TODO - Sucess/Failure and margin on Rolls</li>
@@ -28,6 +29,13 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - Implement NPC/Monser 'card' for a lightweight npc record</li>
 <li>TODO - system settings - skin system based on 'theme' </li>
 <li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
+</ul>
+
+
+<h3>0.6.6</h3>
+<ul>
+    <li> implemented the alt key to apply a target modifier to the target on a roll.</li>
+    <li> added a target modifier box to the header of the character sheet</li>
 </ul>
 
 <h3>0.6.5</h3>
