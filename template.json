@@ -146,14 +146,15 @@
         },
 
         "skill" : {
-            "templates": ["itemType", "itemDescription", "itemPoints", "itemFav", "itemSpell"],
+            "templates": ["itemType", "itemDescription", "itemPoints", "itemFav", "itemSpell", "itemDamage"],
             "stat" : "",
             "difficulty": "Average",
             "level" : 1,
             "effective" : 0,
             "defaults": "stat or skills to use as default",
             "points": 0,
-            "isSpell": false
+            "isSpell": false,
+            "hasDamage": false
         },
         "weapon-melee" : {
             "templates": ["itemType", "itemDescription", "itemNotes", "itemCost", "itemWeight", "itemSkill", "itemTL", "itemDamage",  "itemST" , "itemFav"],

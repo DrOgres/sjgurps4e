@@ -500,6 +500,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let damageType = [];
         let baseType =[];
         let isweapon = false;
+        let hasDamage = false;
         let chatDesc ='';
         
         /** find out what kind of thing we are rolling on
@@ -518,6 +519,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             chatDesc = item.data.data.description.value;
             if(item.data.data.itemType == "weaponMelee" || item.data.data.itemType == "weaponRanged"){
                 isweapon = true;
+                hasDamage = true;
                 let damage = item.data.data.damage;
                 for(let n=0; n<damage.parts.length; n++){
                     let currentParts = damage.parts[n];
@@ -601,12 +603,47 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         } else if (dataset.source == 'skill'){
             // clicking to roll a skill should get the skill target 
             // for this we need the skill, its level, its stat and its difficulty
-            let data = this.getData();
+            
             itemId = element.closest(".item").dataset.itemid;
             let item = this.actor.getOwnedItem(itemId);
             let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
             baseTarget = effectiveTarget;
             chatDesc = item.data.data.description.value;
+            console.log(item);
+            if(item.data.data.isSpell){
+                //check to see if this spell does damage
+                //if so set the damage flag to true and 
+                //parse out the damage roll formula... 
+                // need to think about how to handle missile spells
+                console.log("Casting Spell");
+                console.log(item.data.data.hasDamage);
+                if(item.data.data.hasDamage){
+                    hasDamage = true;
+                    let damage = item.data.data.damage;
+                    for(let n=0; n<damage.parts.length; n++){
+                        let currentParts = damage.parts[n];
+                        if(currentParts[0] == "swing"){
+                            damageFormulas[n] = this.actor.data.data.damageSw + "+" + currentParts[1];
+                            damageType[n] = currentParts[2];
+                            baseType[n] = "Swing Damage";
+                        } else if (currentParts[0] == "thrust"){
+                            damageFormulas[n] = this.actor.data.data.damageThr + "+" + currentParts[1];
+                            damageType[n] = currentParts[2];
+                            baseType[n] = "Thrust Damage";
+                        } else if (currentParts[0] == "die"){
+                            damageFormulas[n] = currentParts[1];
+                            damageType[n] = currentParts[2];
+                            baseType[n] = "Damage";
+                        } else if (currentParts[0] == "spec"){
+                            damageFormulas[n] = '';
+                            damageType[n] = "special";
+                            baseType[n] = "Special Damage See Notes.";
+                        }
+                    }
+
+                }
+
+            }
         } else if (dataset.source == 'dodge'){
             baseTarget = Number(dataset.target); 
         } else if (dataset.source == 'parry'){
@@ -615,31 +652,31 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             baseTarget =Number(dataset.target);
         }
         
+
+        // Now do the roll and create the chat message
+        let mRoll = new Roll(dataset.roll, this.actor.data.data);
+        mRoll.evaluate();
+        let rollValue = mRoll.total;
+        let rollTooltip = await Promise.resolve(mRoll.getTooltip());
+        //set up variables for modified and unmodified rolls
+        let margin = 0;
+        let isCritSuccess = false;
+        let isCritFail = false;
+        let sucessLabel = "Failed by";
+        let cssResult = "fail-result";
+        let difficutFlavor = function (modedTarget) {if (modedTarget<5){return "3 or 4 <br>(Good Luck!)"}else{return modedTarget}};
+        let isSuccess = false;
+
         // check event for alt key which we will use to set the modifier data
         if(event.altKey){
-
                 let modPromise = this.actor.data.data.rmod;
-            
-                
-                let mRoll = new Roll(dataset.roll, this.actor.data.data);
-                mRoll.evaluate();
-                let rollValue = mRoll.total;
-                let isSuccess = false;
-                let margin = 0;
-                let isCritSuccess = false;
-                let isCritFail = false;
-                let sucessLabel = "Failed by";
-                let cssResult = "fail-result";
-                
-                let rollTooltip = await Promise.resolve(mRoll.getTooltip());
                 modifier =  Number(modifier) + Number(modPromise);
-                
                 let modedTarget = Number(baseTarget) + Number(modifier);
-                    if (modedTarget < 5 ){
-                        modedTarget = 4;
-                    }
+                if (modedTarget < 5 ){
+                    modedTarget = 4;
+                }
                 margin = modedTarget - rollValue;
-                console.log(margin);
+                //determine success, failure or crit status
                 if(rollValue <= modedTarget || rollValue <=4 && rollValue < 17){
                     isSuccess = true;
                     sucessLabel = "Sucess! by: ";
@@ -670,95 +707,263 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                     }
                 }
                 
-                let difficutFlavor = function (modedTarget) {if (modedTarget<5){return "3 or 4 <br>(Good Luck!)"}else{return modedTarget}};
-                let label = dataset.label ? 
-                `<span class="flavor-text">
-                    <div class="chat-header flexrow">
-                        <img class="portrait" width="48" height="41.5" src="` +this.actor.data.img+ `"/>
-                        <h1>${dataset.label} </h1>
-                    </div>
-                    <div class="skill-info-chat flexrow">
-                        <div class="skillname">Using ` + skillUsedName + ` Skill</div>
-                        <div class="sep">|</div>
-                        <div>Target is ` + difficutFlavor(modedTarget) +`</div>
-                    </div>
-                    <div class="use-desc">` + chatDesc + 
-                    `</div>
-                    <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
-                
-                let flavorText = label + `
-                <div class="dice-roll">
-                    <div class="dice-result">
-                        <div class="dice-formula">`+mRoll._formula+`</div>`
-                        +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4>`;
-                // chat message for sucess and by amount flagging crits 
-                ChatMessage.create({
-                    user: game.user._id,
-                    speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
-                    content: flavorText,
-                    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-                    sound: "",
-                    isRoll: true,
-                    roll: mRoll
-
-
-                });
-                
-            
-
-        } else {       
-                if(dataset.roll){
-                    let modedTarget = Number(baseTarget) + Number(modifier);
-                    if (modedTarget < 5 ){
-                        modedTarget = "3 or 4 (Good Luck!)"
-                    }
-                    let roll = new Roll(dataset.roll, this.actor.data.data);
-                    
-                    // set up chat message.  note if that dataset.label is null we make the string empty
-                    if(skillUsedName != ''){
-                        let label = dataset.label ? 
-                        `<div class="chat-header flexrow">
+                if(skillUsedName != ''){
+                    let label = dataset.label ? 
+                    `<span class="flavor-text">
+                        <div class="chat-header flexrow">
                             <img class="portrait" width="48" height="41.5" src="` +this.actor.data.img+ `"/>
                             <h1>${dataset.label} </h1>
                         </div>
                         <div class="skill-info-chat flexrow">
                             <div class="skillname">Using ` + skillUsedName + ` Skill</div>
                             <div class="sep">|</div>
-                            <div>Target is ` + modedTarget +`</div>
+                            <div>Target is ` + difficutFlavor(modedTarget) +`</div>
                         </div>
-                        <div class="use-desc">` + chatDesc + '</div>'  : '';
-                        
-                        roll.roll().toMessage({
-                        speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
-                        flavor: label
-                        });
+                        <div class="use-desc">` + chatDesc + 
+                        `</div>
+                        <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
+                    
+                    let flavorText = label + `
+                    <div class="dice-roll">
+                        <div class="dice-result">
+                            <div class="dice-formula">`+mRoll._formula+`</div>`
+                            +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
 
-                        for(let n=0; n<damageFormulas.length;n++){
-                        roll = new Roll(damageFormulas[n], this.actor.data.data);
-                        label = `<div class=flexrow><div>` + baseType[n] + `</div>
-                        <div> ` + damageType[n] + `</div></div>`; 
-                        roll.roll().toMessage({
-                            speaker:ChatMessage.getSpeaker({actor: this.actor}),
-                            flavor: label
-                        });
+                    let damageText = "";
+                    if(hasDamage){
+                        for(let n = 0; n<damageFormulas.length; n++){
+                            let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                            damageRoll.evaluate();
+                            rollValue = damageRoll.total;
+                            rollTooltip = await Promise.resolve(damageRoll.getTooltip());
+                            damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
+                            <div> ` + damageType[n] + `</div></div> 
+                            <div class="dice-roll">
+                            <div class="dice-result">
+                            <div class="dice-formula">`+damageRoll._formula+`</div>`
+                            +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
                         }
-                    } else {
-                        let label = dataset.label ? 
-                        `<div class="chat-header flexrow">
+                            
+                    }
+                    flavorText = flavorText + damageText;   
+                    // chat message for sucess and by amount flagging crits 
+                    ChatMessage.create({
+                        user: game.user._id,
+                        speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+                        content: flavorText,
+                        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+                        sound: "",
+                        isRoll: true,
+                        roll: mRoll
+                    });
+                } else {
+                    let label = dataset.label ? 
+                        `<span class="flavor-text"><div class="chat-header flexrow">
                             <img class="portrait" width="48" height="41.5"  src="` +this.actor.img+ `"/>
                             <h1>${dataset.label} </h1>
                         </div>
                         <div class="skill-info-chat flexrow"> 
-                        Target is ` + modedTarget + `
+                        Target is ` + difficutFlavor(modedTarget)  + `
                         </div>
-                        <div>` + chatDesc + `</div>`  : '';
-                        roll.roll().toMessage({
-                        speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor }),
-                        flavor: label
-                        });
-                    }
-
+                        <div class="use-desc">` + chatDesc + `</div>
+                        <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
+                    
+                        let flavorText = label + `
+                        <div class="dice-roll">
+                            <div class="dice-result">
+                            <div class="dice-formula">`+mRoll._formula+`</div>`
+                            +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
+                        let damageText = "";
+                        if(hasDamage){
+                            for(let n = 0; n<damageFormulas.length; n++){
+                                let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                                damageRoll.evaluate();
+                                rollValue = damageRoll.total;
+                                rollTooltip = await Promise.resolve(damageRoll.getTooltip());
+                                damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
+                                <div> ` + damageType[n] + `</div></div> 
+                                <div class="dice-roll">
+                                <div class="dice-result">
+                                <div class="dice-formula">`+damageRoll._formula+`</div>`
+                                +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                            }
+                                
+                        }
+                        flavorText = flavorText + damageText;   
+                        // chat message for sucess and by amount flagging crits 
+                        ChatMessage.create({
+                        user: game.user._id,
+                        speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+                        content: flavorText,
+                        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+                        sound: "",
+                        isRoll: true,
+                        roll: mRoll
+                    });
+                    
                 }
+
+        } else {
+            // No modifier applied        
+            
+                let modedTarget = Number(baseTarget) + Number(modifier);
+                if (modedTarget < 5 ){
+                    modedTarget = "3 or 4 (Good Luck!)"
+                }
+                margin = modedTarget - rollValue;
+                //determine success, failure or crit status
+                if(rollValue <= modedTarget || rollValue <=4 && rollValue < 17){
+                    isSuccess = true;
+                    sucessLabel = "Sucess! by: ";
+                    cssResult = "sucess-result";
+                    if(modedTarget >= 16 && rollValue <= 6 ){
+                        isCritSuccess = true;
+                        sucessLabel = "Critical Sucess! by: ";
+                    } else if (modedTarget >= 15 && rollValue <= 5){
+                        isCritSuccess = true;
+                        sucessLabel = "Critical Sucess! by: ";
+                    } else if (rollValue <= 4){
+                        sucessLabel = "Critical Sucess! by: ";
+                        isCritSuccess = true;
+                    }
+                } else {
+                    isSuccess = false;
+                    sucessLabel = "Failure! by: ";
+                    cssResult = "fail-result";
+                    if(rollValue == 18){
+                        isCritFail = true;
+                        sucessLabel = "Critical Fail! by: ";
+                    } else if (modedTarget <= 15 && rollValue == 17){
+                        isCritFail = true;
+                        sucessLabel = "Critical Fail! by: ";
+                    } else if (rollValue >= modedTarget+10){
+                        sucessLabel = "Critical Fail! by: ";
+                        isCritFail = true;
+                    }
+                }
+                // set up chat message.  note if that dataset.label is null we make the string empty
+                if(skillUsedName != ''){
+                    let label = dataset.label ? 
+                    `<span class="flavor-text">
+                        <div class="chat-header flexrow">
+                            <img class="portrait" width="48" height="41.5" src="` +this.actor.data.img+ `"/>
+                            <h1>${dataset.label} </h1>
+                        </div>
+                        <div class="skill-info-chat flexrow">
+                            <div class="skillname">Using ` + skillUsedName + ` Skill</div>
+                            <div class="sep">|</div>
+                            <div>Target is ` + difficutFlavor(modedTarget) +`</div>
+                        </div>
+                        <div class="use-desc">` + chatDesc + 
+                        `</div>
+                        <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
+                    
+                    let flavorText = label + `
+                    <div class="dice-roll">
+                        <div class="dice-result">
+                            <div class="dice-formula">`+mRoll._formula+`</div>`
+                            +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
+
+                    let damageText = "";
+                    if(hasDamage){
+                        for(let n = 0; n<damageFormulas.length; n++){
+                            let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                            damageRoll.evaluate();
+                            rollValue = damageRoll.total;
+                            rollTooltip = await Promise.resolve(damageRoll.getTooltip());
+                            damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
+                            <div> ` + damageType[n] + `</div></div> 
+                            <div class="dice-roll">
+                            <div class="dice-result">
+                            <div class="dice-formula">`+damageRoll._formula+`</div>`
+                            +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                        }
+                            
+                    }
+                    flavorText = flavorText + damageText;   
+                    
+                            // chat message for sucess and by amount flagging crits 
+                    ChatMessage.create({
+                        user: game.user._id,
+                        speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+                        content: flavorText,
+                        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+                        sound: "",
+                        isRoll: true,
+                        roll: mRoll
+                    });
+                    // damage rolls... should replace with buttons to roll
+
+                    if(!hasDamage){
+                        for(let n=0; n<damageFormulas.length;n++){
+                            mRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                            label = `<div class=flexrow><div>` + baseType[n] + `</div>
+                            <div> ` + damageType[n] + `</div></div>`; 
+                            mRoll.roll().toMessage({
+                                speaker:ChatMessage.getSpeaker({actor: this.actor}),
+                                flavor: label
+                            });
+                        }
+                    }
+                } else {
+                    let label = dataset.label ? 
+                        `<span class="flavor-text"><div class="chat-header flexrow">
+                            <img class="portrait" width="48" height="41.5"  src="` +this.actor.img+ `"/>
+                            <h1>${dataset.label} </h1>
+                        </div>
+                        <div class="skill-info-chat flexrow"> 
+                        Target is ` + difficutFlavor(modedTarget)  + `
+                        </div>
+                        <div class="use-desc">` + chatDesc + `</div>
+                        <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
+
+                        let flavorText = label + `
+                        <div class="dice-roll">
+                            <div class="dice-result">
+                                <div class="dice-formula">`+mRoll._formula+`</div>`
+                                +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
+                        let damageText = "";
+                            if(hasDamage){
+                                for(let n = 0; n<damageFormulas.length; n++){
+                                    let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                                    damageRoll.evaluate();
+                                    rollValue = damageRoll.total;
+                                    rollTooltip = await Promise.resolve(damageRoll.getTooltip());
+                                    damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
+                                    <div> ` + damageType[n] + `</div></div> 
+                                    <div class="dice-roll">
+                                    <div class="dice-result">
+                                    <div class="dice-formula">`+damageRoll._formula+`</div>`
+                                    +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                                }
+                                    
+                            }
+                        flavorText = flavorText + damageText;    
+                        // chat message for sucess and by amount flagging crits 
+                        ChatMessage.create({
+                        user: game.user._id,
+                        speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+                        content: flavorText,
+                        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+                        sound: "",
+                        isRoll: true,
+                        roll: mRoll
+                    });
+
+                    if(!hasDamage){
+                        for(let n=0; n<damageFormulas.length;n++){
+                            mRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                            label = `<div class=flexrow><div>` + baseType[n] + `</div>
+                            <div> ` + damageType[n] + `</div></div>`; 
+                            mRoll.roll().toMessage({
+                                speaker:ChatMessage.getSpeaker({actor: this.actor}),
+                                flavor: label
+                            });
+                        }
+                    }
+                }
+
+                
         }
     }
 

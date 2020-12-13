@@ -10,20 +10,18 @@ Layout and HTML for the Notes tab was adapted from alt5e by Sky.
 https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
-<li>TODO - beautify and consolidate items in chat cards</li>
+
 <li>TODO - use second equipment location for DR application</li>
-<li>TODO - set up DR Locations to be more attractive (stick figure locations?)</li>
-<li>TODO - add damage formula as an option for spells as well as ranged or melee options</li>
-<li>TODO - add damage roll to chat card on spell rolls where applicable</li>
-<li>TODO - Sucess/Failure and margin on Rolls</li>
-<li>TODO - Call out Crit/Fumble on rolls</li>
+<li>TODO - Make DR Locations to be more attractive (stick figure locations?)</li>
+<li>TODO - Add ranged and melee attack information fields for spells</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
 <li>TODO - create character template item </li>
 <li>TODO - prevent duplicate skills on character sheet </li>
-<li>TODO - Beutification and Layout optimization - 80% complete</li>
+<li>TODO - Beutification and Layout optimization - 85% complete</li>
 <li>TODO - add info and layout items to the rolldown for owned items</li>
 <li>TODO - verify all strings have been localized</li>
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
+<li>TODO - Add level option for traits to allow for multi-level traits such as Magery</li>
 <li>TODO - Implement Psionics</li>
 <li>TODO - Implement Techniques</li>
 <li>TODO - Implement NPC/Monser 'card' for a lightweight npc record</li>
@@ -31,6 +29,15 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
 </ul>
 
+
+<h3>0.6.7</h3>
+<ul>
+    <li>Sucess/Failure and margin on Rolls</li>
+    <li>Call out Crit/Fumble on rolls</li>
+    <li>Damage Rolls with attack/spell automatically</li>
+    <li>Added damage option for spells</li>
+    <li>beautified and consolidate items in chat cards</li>
+</ul>
 
 <h3>0.6.6</h3>
 <ul>

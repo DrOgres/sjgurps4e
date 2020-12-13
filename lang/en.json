@@ -56,7 +56,8 @@
             "concealable" : "Concealable",
             "flexable" : "Flexable",
             "splitDR" : "Split DR",
-            "spell" : "Spell"
+            "spell" : "Spell", 
+            "spellDamage": "Has Spell Damage?"
         },
 
         "weaponSkill" : {
@@ -311,7 +312,9 @@
             "duration": "Duration",
             "initCost": "Initial Cost",
             "maintCost": "Maintenence Cost",
-            "notes": "Notes"
+            "notes": "Notes",
+            "attack": "Attack",
+            "modTip": "Hold the Alt key (option on Mac) when clicking a roll to add the modifier to the target!"
         },
         "itemName": "Name",
         "effectiveSkill": "Target",
