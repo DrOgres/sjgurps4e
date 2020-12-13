@@ -3,7 +3,7 @@
     "title" : "Steve Jackson's GURPS 4th Edition",
     "description" : "Generic Universal Role Playing System (GURPS) 4th Edition by Steve Jackson Games",
     "author" : "Dr Ogres", 
-    "version" : "0.6.5",
+    "version" : "0.6.6",
     "miniumumCoreVersion" : "0.7.5",
     "compatibleCoreVersion" : "0.7.8",
 
