@@ -57,7 +57,12 @@
             "flexable" : "Flexable",
             "splitDR" : "Split DR",
             "spell" : "Spell", 
-            "spellDamage": "Has Spell Damage?"
+            "spellDamage": "Has Spell Damage?",
+            "swDamage": "Swing Damage",
+            "thrDamage" : "Thrust Damage",
+            "rDamage": "Rolled Damage",
+            "specDamage": "Special Damage See Notes."
+            
         },
 
         "weaponSkill" : {
@@ -314,7 +319,14 @@
             "maintCost": "Maintenence Cost",
             "notes": "Notes",
             "attack": "Attack",
-            "modTip": "Hold the Alt key (option on Mac) when clicking a roll to add the modifier to the target!"
+            "modTip": "Hold the Alt key (option on Mac) when clicking a roll to add the modifier to the target!",
+            "targetIs": "Target is: ",
+            "failBy": "Failure! by: ",
+            "critFailBy": "Critical Fail! by: ",
+            "successBy": "Sucess! by: ",
+            "critSucessBy": "Critical Sucess! by: ",
+            "4orUnder": "3 or 4 <br>(Good Luck!)",
+            "using": "Using"
         },
         "itemName": "Name",
         "effectiveSkill": "Target",

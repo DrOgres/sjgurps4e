@@ -526,19 +526,19 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                     if(currentParts[0] == "swing"){
                         damageFormulas[n] = this.actor.data.data.damageSw + "+" + currentParts[1];
                         damageType[n] = currentParts[2];
-                        baseType[n] = "Swing Damage";
+                        baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.swDamage");
                     } else if (currentParts[0] == "thrust"){
                         damageFormulas[n] = this.actor.data.data.damageThr + "+" + currentParts[1];
                         damageType[n] = currentParts[2];
-                        baseType[n] = "Thrust Damage";
+                        baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.thrDamage");
                     } else if (currentParts[0] == "die"){
                         damageFormulas[n] = currentParts[1];
                         damageType[n] = currentParts[2];
-                        baseType[n] = "Damage";
+                        baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.rDamage");
                     } else if (currentParts[0] == "spec"){
                         damageFormulas[n] = '';
-                        damageType[n] = "special";
-                        baseType[n] = "Special Damage See Notes.";
+                        damageType[n] = game.i18n.localize("sjgurps4e.damageType.spec");
+                        baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.specDamage");
                     }
                 }
             }
@@ -615,8 +615,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                 //if so set the damage flag to true and 
                 //parse out the damage roll formula... 
                 // need to think about how to handle missile spells
-                console.log("Casting Spell");
-                console.log(item.data.data.hasDamage);
+               
                 if(item.data.data.hasDamage){
                     hasDamage = true;
                     let damage = item.data.data.damage;
@@ -625,19 +624,19 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         if(currentParts[0] == "swing"){
                             damageFormulas[n] = this.actor.data.data.damageSw + "+" + currentParts[1];
                             damageType[n] = currentParts[2];
-                            baseType[n] = "Swing Damage";
+                            baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.swDamage");
                         } else if (currentParts[0] == "thrust"){
                             damageFormulas[n] = this.actor.data.data.damageThr + "+" + currentParts[1];
                             damageType[n] = currentParts[2];
-                            baseType[n] = "Thrust Damage";
+                            baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.thrDamage");
                         } else if (currentParts[0] == "die"){
                             damageFormulas[n] = currentParts[1];
                             damageType[n] = currentParts[2];
-                            baseType[n] = "Damage";
+                            baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.rDamage");
                         } else if (currentParts[0] == "spec"){
                             damageFormulas[n] = '';
-                            damageType[n] = "special";
-                            baseType[n] = "Special Damage See Notes.";
+                            damageType[n] = game.i18n.localize("sjgurps4e.damageType.spec");
+                            baseType[n] = game.i18n.localize("sjgurps4e.itemProperties.specDamage");
                         }
                     }
 
@@ -662,9 +661,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let margin = 0;
         let isCritSuccess = false;
         let isCritFail = false;
-        let sucessLabel = "Failed by";
+        
+        let sucessLabel = game.i18n.localize("sjgurps4e.sheet.failBy");
         let cssResult = "fail-result";
-        let difficutFlavor = function (modedTarget) {if (modedTarget<5){return "3 or 4 <br>(Good Luck!)"}else{return modedTarget}};
+        let difficutFlavor = function (modedTarget) {if (modedTarget<5){return game.i18n.localize("sjgurps4e.sheet.4orUnder")}else{return modedTarget}};
         let isSuccess = false;
 
         // check event for alt key which we will use to set the modifier data
@@ -679,30 +679,30 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                 //determine success, failure or crit status
                 if(rollValue <= modedTarget || rollValue <=4 && rollValue < 17){
                     isSuccess = true;
-                    sucessLabel = "Sucess! by: ";
+                    sucessLabel = game.i18n.localize("sjgurps4e.sheet.successBy");
                     cssResult = "sucess-result";
                     if(modedTarget >= 16 && rollValue <= 6 ){
                         isCritSuccess = true;
-                        sucessLabel = "Critical Sucess! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critSuccessBy");
                     } else if (modedTarget >= 15 && rollValue <= 5){
                         isCritSuccess = true;
-                        sucessLabel = "Critical Sucess! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critSuccessBy");
                     } else if (rollValue <= 4){
-                        sucessLabel = "Critical Sucess! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critSuccessBy");
                         isCritSuccess = true;
                     }
                 } else {
                     isSuccess = false;
-                    sucessLabel = "Failure! by: ";
+                    sucessLabel = game.i18n.localize("sjgurps4e.sheet.failBy");
                     cssResult = "fail-result";
                     if(rollValue == 18){
                         isCritFail = true;
-                        sucessLabel = "Critical Fail! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critFailBy");
                     } else if (modedTarget <= 15 && rollValue == 17){
                         isCritFail = true;
-                        sucessLabel = "Critical Fail! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critFailBy");
                     } else if (rollValue >= modedTarget+10){
-                        sucessLabel = "Critical Fail! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critFailBy");
                         isCritFail = true;
                     }
                 }
@@ -717,7 +717,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         <div class="skill-info-chat flexrow">
                             <div class="skillname">Using ` + skillUsedName + ` Skill</div>
                             <div class="sep">|</div>
-                            <div>Target is ` + difficutFlavor(modedTarget) +`</div>
+                            <div>`+ game.i18n.localize("sjgurps4e.sheet.targetIs")  + difficutFlavor(modedTarget) +`</div>
                         </div>
                         <div class="use-desc">` + chatDesc + 
                         `</div>
@@ -737,7 +737,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             rollValue = damageRoll.total;
                             rollTooltip = await Promise.resolve(damageRoll.getTooltip());
                             damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                            <div> ` + damageType[n] + `</div></div> 
+                            <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
                             <div class="dice-roll">
                             <div class="dice-result">
                             <div class="dice-formula">`+damageRoll._formula+`</div>`
@@ -763,7 +763,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             <h1>${dataset.label} </h1>
                         </div>
                         <div class="skill-info-chat flexrow"> 
-                        Target is ` + difficutFlavor(modedTarget)  + `
+                        `+ game.i18n.localize("sjgurps4e.sheet.targetIs")  + difficutFlavor(modedTarget)  + `
                         </div>
                         <div class="use-desc">` + chatDesc + `</div>
                         <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
@@ -781,7 +781,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                                 rollValue = damageRoll.total;
                                 rollTooltip = await Promise.resolve(damageRoll.getTooltip());
                                 damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                                <div> ` + damageType[n] + `</div></div> 
+                                <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
                                 <div class="dice-roll">
                                 <div class="dice-result">
                                 <div class="dice-formula">`+damageRoll._formula+`</div>`
@@ -808,36 +808,36 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             
                 let modedTarget = Number(baseTarget) + Number(modifier);
                 if (modedTarget < 5 ){
-                    modedTarget = "3 or 4 (Good Luck!)"
+                    modedTarget = 4;
                 }
                 margin = modedTarget - rollValue;
                 //determine success, failure or crit status
                 if(rollValue <= modedTarget || rollValue <=4 && rollValue < 17){
                     isSuccess = true;
-                    sucessLabel = "Sucess! by: ";
+                    sucessLabel = game.i18n.localize("sjgurps4e.sheet.successBy");
                     cssResult = "sucess-result";
                     if(modedTarget >= 16 && rollValue <= 6 ){
                         isCritSuccess = true;
-                        sucessLabel = "Critical Sucess! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critSucessBy");
                     } else if (modedTarget >= 15 && rollValue <= 5){
                         isCritSuccess = true;
-                        sucessLabel = "Critical Sucess! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critSucessBy");
                     } else if (rollValue <= 4){
-                        sucessLabel = "Critical Sucess! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critSucessBy");
                         isCritSuccess = true;
                     }
                 } else {
                     isSuccess = false;
-                    sucessLabel = "Failure! by: ";
+                    sucessLabel = game.i18n.localize("sjgurps4e.sheet.failBy");
                     cssResult = "fail-result";
                     if(rollValue == 18){
                         isCritFail = true;
-                        sucessLabel = "Critical Fail! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critFailBy");
                     } else if (modedTarget <= 15 && rollValue == 17){
                         isCritFail = true;
-                        sucessLabel = "Critical Fail! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critFailBy");
                     } else if (rollValue >= modedTarget+10){
-                        sucessLabel = "Critical Fail! by: ";
+                        sucessLabel = game.i18n.localize("sjgurps4e.sheet.critFailBy");
                         isCritFail = true;
                     }
                 }
@@ -850,9 +850,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             <h1>${dataset.label} </h1>
                         </div>
                         <div class="skill-info-chat flexrow">
-                            <div class="skillname">Using ` + skillUsedName + ` Skill</div>
+                            <div class="skillname">`+game.i18n.localize("sjgurps4e.sheet.using") + skillUsedName + game.i18n.localize("sjgurps4e.skill")+`</div>
                             <div class="sep">|</div>
-                            <div>Target is ` + difficutFlavor(modedTarget) +`</div>
+                            <div>` + game.i18n.localize("sjgurps4e.sheet.targetIs") + difficutFlavor(modedTarget) +`</div>
                         </div>
                         <div class="use-desc">` + chatDesc + 
                         `</div>
@@ -872,7 +872,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             rollValue = damageRoll.total;
                             rollTooltip = await Promise.resolve(damageRoll.getTooltip());
                             damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                            <div> ` + damageType[n] + `</div></div> 
+                            <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
                             <div class="dice-roll">
                             <div class="dice-result">
                             <div class="dice-formula">`+damageRoll._formula+`</div>`
@@ -912,7 +912,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             <h1>${dataset.label} </h1>
                         </div>
                         <div class="skill-info-chat flexrow"> 
-                        Target is ` + difficutFlavor(modedTarget)  + `
+                        ` + game.i18n.localize("sjgurps4e.sheet.targetIs") + difficutFlavor(modedTarget)  + `
                         </div>
                         <div class="use-desc">` + chatDesc + `</div>
                         <div class="result-text `+cssResult+`">` + sucessLabel + Math.abs(margin) +`</div></span>`  : '';
@@ -930,7 +930,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                                     rollValue = damageRoll.total;
                                     rollTooltip = await Promise.resolve(damageRoll.getTooltip());
                                     damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                                    <div> ` + damageType[n] + `</div></div> 
+                                    <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
                                     <div class="dice-roll">
                                     <div class="dice-result">
                                     <div class="dice-formula">`+damageRoll._formula+`</div>`
