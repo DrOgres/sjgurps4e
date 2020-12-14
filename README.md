@@ -10,25 +10,28 @@ Layout and HTML for the Notes tab was adapted from alt5e by Sky.
 https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
-
-<li>TODO - use second equipment location for DR application</li>
-<li>TODO - Make DR Locations to be more attractive (stick figure locations?)</li>
+<li>TODO - Add info and layout items to the rolldown for owned items</li>
+<li>TODO - Use second equipment location for DR application</li>
 <li>TODO - Add ranged and melee attack information fields for spells</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
-<li>TODO - create character template item </li>
-<li>TODO - prevent duplicate skills on character sheet </li>
+<li>TODO - Create character template item </li>
+<li>TODO - Prevent duplicate skills on character sheet </li>
 <li>TODO - Beutification and Layout optimization - 85% complete</li>
-<li>TODO - add info and layout items to the rolldown for owned items</li>
-<li>TODO - verify all strings have been localized</li>
+<li>TODO - Make DR Locations to be more attractive (stick figure locations?)</li>
+<li>TODO - Verify all strings have been localized</li>
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
 <li>TODO - Add level option for traits to allow for multi-level traits such as Magery</li>
 <li>TODO - Implement Psionics</li>
 <li>TODO - Implement Techniques</li>
 <li>TODO - Implement NPC/Monser 'card' for a lightweight npc record</li>
-<li>TODO - system settings - skin system based on 'theme' </li>
-<li>TODO - skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
+<li>TODO - System settings - skin system based on 'theme' </li>
+<li>TODO - Skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
 </ul>
 
+<h3>0.6.8</h3>
+<ul>
+
+</ul>
 
 <h3>0.6.7</h3>
 <ul>

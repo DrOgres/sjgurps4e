@@ -61,7 +61,9 @@
             "swDamage": "Swing Damage",
             "thrDamage" : "Thrust Damage",
             "rDamage": "Rolled Damage",
-            "specDamage": "Special Damage See Notes."
+            "specDamage": "Special Damage See Notes.",
+            "dur": "Durability",
+            "equipable": "Equipable"
             
         },
 

@@ -178,7 +178,9 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         data.quirks = data.allTraits.filter(function(item) {return item.data.traitType == "traitQuirk"});
         //console.log(data.quirks);
         data.cultures = data.allTraits.filter(function(item){return item.data.traitType == "traitCulture"});
+        //console.log(data.cultures);
         data.languages = data.allTraits.filter(function(item){return item.data.traitType == "traitLanguage"});
+        //console.log(data.languages);
         
         //gather up the templates
         data.charTemplates = data.items.filter(function(item) {return item.type == "template"});
