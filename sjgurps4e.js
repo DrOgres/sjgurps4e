@@ -1,4 +1,5 @@
 import {sjgurps4e} from "./module/config.js";
+import * as Chat from "./module/chat.js";
 import sjgurps4eItemSheet from "./module/item/sheet.js";
 import sjgurps4eActorSheet from "./module/actor/sheet.js";
 import { preloadHandlebarsTemplates } from "./module/templates.js";
@@ -105,4 +106,6 @@ Hooks.on("preCreateActor", (createData) =>{
   if (!createData.img)
     createData.img = "systems/sjgurps4e/icons/new_actor.png"
 })
+
+Hooks.on("renderChatLog", (app, html, data) => Chat.addChatListeners(html));
 

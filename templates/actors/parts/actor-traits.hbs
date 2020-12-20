@@ -71,6 +71,8 @@
             </ol>
         </ol>
         </div>
+
+        {{!-- Cultures --}}
         <div class="culture-traits" style="max-width: 50%; padding: 0px 10px 0px 3px;">
         <div class="section-titles biopage ">{{localize "sjgurps4e.cultureHeader"}}</div>
         <div class="trait-group flexrow">
@@ -99,6 +101,9 @@
                         {{data.points}}
                     </div>
                     <div class = "item-controls flexrow">
+                        <a class="item-control item-show">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
                         <a class="item-control item-edit">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -112,16 +117,21 @@
         </ol>
         </div>
         </div>
+
+        {{!-- Languages --}}
         <div class="language-traits" style="max-width: 100%;">
         <div class="section-titles biopage">{{localize "sjgurps4e.sheet.languages"}}</div>
         <ol class="inventory-list">
             <li class="languages inventory-header flexrow">
                 <h2 class="item-name flexrow">
                 </h2>
-                <div class="item-topic">{{localize "sjgurps4e.spoken"}}</div>
-                <div class="item-topic">{{localize "sjgurps4e.written"}}</div>
+                <div class="item-topic-lang">{{localize "sjgurps4e.spoken"}}</div>
+                <div class="item-topic-lang">{{localize "sjgurps4e.written"}}</div>
                 <div class="item-topic">{{localize "sjgurps4e.itemProperties.cost"}}</div>
                 <div class = "item-controls flexrow">
+                    <a class="item-control langs-show">
+                            <i class="fas fa-comment-alt"></i>
+                    </a>
                     <a class="item-control item-create" data-type="trait" data-trait="traitLanguage" title="{{localize "sjgurps4e.sheet.addTrait"}}" >
                     <i class="fas fa-plus"></i>
                     </a>
@@ -130,8 +140,8 @@
             <ol class="item-list">
                 <li class="item flexrow">
                 <div class="trait-info trait-name item-name inline-edit" data-edit="data.primeLang" contenteditable>{{data.primeLang}}</div>
-                <div class="item-topic spoken-comp">{{localize "sjgurps4e.langComp.native"}}</div>
-                <div class="item-topic written-comp">{{localize "sjgurps4e.langComp.native"}}</div>
+                <div class="item-topic-lang spoken-comp">{{localize "sjgurps4e.langComp.native"}}</div>
+                <div class="item-topic-lang written-comp">{{localize "sjgurps4e.langComp.native"}}</div>
                 <div class="item-topic point-cost">-</div>
                 <div class = "item-controls flexrow"></div>
                 </li>
@@ -140,7 +150,7 @@
                     <div class="trait-info trait-name item-name">
                         <a class="item-detail" >{{name}}</a>
                     </div>
-                    <div class="item-topic spoken-comp">
+                    <div class="item-topic-lang spoken-comp">
                         <select class="inline-edit" name="data.spokenComp" data-field="data.spokenComp">
                         {{#select data.spokenComp}}
                         {{#each @root.config.languageComprehension as |comp name|}}
@@ -150,7 +160,7 @@
                         </select>
 
                     </div>
-                    <div class="item-topic written-comp">
+                    <div class="item-topic-lang written-comp">
                         <select class="inline-edit" name="data.writtenComp" data-field="data.writtenComp">
                         {{#select data.writtenComp}}
                         {{#each @root.config.languageComprehension as |comp name|}}
@@ -176,8 +186,7 @@
             </ol>
         </ol>
         </div>
-        <div class="section-titles biopage">{{localize "sjgurps4e.biography"}}</div>
-        {{editor content=data.bio.value target="data.bio.value" button=true owner=owner editable=editable}}
+        
     </div>
     <div class="traits">
         <ol class="inventory-list">
@@ -197,13 +206,16 @@
                 {{#each advantages as |advantage id|}}
                 <li class="item flexrow" data-itemid="{{_id}}">
                     <div class="trait-info trait-name item-name">
-                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <img class="item-detail display-info"  id="icon" src="{{img}}" height = "24px">
                         <a class="item-detail" >{{name}}</a>
                     </div>
                     <div class="item-topic point-cost"> 
                         {{data.points}}
                     </div>
                     <div class = "item-controls flexrow">
+                        <a class="item-control item-show">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
                         <a class="item-control item-edit">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -230,13 +242,16 @@
                 {{#each perks as |perk id|}}
                 <li class="item flexrow" data-itemid="{{_id}}">
                     <div class="trait-info trait-name item-name">
-                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <img class="item-detail display-info"  id="icon" src="{{img}}" height = "24px">
                         <a class="item-detail" >{{name}}</a>
                     </div>
                     <div class="item-topic point-cost"> 
                         {{data.points}}
                     </div>
                     <div class = "item-controls flexrow">
+                        <a class="item-control item-show">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
                         <a class="item-control item-edit">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -264,13 +279,16 @@
                 {{#each disadvantages as |disadvantage id|}}
                 <li class="item flexrow" data-itemid="{{_id}}">
                     <div class="trait-info trait-name item-name">
-                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <img class="item-detail display-info"  id="icon" src="{{img}}" height = "24px">
                         <a class="item-detail" >{{name}}</a>
                     </div>
                     <div class="item-topic point-cost"> 
                         {{data.points}}
                     </div>
                     <div class = "item-controls flexrow">
+                        <a class="item-control item-show">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
                         <a class="item-control item-edit">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -297,13 +315,16 @@
                 {{#each quirks as |quirk id|}}
                 <li class="item flexrow" data-itemid="{{_id}}">
                     <div class="trait-info trait-name item-name">
-                        <img class="rollable display-info"  id="icon" src="{{img}}" height = "24px">
+                        <img class="item-detail display-info"  id="icon" src="{{img}}" height = "24px">
                         <a class="item-detail" >{{name}}</a>
                     </div>
                     <div class="item-topic point-cost"> 
                         {{data.points}}
                     </div>
                     <div class = "item-controls flexrow">
+                        <a class="item-control item-show">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
                         <a class="item-control item-edit">
                             <i class="fas fa-edit"></i>
                         </a>

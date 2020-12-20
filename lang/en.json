@@ -319,7 +319,7 @@
             "duration": "Duration",
             "initCost": "Initial Cost",
             "maintCost": "Maintenence Cost",
-            "notes": "Notes",
+            "notes": "Bio & Notes",
             "attack": "Attack",
             "modTip": "Hold the Alt key (option on Mac) when clicking a roll to add the modifier to the target!",
             "targetIs": "Target is: ",

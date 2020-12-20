@@ -52,8 +52,18 @@
 .flexcol .flex4 {
   flex: 4;
 }
+input[type=text],
+select {
+  background-color: #fffce7;
+  border: 1px groove #c5313188;
+  font-weight: 700;
+  border-radius: 5px;
+}
+input:hover {
+  background-color: #c5313120;
+}
 .chat-message {
-  background-color: antiquewhite;
+  background-color: #fff8ee;
   background-image: none;
 }
 .sidebar-tab {
@@ -61,27 +71,27 @@
   background-image: none;
 }
 .sidebar-tab button {
-  background: antiquewhite;
+  background: #fff8ee;
 }
 .sidebar-tab .directory-header .header-search {
-  color: antiquewhite;
+  color: #fff8ee;
 }
 .sidebar-tab .directory-header .header-search input {
-  background-color: antiquewhite;
+  background-color: #fff8ee;
   background-image: none;
 }
 .sidebar-tab #chat-controls {
-  color: antiquewhite;
+  color: #fff8ee;
 }
 .sidebar-tab #chat-controls .roll-type-select {
-  background: antiquewhite;
+  background: #fff8ee;
 }
 .sidebar-tab #chat-message {
-  background-color: antiquewhite;
+  background-color: #fff8ee;
   background-image: none;
 }
 .window-app .window-content {
-  background-color: antiquewhite;
+  background-color: #fff8ee;
   background-image: url(./img/HEX.png);
 }
 .sjgurps4e.sheet.item .spell-parts {
@@ -150,7 +160,7 @@
   margin: 0%;
   padding: 0;
   list-style: none;
-  border-top: 2px groove antiquewhite;
+  border-top: 2px groove #fff8ee;
   border-bottom: none;
   font-size: 20px;
   color: dimgrey;
@@ -349,10 +359,8 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-header .pointvalue input[type=text],
 .sjgurps4e.sheet.character .sheet-header .pointvalue select {
-  background-color: #ffffff00;
   width: 30px;
   display: inline-block;
-  border: none;
   vertical-align: baseline;
   align-content: center;
   padding: 1px;
@@ -376,7 +384,6 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-header .roll-mod .formgroup input {
   text-align: center;
-  background-color: #ffffff00;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -391,6 +398,9 @@ select:hover {
   border: none;
   font-size: 30px;
   width: 300px;
+}
+.sjgurps4e.sheet.character .sheet-header .charname input:hover {
+  background-color: #c5313120;
 }
 .sjgurps4e.sheet.character .sheet-navigation {
   border-bottom: groove;
@@ -432,11 +442,9 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline input[type=text],
 .sjgurps4e.sheet.character .sheet-top .statblock .statline select {
-  background-color: #ffffff00;
   width: 40px;
   margin: 3px;
   display: inline-block;
-  border: none;
   vertical-align: baseline;
   align-content: center;
 }
@@ -454,11 +462,9 @@ select:hover {
 }
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue input[type=text],
 .sjgurps4e.sheet.character .sheet-top .statblock .statline .statvalue select {
-  background-color: #ffffff00;
   width: 40px;
   margin: 3px;
   display: inline-block;
-  border: none;
   vertical-align: baseline;
   align-content: center;
 }
@@ -490,7 +496,7 @@ select:hover {
   line-height: 16px;
   padding: 0.25em 0.5em;
   color: #191813;
-  border-top: 1px solid #c9c7b8;
+  border-top: 1px solid #fffce7;
 }
 .inventory-list .inventory-totals {
   text-align: right;
@@ -503,10 +509,8 @@ select:hover {
 }
 .inventory-list .inventory-totals .money input[type=text],
 .inventory-list .inventory-totals .money select {
-  background-color: #ffffff00;
   max-width: 25%;
   max-height: 16px;
-  border: none;
   font-size: 14px;
 }
 .inventory-list .inventory-header {
@@ -539,44 +543,72 @@ select:hover {
 }
 .inventory-list .inventory-header .item-topic.item-skill {
   flex: 0 0 80px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .inventory-header .item-topic.item-mod {
   flex: 0 0 80px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
+  text-align: center;
+}
+.inventory-list .inventory-header .item-topic-lang .spoken-comp .written-comp {
+  flex: 0 0 100px;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .inventory-header .item-topic {
   flex: 0 0 60px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .inventory-header .item-topic.item-diff {
   flex: 0 0 100px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .inventory-header .item-controls {
   flex: 0 0 70px;
   text-align: center;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
+}
+.inventory-list .item-list .item.flexrow {
+  align-items: center;
 }
 .inventory-list .item-list .item-name {
   flex: 2;
   margin: 0;
   overflow: hidden;
   text-align: left;
-  align-items: center;
+  align-self: center;
+}
+.inventory-list .item-list .item-name img {
+  vertical-align: middle;
+  height: 24px;
+  width: 24px;
+  border: none;
+  margin: 2px;
+}
+.inventory-list .item-list .item-name .item-detail {
+  align-self: baseline;
+}
+.inventory-list .item-list .item-name .item-detail:hover {
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
 }
 .inventory-list .item-list .item-topic.item-skill {
   flex: 0 0 80px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
+  text-align: center;
+}
+.inventory-list .item-list .item-topic-lang {
+  flex: 0 0 100px;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .item-list .item-topic.item-mod {
   flex: 0 0 80px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
   align-content: center;
   text-align: center;
   padding-left: 5px;
@@ -584,18 +616,18 @@ select:hover {
 }
 .inventory-list .item-list .item-topic {
   flex: 0 0 60px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .item-list .item-topic.item-diff {
   flex: 0 0 100px;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
   text-align: center;
 }
 .inventory-list .item-list .item-controls {
   flex: 0 0 70px;
   text-align: center;
-  border-left: 1px solid #88888855;
+  border-left: 1px solid #a1a1a155;
 }
 .inventory-list .item-list .flexrow:nth-child(odd) {
   background: rgba(0, 0, 0, 0.07);
@@ -668,10 +700,8 @@ select:hover {
 }
 .coreItems .lift-speed-move .encBlock input[type=text],
 .coreItems .lift-speed-move .encBlock select {
-  background-color: rgba(255, 255, 255, 0);
   max-width: 15px;
   max-height: 12px;
-  border: none;
   font-size: 10px;
 }
 .item-list {
@@ -709,6 +739,46 @@ select:hover {
 .mod-number input {
   max-width: 50px;
 }
+#languages {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border-radius: 5px;
+  width: 100%;
+}
+#languages td,
+#languages th {
+  border: 1px solid #a1a1a155;
+  padding: 8px;
+}
+#languages tr:nth-child(even) {
+  background-color: #c5313120;
+}
+#languages tr:hover {
+  background-color: #a1a1a155;
+}
+#languages th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #c53131;
+  color: #fff8ee;
+}
+.message-header .message-metadata a:hover {
+  color: #c53131;
+  font-weight: 700;
+  text-shadow: none;
+}
+.chat-message .message-content .damage-rolls .dice-roll .dice-result .dice-total h5 {
+  margin: 0px 0px;
+  font-size: 12px;
+  color: darkslategray;
+}
+.chat-message .message-content .damage-rolls .dice-roll .dice-result .dice-total h4 {
+  margin-bottom: 2px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #c53131;
+}
 .flavor-text .use-desc {
   font-size: 0.8rem;
   font-weight: 400;
@@ -745,6 +815,10 @@ select:hover {
 }
 .flavor-text .chat-header {
   flex: 0 1 0;
+  margin-left: -7px;
+  margin-right: -7px;
+  padding-left: 7px;
+  padding-right: 7px;
   justify-content: flex-start;
   align-items: flex-end;
   border-color: #c53131;

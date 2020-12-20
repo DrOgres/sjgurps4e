@@ -1,6 +1,6 @@
 This is a simple to use implementation of the 4E GURPS character sheet for use with Foundry VTT. It should be compatible with foundry version 0.7.5 and higher.  Bugs, feedback or suggestions are welcome. The goal here is to provide a quick to setup and play system, not to automate the myriad modifiers and situational components of GURPS.  Any and all modifiers should be calculated and called by the players or GM and applied during play.  Using the alt key when clicking a roll button will provide a simple dialog to imput the modifier before rolling. No different than being at a physical table with paper character sheets.
 
-<img src="./img/system_screen.png"/>
+<img src="./img/6dot8_system_screen.png"/>
 
 We provide no pre-made skills, traits or other components, but you can easily build those from your GURPS books using the system!
 
@@ -13,10 +13,12 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - Add info and layout items to the rolldown for owned items</li>
 <li>TODO - Use second equipment location for DR application</li>
 <li>TODO - Add ranged and melee attack information fields for spells</li>
+<li>TODO - Implement Missile spell options as chat buttons.</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
 <li>TODO - Create character template item </li>
 <li>TODO - Prevent duplicate skills on character sheet </li>
 <li>TODO - Beutification and Layout optimization - 85% complete</li>
+<li>TODO - implement ownership on listeners</li>
 <li>TODO - Make DR Locations to be more attractive (stick figure locations?)</li>
 <li>TODO - Verify all strings have been localized</li>
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
@@ -30,7 +32,10 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <h3>0.6.8</h3>
 <ul>
-
+    <li>Implemented injury effects for less than 1/3 HP </li>
+    <li>Traits can now be sent to chat cards for display</li>
+    <li>Reformated Chat display for attacks and damage</li>
+    <li>Languages can now be sent to chat for display</li>
 </ul>
 
 <h3>0.6.7</h3>

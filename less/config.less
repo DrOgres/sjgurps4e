@@ -18,14 +18,14 @@
 @highlight-color: #c53131;
 @50-cent-highlight: #c5313188;
 @20-cent-highlight: #c5313144;
-@accent-color: antiquewhite;
-@offwhite: #fffef8;
+@10-cent-highlight: #c5313120;
+@accent-color: rgb(255, 248, 238);
 @light-color: dimgrey;
-@light-shade: #88888855;
+@light-shade: #a1a1a155;
 @mid-shadow-color: #545454;
 @dark-shadow-color: #2b2b2b;
 @transparent-color: #ffffff00;
-@offwhite: #c9c7b8;
+@offwhite: #fffce7;
 @dark-contrast: #191813;
 @green-highlight: #5b9647;
 
@@ -67,6 +67,22 @@
 
 
   //override default settings of the foundry css
+
+  input[type=text], select{
+    background-color: @offwhite;
+    
+    border: 1px groove @50-cent-highlight;
+    font-weight: 700;
+    border-radius: 5px;
+         
+    
+}
+
+input:hover{
+  background-color: @10-cent-highlight;
+}
+
+
 .chat-message{
   background-color: @accent-color;
   background-image: none;
@@ -98,6 +114,7 @@
   #chat-message{
     background-color: @accent-color;
     background-image: none;
+
   }
     
 }

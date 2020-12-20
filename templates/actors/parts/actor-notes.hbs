@@ -1,11 +1,9 @@
             {{!-- layout and formatting for this tab adapted from alt5e by Sky        --}}
             {{!-- https://github.com/Sky-Captain-13/foundry/tree/master/alt5e         --}}
             {{!-- Thanks Sky!                                                         --}}                
-            <div class="additional-notes">
-                <div class="section-titles biopage">
-                    <input type="text" name="data.details.notesname" value="{{data.details.notesname}}" placeholder="Personal Journal"/>
-                </div>
-                {{editor content=data.details.notes.value target="data.details.notes.value" button=true owner=owner editable=editable}}
+            <div class="additional-notes biography">
+                <div class="section-titles biopage">{{localize "sjgurps4e.biography"}}</div>
+                {{editor content=data.bio.value target="data.bio.value" button=true owner=owner editable=editable}}
             </div>
             <div class="additional-notes">
                 <div class="section-titles biopage">

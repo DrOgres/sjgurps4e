@@ -6,7 +6,7 @@ export default class ActorGurps extends Actor {
     prepareData(){
         super.prepareData();
         const actorData = this.data;
-        console.log("SJGURPS4E   |    prepareData for actor entities:  " + this.data.name);
+        //console.log("SJGURPS4E   |    prepareData for actor entities:  " + this.data.name);
         actorData.data.baseSpeed = this._basicSpeed(actorData);
         actorData.data.totalPoints.value = this._computePoints(actorData);
         
@@ -56,7 +56,7 @@ export default class ActorGurps extends Actor {
     
     */
     
-        console.log("GURPS4E   |  prepare data base damage")
+        //console.log("GURPS4E   |  prepare data base damage")
 
     switch(actor.data.ST.value){
         case 1:
@@ -304,88 +304,88 @@ export default class ActorGurps extends Actor {
     }
 
     _computePoints(actorData){
-        console.log("SJGURPS4E   |  actor: " + actorData.name);
+        //console.log("SJGURPS4E   |  actor: " + actorData.name);
         let points = 0;
 
         //get the points for the attributes
 
         //st
         let ST = actorData.data.ST.value;
-        console.log("SJGURPS4E   |  ST: " + (ST-10)*10);
+        //console.log("SJGURPS4E   |  ST: " + (ST-10)*10);
         points += Number((ST-10)*10);
 
         //dx
         let DX = actorData.data.DX.value;
-        console.log("SJGURPS4E   |  DX: " + (DX-10)*20);
+        //console.log("SJGURPS4E   |  DX: " + (DX-10)*20);
         points += Number((DX-10)*20);
 
          //iq
          let IQ = actorData.data.IQ.value;
-         console.log("SJGURPS4E   |  IQ: " + (IQ-10)*20);
+         //console.log("SJGURPS4E   |  IQ: " + (IQ-10)*20);
          points += Number((IQ-10)*20);
 
         //ht
         let HT = actorData.data.HT.value;
-        console.log("SJGURPS4E   |  HT: " + (HT-10)*10);
+        //console.log("SJGURPS4E   |  HT: " + (HT-10)*10);
         points += Number((HT-10)*10);
 
         //will
         let Will = actorData.data.Will.value;
-        console.log("SJGURPS4E   |  Will: " + (Will-IQ)*5);
+        //console.log("SJGURPS4E   |  Will: " + (Will-IQ)*5);
         points += Number((Will-IQ)*5);
 
         //per
         let Per = actorData.data.Per.value;
-        console.log("SJGURPS4E   |  Per: " + (Per-IQ)*5);
+        //console.log("SJGURPS4E   |  Per: " + (Per-IQ)*5);
         points += Number((Per-IQ)*5);
 
         //hp
         let HP = actorData.data.HP.max;
-        console.log("SJGURPS4E   |  HP: " + (HP-ST)*2);
+        //console.log("SJGURPS4E   |  HP: " + (HP-ST)*2);
         points += Number((HP-ST)*2);
 
 
         //fp
         let FP = actorData.data.FP.max;
-        console.log("SJGURPS4E   |  FP: " + (FP-HT)*3);
+        //console.log("SJGURPS4E   |  FP: " + (FP-HT)*3);
         points += Number((FP-HT)*3);
 
 
         //get the points for move and speed
-        console.log("SJGURPS4E   |  speedPoints: " + actorData.data.speedPoints);
+        //console.log("SJGURPS4E   |  speedPoints: " + actorData.data.speedPoints);
         points += Number(actorData.data.speedPoints);
-        console.log("SJGURPS4E   |  movePoints: " + actorData.data.movePoints);
+        //console.log("SJGURPS4E   |  movePoints: " + actorData.data.movePoints);
         points += Number(actorData.data.movePoints);
 
 
         // get the points for reaction modifiers 
         if(actorData.data.appCost){
-            console.log("SJGURPS4E   |  actor appcost: " + actorData.data.appCost);
+            //console.log("SJGURPS4E   |  actor appcost: " + actorData.data.appCost);
             points += Number(actorData.data.appCost);
         }
         if(actorData.data.statusCost){
-            console.log("SJGURPS4E   |  actor statusCost: " + actorData.data.statusCost);
+            //console.log("SJGURPS4E   |  actor statusCost: " + actorData.data.statusCost);
             points += Number(actorData.data.statusCost);
         }
         if(actorData.data.repCost){
-            console.log("SJGURPS4E   |  actor repCost: " + actorData.data.repCost);
+            //console.log("SJGURPS4E   |  actor repCost: " + actorData.data.repCost);
             points += Number(actorData.data.repCost);
         }
         if(actorData.data.react1Cost){
-            console.log("SJGURPS4E   |  actor react1Cost: " + actorData.data.react1Cost);
+            //console.log("SJGURPS4E   |  actor react1Cost: " + actorData.data.react1Cost);
             points += Number(actorData.data.react1Cost);
         }
 
         //get the point cost for all the owned items on the character sheet
         for(let n = 0; n<actorData.items.length; n++){
-            console.log("SJGURPS4E   |  Point Calculation: " + actorData.items[n].name);
-            console.log("SJGURPS4E   |  Point Calculation: " + actorData.items[n].type);
+            //console.log("SJGURPS4E   |  Point Calculation: " + actorData.items[n].name);
+            //console.log("SJGURPS4E   |  Point Calculation: " + actorData.items[n].type);
             
             if(actorData.items[n].type == "trait"){
-                console.log("SJGURPS4E   |  Point Calculation Trait: " + actorData.items[n].data.points);
+                //console.log("SJGURPS4E   |  Point Calculation Trait: " + actorData.items[n].data.points);
                 points += Number(actorData.items[n].data.points); 
             } else if (actorData.items[n].type == "skill") {
-                console.log("SJGURPS4E   |  Point Calculation Skill Level: " + actorData.items[n].data.level);
+                //console.log("SJGURPS4E   |  Point Calculation Skill Level: " + actorData.items[n].data.level);
                 let skillLevel = actorData.items[n].data.level;
                 // Calculate Point Cost
                 if(skillLevel<3){
@@ -398,7 +398,7 @@ export default class ActorGurps extends Actor {
           
         }
         
-        console.log("SJGURPS4E   |  Point total: " + points);
+        //console.log("SJGURPS4E   |  Point total: " + points);
         return points;
     }
 
@@ -438,7 +438,7 @@ export default class ActorGurps extends Actor {
         let lFootDR = 0;
         let flexLFoot = 0;
         
-        console.log("SJGURRPS 4E | DR Scope: " + scope);      
+        //console.log("SJGURRPS 4E | DR Scope: " + scope);      
         
         if(scope === "basic"){
             //we need a base dr for flexable armor in case we have layerd it

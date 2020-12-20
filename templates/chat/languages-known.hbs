@@ -1,0 +1,21 @@
+
+<table>
+    <tr>
+        <th>Language</th>
+        <th>Spoken</th>
+        <th>Written</th>
+    </tr>
+    <tr>
+        <td>{{data.primeLang}}</td>
+        <td>{{localize "sjgurps4e.langComp.native"}}</td>
+        <td>{{localize "sjgurps4e.langComp.native"}}</td>
+    </tr>
+{{#each languages as |language id|}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{data.spokenComp}}</td>
+        <td>{{data.writtenComp}}</td>
+    </tr>
+{{/each}}
+
+</table>

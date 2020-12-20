@@ -22,10 +22,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         data.config = CONFIG.sjgurps4e;
 
         data["hitLocationScope"] = game.settings.get("sjgurps4e", "hitLocationScope");
-        console.log("SJGURPS4E  | hitLocationScope: " + data.hitLocationScope);
+        //console.log("SJGURPS4E  | hitLocationScope: " + data.hitLocationScope);
 
         //uncomment to peek at data if needed
-        console.log(data);
+        //console.log(data);
         
 
         // gather up the weapon items
@@ -266,6 +266,11 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         //equip an equipable item
         html.find('.item-equip').click(this._onItemEquip.bind(this));
 
+        //send a card to the chat for a particular thing
+        html.find('.item-show').click(this._onItemShow.bind(this));
+        html.find('.langs-show').click(this._langToChat.bind(this));
+
+
 
         super.activateListeners(html);
         //console.log("*-* activated listener");
@@ -273,19 +278,127 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
 
     }
 
+    async _langToChat(event){
+        event.preventDefault();
+        const actor = this.actor
+        const data = actor.data;
+        let allTraits = data.items.filter(function(item) {return item.type == "trait"});
+        let languages = allTraits.filter(function(item){return item.data.traitType == "traitLanguage"});
+        let html = "";
+
+        html = `
+        <span class="flavor-text">
+        <div class="chat-header flexrow">
+        <img class="portrait" width="42" height="42" src="`+actor.img+`">
+        <h1>`+game.i18n.localize("sjgurps4e.sheet.languages")+`</h1></div>
+        <table id="languages">
+        <tr>
+            <th>`+game.i18n.localize("sjgurps4e.lang")+`</th>
+            <th>`+game.i18n.localize("sjgurps4e.spoken")+`</th>
+            <th>`+game.i18n.localize("sjgurps4e.written")+`</th>
+        </tr>
+        <tr>
+            <td>`+actor.data.data.primeLang+`</td>
+            <td>`+game.i18n.localize("sjgurps4e.langComp.native")+`</td>
+            <td>`+game.i18n.localize("sjgurps4e.langComp.native")+`</td>
+        </tr>`
+
+        //console.log(languages);
+        //console.log(this.actor.data);
+        for(let n = 0; n<languages.length; n++){
+            html+=`<tr>
+            <td>`+languages[n].name+`</td>
+            <td>`+game.i18n.localize("sjgurps4e.langComp."+languages[n].data.spokenComp)+`</td>
+            <td>`+game.i18n.localize("sjgurps4e.langComp."+languages[n].data.writtenComp)+`</td>
+        </tr>`
+        }
+
+        html+=`</table></span>`;
+
+
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+            content: html,
+            type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+            sound: "",
+            isRoll: false,
+            
+        });
+
+    }
+
+     _onItemShow(event){
+        event.preventDefault();
+        let li = $(event.currentTarget).parents(".item"),
+        item = this.actor.getOwnedItem(li.data("itemid")),
+        chatData = item.getChatData({secrets: this.actor.owner});
+        let name = item.data.name;
+        let img = item.data.img;
+        let ownerID = this.actor.data._id;
+        console.log(ownerID);
+        
+
+        let div = `<span class="flavor-text"><div class="chat-header flexrow"><img class="portrait" width="42" height="42" src="`+img+`"><h1>`+name+`</h1></div><div>${chatData.description.value}`;
+
+        //TODO add properties here
+        let props = `<div class="item-properties">`;
+        chatData.properties.forEach(p=> props += (`<span class="tag">${p}</span>`));
+        
+        div += props+ `</div></div></span>`;
+
+        console.log(div);
+
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor, token: this.actor.img }),
+            content: div,
+            type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+            sound: "",
+            isRoll: false,
+            
+        });
+
+
+    }
     _getDodge(actor){
+        
+        let maxHP = actor.data.HP.max;
+        let curHP = actor.data.HP.value;
         let enc = actor.data.encumbrance;
         let d = Math.round(actor.data.baseSpeed)+3;
+        
+
         if (enc == 0){
-            return d;
+            if(curHP < maxHP/3){
+                return Math.ceil(d/2);
+            }else{
+                return d;
+            }
         } else if (enc == 1){
-            return d-1;
+            if(curHP < maxHP/3){
+                return Math.ceil((d-1)/2);
+            } else{
+                return d-1;
+            }
         } else if (enc == 2){
+            if(curHP < maxHP/3){
+                return Math.ceil((d-2)/2);
+            } else {
             return d-2;
+            }
         } else if (enc == 3){
-            return d-3;
+            if(curHP < maxHP/3){
+                return Math.ceil((d-3)/2);
+            } else {
+                return d-3;
+            }
         } else if (enc == 4){
-            return d-4;
+            if(curHP < maxHP/3){
+                return Math.ceil((d-4)/2);
+            } else {
+                return d-4;
+            }
         } else {
             console.log("GURPS 4E |  Error: Enchumbrance out of range");
         }
@@ -294,6 +407,13 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
     _getMove(actor){
         let enc = actor.data.encumbrance;
         let bm = actor.data.basicMove;
+        let maxHP = actor.data.HP.max;
+        let curHP = actor.data.HP.value;
+        if(curHP < maxHP/3){
+
+            bm = Math.ceil(bm/2);
+        }
+
         if (enc == 0){
             return bm;
         } else if (enc == 1){
@@ -373,6 +493,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let li=$(event.currentTarget).parents(".item"),
         item = this.actor.getOwnedItem(li.data("itemid")),
         chatData = item.getChatData({secrets: this.actor.owner});
+
+        //TODO add properties for items at end 
 
         if(chatData.description.value === null){
             return;
@@ -504,6 +626,8 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let isweapon = false;
         let hasDamage = false;
         let chatDesc ='';
+        let ownerID = this.actor.data._id;
+        
         
         /** find out what kind of thing we are rolling on
         // items, skills, spells, stats etc.
@@ -611,7 +735,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
             baseTarget = effectiveTarget;
             chatDesc = item.data.data.description.value;
-            console.log(item);
+            //console.log(item);
             if(item.data.data.isSpell){
                 //check to see if this spell does damage
                 //if so set the damage flag to true and 
@@ -708,7 +832,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         isCritFail = true;
                     }
                 }
-                
+                //TODO refactor this to a template and a function call
                 if(skillUsedName != ''){
                     let label = dataset.label ? 
                     `<span class="flavor-text">
@@ -728,26 +852,24 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                     let flavorText = label + `
                     <div class="dice-roll">
                         <div class="dice-result">
-                            <div class="dice-formula">`+mRoll._formula+`</div>`
+                            <div class="dice-formula" style="display:none;">`+mRoll._formula+`</div>`
                             +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
 
-                    let damageText = "";
-                    if(hasDamage){
-                        for(let n = 0; n<damageFormulas.length; n++){
-                            let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
-                            damageRoll.evaluate();
-                            rollValue = damageRoll.total;
-                            rollTooltip = await Promise.resolve(damageRoll.getTooltip());
-                            damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                            <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
-                            <div class="dice-roll">
-                            <div class="dice-result">
-                            <div class="dice-formula">`+damageRoll._formula+`</div>`
-                            +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                        let damageText =`<div class="damage-rolls flexrow">`;        
+                        if(hasDamage){
+                            for(let n = 0; n<damageFormulas.length; n++){
+                                let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
+                                damageRoll.evaluate();
+                                rollValue = damageRoll.total;
+                                rollTooltip = await Promise.resolve(damageRoll.getTooltip());
+                                damageText = damageText+ `<div class="dice-roll">
+                                <div class="dice-result flexcol">
+                                <div class="dice-formula" style="display: none;">`+damageRoll._formula+`</div>`
+                                +rollTooltip+`<div class="dice-total"> <h5>`+ baseType[n] +`</h5><h4>`+damageRoll.total+`</h4><h5>`+game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</h5></div></div></div>`  ; 
+                            }
+                                
                         }
-                            
-                    }
-                    flavorText = flavorText + damageText;   
+                        flavorText = flavorText + damageText + "</div>";    
                     // chat message for sucess and by amount flagging crits 
                     ChatMessage.create({
                         user: game.user._id,
@@ -773,25 +895,24 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         let flavorText = label + `
                         <div class="dice-roll">
                             <div class="dice-result">
-                            <div class="dice-formula">`+mRoll._formula+`</div>`
+                            <div class="dice-formula" style="display:none;">`+mRoll._formula+`</div>`
                             +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
-                        let damageText = "";
+                        
+                        let damageText =`<div class="damage-rolls flexrow">`;        
                         if(hasDamage){
                             for(let n = 0; n<damageFormulas.length; n++){
                                 let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
                                 damageRoll.evaluate();
                                 rollValue = damageRoll.total;
                                 rollTooltip = await Promise.resolve(damageRoll.getTooltip());
-                                damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                                <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
-                                <div class="dice-roll">
-                                <div class="dice-result">
-                                <div class="dice-formula">`+damageRoll._formula+`</div>`
-                                +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                                damageText = damageText+ `<div class="dice-roll">
+                                <div class="dice-result flexcol">
+                                <div class="dice-formula" style="display: none;">`+damageRoll._formula+`</div>`
+                                +rollTooltip+`<div class="dice-total"> <h5>`+ baseType[n] +`</h5><h4>`+damageRoll.total+`</h4><h5>`+game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</h5></div></div></div>`  ; 
                             }
                                 
                         }
-                        flavorText = flavorText + damageText;   
+                        flavorText = flavorText + damageText + "</div>";  
                         // chat message for sucess and by amount flagging crits 
                         ChatMessage.create({
                         user: game.user._id,
@@ -863,26 +984,24 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                     let flavorText = label + `
                     <div class="dice-roll">
                         <div class="dice-result">
-                            <div class="dice-formula">`+mRoll._formula+`</div>`
+                            <div class="dice-formula" style="display:none;">`+mRoll._formula+`</div>`
                             +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
 
-                    let damageText = "";
+                    let damageText =`<div class="damage-rolls flexrow">`;        
                     if(hasDamage){
                         for(let n = 0; n<damageFormulas.length; n++){
                             let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
                             damageRoll.evaluate();
                             rollValue = damageRoll.total;
                             rollTooltip = await Promise.resolve(damageRoll.getTooltip());
-                            damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                            <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
-                            <div class="dice-roll">
-                            <div class="dice-result">
-                            <div class="dice-formula">`+damageRoll._formula+`</div>`
-                            +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                            damageText = damageText+ `<div class="dice-roll">
+                            <div class="dice-result flexcol">
+                            <div class="dice-formula" style="display: none;">`+damageRoll._formula+`</div>`
+                            +rollTooltip+`<div class="dice-total"> <h5>`+ baseType[n] +`</h5><h4>`+damageRoll.total+`</h4><h5>`+game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</h5></div></div></div>`  ; 
                         }
                             
                     }
-                    flavorText = flavorText + damageText;   
+                    flavorText = flavorText + damageText + "</div>";     
                     
                             // chat message for sucess and by amount flagging crits 
                     ChatMessage.create({
@@ -922,25 +1041,24 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         let flavorText = label + `
                         <div class="dice-roll">
                             <div class="dice-result">
-                                <div class="dice-formula">`+mRoll._formula+`</div>`
+                                <div class="dice-formula" style="display:none;">`+mRoll._formula+`</div>`
                                 +rollTooltip+`<h4 class="dice-total">`+mRoll.total+`</h4></div></div>`;
-                        let damageText = "";
+                        
+                        let damageText =`<div class="damage-rolls flexrow">`;        
                             if(hasDamage){
                                 for(let n = 0; n<damageFormulas.length; n++){
                                     let damageRoll = new Roll(damageFormulas[n], this.actor.data.data);
                                     damageRoll.evaluate();
                                     rollValue = damageRoll.total;
                                     rollTooltip = await Promise.resolve(damageRoll.getTooltip());
-                                    damageText = damageText+ `<div class="flexrow"><div>` + baseType[n] + `</div>
-                                    <div> ` + game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</div></div> 
-                                    <div class="dice-roll">
-                                    <div class="dice-result">
-                                    <div class="dice-formula">`+damageRoll._formula+`</div>`
-                                    +rollTooltip+`<h4 class="dice-total">`+damageRoll.total+`</h4></div></div>`  ; 
+                                    damageText = damageText+ `<div class="dice-roll">
+                                    <div class="dice-result flexcol">
+                                    <div class="dice-formula" style="display: none;">`+damageRoll._formula+`</div>`
+                                    +rollTooltip+`<div class="dice-total"> <h5>`+ baseType[n] +`</h5><h4>`+damageRoll.total+`</h4><h5>`+game.i18n.localize("sjgurps4e.damageType."+damageType[n]) + `</h5></div></div></div>`  ; 
                                 }
                                     
                             }
-                        flavorText = flavorText + damageText;    
+                        flavorText = flavorText + damageText + "</div>";    
                         // chat message for sucess and by amount flagging crits 
                         ChatMessage.create({
                         user: game.user._id,
@@ -951,18 +1069,6 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         isRoll: true,
                         roll: mRoll
                     });
-
-                    if(!hasDamage){
-                        for(let n=0; n<damageFormulas.length;n++){
-                            mRoll = new Roll(damageFormulas[n], this.actor.data.data);
-                            label = `<div class=flexrow><div>` + baseType[n] + `</div>
-                            <div> ` + damageType[n] + `</div></div>`; 
-                            mRoll.roll().toMessage({
-                                speaker:ChatMessage.getSpeaker({actor: this.actor}),
-                                flavor: label
-                            });
-                        }
-                    }
                 }
 
                 

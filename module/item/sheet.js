@@ -30,7 +30,7 @@ export default class ItemSheetGurps extends ItemSheet{
         //uncomment to debug item data
         //console.log("SJGURPS 4E   |    Item Data: " + data.data.damageFormula);
         data["hitLocationScope"] = game.settings.get("sjgurps4e", "hitLocationScope");
-        console.log("SJGURPS4E  | hitLocationScope: " + data.hitLocationScope);
+        //console.log("SJGURPS4E  | hitLocationScope: " + data.hitLocationScope);
 
         //Item Type and details
         data.itemClass = data.item.type.titleCase();
@@ -153,7 +153,7 @@ export default class ItemSheetGurps extends ItemSheet{
     async _onDamageControl(event) {
     event.preventDefault();
     const a = event.currentTarget;
-        console.log(this.item.data.data);
+        //console.log(this.item.data.data);
     // Add new damage component
     
     if ( a.classList.contains("add-damage") ) {
