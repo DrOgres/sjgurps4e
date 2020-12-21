@@ -1,3 +1,5 @@
+<h1>Lightweight Foundry VTT GURPS system</h1>
+
 This is a simple to use implementation of the 4E GURPS character sheet for use with Foundry VTT. It should be compatible with foundry version 0.7.5 and higher.  Bugs, feedback or suggestions are welcome. The goal here is to provide a quick to setup and play system, not to automate the myriad modifiers and situational components of GURPS.  Any and all modifiers should be calculated and called by the players or GM and applied during play.  Using the alt key when clicking a roll button will provide a simple dialog to imput the modifier before rolling. No different than being at a physical table with paper character sheets.
 
 <img src="./img/6dot8_system_screen.png"/>
@@ -10,11 +12,11 @@ Layout and HTML for the Notes tab was adapted from alt5e by Sky.
 https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 
 <ul>
-<li>TODO - Add info and layout items to the rolldown for owned items</li>
 <li>TODO - Use second equipment location for DR application</li>
 <li>TODO - Add ranged and melee attack information fields for spells</li>
 <li>TODO - Implement Missile spell options as chat buttons.</li>
 <li>TODO - Implement block attribute on equipment to allow for shield skill and block </li>
+<li>TODO - Add reaction modifier summary to chat</li>
 <li>TODO - Create character template item </li>
 <li>TODO - Prevent duplicate skills on character sheet </li>
 <li>TODO - Beutification and Layout optimization - 85% complete</li>
@@ -23,11 +25,19 @@ https://github.com/Sky-Captain-13/foundry/tree/master/alt5e
 <li>TODO - Verify all strings have been localized</li>
 <li>TODO - Update trait items to have trait type as subtitle at top of card.</li>
 <li>TODO - Add level option for traits to allow for multi-level traits such as Magery</li>
+<li>TODO - Add item for Parry and Block calculations</li>
+<li>TODO - Add stance for move/dodge calculations</li>
 <li>TODO - Implement Psionics</li>
 <li>TODO - Implement Techniques</li>
 <li>TODO - Implement NPC/Monser 'card' for a lightweight npc record</li>
 <li>TODO - System settings - skin system based on 'theme' </li>
 <li>TODO - Skins - set up Fantasy, Modern, Western, Cyberpunk and Sci-Fi themed css skins </li>
+</ul>
+
+<h3>0.6.9</h3>
+<ul>
+    <li>Added info/properties items to the rolldown for owned items</li>
+    <li>Added info/properties items to the chat card for rolls on appropriate items</li>
 </ul>
 
 <h3>0.6.8</h3>

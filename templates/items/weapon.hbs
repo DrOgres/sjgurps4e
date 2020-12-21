@@ -64,9 +64,10 @@
           <td><input name="data.reach" type="text" value="{{data.reach}}" data-dtype="Number" /></td>
           <td><input name="data.parryType" type="text" value="{{data.parryType}}"/></td>
           <td><input name="data.parryMod" type="text" value="{{data.parryMod}}" data-dtype="Number"/></td>
-          <td><input name="data.minSTR" type="text" value="{{data.minSTR}}" data-dtype="Numer"/></td>
+          <td><input name="data.minST" type="text" value="{{data.minST}}" data-dtype="Numer"/></td>
         </tr>
       </table>
+      
       </div>
       {{/unless}}
       {{!-- Ranged Weapon Data --}}
@@ -86,14 +87,14 @@
           <td><input name="data.range" type="text" value="{{data.range}}"/></td>
           <td><input name="data.rof" type="text" value="{{data.rof}}" data-dtype="Number"/></td>
           <td><input name="data.bulk" type="text" value="{{data.bulk}}" data-dtype="Number"/></td>
-          <td><input name="data.minSTR" type="text" value="{{data.minSTR}}" data-dtype="Numer"/></td>
+          <td><input name="data.minST" type="text" value="{{data.minST}}" data-dtype="Numer"/></td>
           
         </tr>
       </table>
       </div>
 
       {{/if}}
-     
+     <div class="chat-flavor flexrow"><label>{{localize "sjgurps4e.itemProperties.flavorText"}}</label><input name="data.description.chat" type="text" value="{{data.description.chat}}"/></div>
      </div>
   </section>
 </form>

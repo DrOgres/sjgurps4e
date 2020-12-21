@@ -25,7 +25,7 @@
 
         "weapon-melee" : {
             "reach": "Reach",
-            "parryType": "Parry",
+            "parryType": "Parry Restrictions",
             "parryMod": "Parry Modifier"
         },
 
@@ -37,9 +37,23 @@
         },
 
         "itemProperties" : {
+            "spellClass": "Spell Class",
+            "spellCollege": "Spell College",
+            "castingTime": "Casting Time",
+            "duration": "Duration",
+            "initCost": "Initial Cost",
+            "maintCost": "Maintenence Cost",
+            "shots": "Shots",
+            "acc": "Accuracy",
+            "range": "Range",
+            "rof": "Rate of Fire",
+            "bulk": "Bulk",
+            "reach": "Reach",
+            "parryType": "Parry Restrictions",
+            "parryMod": "Parry Modifier",
             "damage": "Base Damage",
             "damageType" : "Damage Type",
-            "modifier" : "Modifier",
+            "modifier" : "Modifier/Roll Formula",
             "name": "Name",
             "weight": "Weight",
             "cost": "Cost",
@@ -48,6 +62,7 @@
             "tl" : "Tech Level",
             "skill" : "Skill",
             "minSTR": "Minimum ST",
+            "minST": "Minimum ST",
             "location": "Location",
             "secondLocation" : "Second Location",
             "piercingDR" : "Piercing/Cutting DR",
@@ -63,7 +78,8 @@
             "rDamage": "Rolled Damage",
             "specDamage": "Special Damage See Notes.",
             "dur": "Durability",
-            "equipable": "Equipable"
+            "equipable": "Equipable",
+            "flavorText": "Flavor Text"
             
         },
 

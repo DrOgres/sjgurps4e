@@ -488,14 +488,54 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         return lift;
     }
 
+    _getItemProperties(item){
+        let props = {};
+       
+        //console.log(item);
+        if (item.type === "weapon"){
+            
+            if(item.data.data.itemType === "weaponMelee"){
+            
+                props.reach= item.data.data.reach;
+                props.parryType= item.data.data.parryType;
+                props.parryMod= item.data.data.parryMod;
+                props.minST= item.data.data.minST;
+                
+           
+            } else {
+                props.acc = item.data.data.acc;
+                props.range = item.data.data.range;
+                props.rof = item.data.data.rof;
+                props.shots = item.data.data.shots;
+                props.bulk = item.data.data.bulk;
+
+            }
+        } else if (item.type === "skill"){
+            if(item.data.data.isSpell){
+                console.log(item);
+                props.spellClass = game.i18n.localize("sjgurps4e.spellItems."+item.data.data.class);
+                props.spellCollege = game.i18n.localize("sjgurps4e.spellItems."+item.data.data.college);
+                props.castingTime = item.data.data.castingTime+" "+item.data.data.castTimeUnit;
+                props.duration = item.data.data.duration+" "+item.data.data.durationTimeUnit;
+                props.initCost = item.data.data.initialCost;
+                props.maintCost = item.data.data.maintCost;
+            
+
+            }
+
+        }
+        
+        return props;
+    }
     _onItemSummary(event){
         event.preventDefault();
         let li=$(event.currentTarget).parents(".item"),
         item = this.actor.getOwnedItem(li.data("itemid")),
+        itemProperties = this._getItemProperties(item),
         chatData = item.getChatData({secrets: this.actor.owner});
 
         //TODO add properties for items at end 
-
+        //console.log(itemProperties);
         if(chatData.description.value === null){
             return;
         } else if (li.hasClass("expanded")){
@@ -504,7 +544,12 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         } else {
             let div = $(`<div class="item-summary">${chatData.description.value}</div>`);
             let props = $(`<div class="item-properties"></div>`);
-            chatData.properties.forEach(p=> props.append(`<span class="tag">${p}</span>`));
+            for(let key in itemProperties){
+                //console.log(key);
+                //console.log(itemProperties[key]);
+                props.append(`<div class="tag">`+game.i18n.localize("sjgurps4e.itemProperties."+key)+`: `+itemProperties[key]+` </div>`)
+            }
+            //chatData.properties.forEach(p=> props.append(`<span class="tag">${p}</span>`));
             
             div.append(props);
             li.append(div.hide());
@@ -617,6 +662,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         event.preventDefault();
         const element = event.currentTarget;
         const dataset = element.dataset;
+        let li=$(event.currentTarget).parents(".item");
         let baseTarget = 0;
         let modifier = 0;
         let skillUsedName = '';
@@ -627,6 +673,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
         let hasDamage = false;
         let chatDesc ='';
         let ownerID = this.actor.data._id;
+        let itemProperties = {};
         
         
         /** find out what kind of thing we are rolling on
@@ -642,7 +689,10 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             //weapons and tools should get the applicable skill
             itemId = element.closest(".item").dataset.itemid;
             let item = this.actor.getOwnedItem(itemId);
-            chatDesc = item.data.data.description.value;
+            chatDesc = item.data.data.description.chat;
+            console.log(item);
+            itemProperties = this._getItemProperties(item);
+            console.log(itemProperties);
             if(item.data.data.itemType == "weaponMelee" || item.data.data.itemType == "weaponRanged"){
                 isweapon = true;
                 hasDamage = true;
@@ -734,6 +784,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
             let item = this.actor.getOwnedItem(itemId);
             let effectiveTarget = this._getSkillTarget(item.data.data.level, item.data.data.stat, item.data.data.difficulty);
             baseTarget = effectiveTarget;
+            itemProperties = this._getItemProperties(item);
             chatDesc = item.data.data.description.value;
             //console.log(item);
             if(item.data.data.isSpell){
@@ -741,7 +792,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                 //if so set the damage flag to true and 
                 //parse out the damage roll formula... 
                 // need to think about how to handle missile spells
-               
+                itemProperties = this._getItemProperties(item);
                 if(item.data.data.hasDamage){
                     hasDamage = true;
                     let damage = item.data.data.damage;
@@ -869,7 +920,16 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             }
                                 
                         }
-                        flavorText = flavorText + damageText + "</div>";    
+                        let props = `<div class="item-properties">`;
+                        for(let key in itemProperties){
+                            console.log(key);
+                            console.log(itemProperties[key]);
+                            props+=`<div class="tag">`+game.i18n.localize("sjgurps4e.itemProperties."+key)+`: `+itemProperties[key]+` </div>`;
+                        }
+                        props += `</div>`
+                        
+                        flavorText = flavorText + damageText + "</div>"+ props;
+                        
                     // chat message for sucess and by amount flagging crits 
                     ChatMessage.create({
                         user: game.user._id,
@@ -912,7 +972,15 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                             }
                                 
                         }
-                        flavorText = flavorText + damageText + "</div>";  
+                        let props = `<div class="item-properties">`;
+                        for(let key in itemProperties){
+                            console.log(key);
+                            console.log(itemProperties[key]);
+                            props+=`<div class="tag">`+game.i18n.localize("sjgurps4e.itemProperties."+key)+`: `+itemProperties[key]+` </div>`;
+                        }
+                        props += `</div>`
+                        
+                        flavorText = flavorText + damageText + "</div>"+ props; 
                         // chat message for sucess and by amount flagging crits 
                         ChatMessage.create({
                         user: game.user._id,
@@ -1001,7 +1069,15 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         }
                             
                     }
-                    flavorText = flavorText + damageText + "</div>";     
+                    let props = `<div class="item-properties">`;
+                    for(let key in itemProperties){
+                        console.log(key);
+                        console.log(itemProperties[key]);
+                        props+=`<div class="tag">`+game.i18n.localize("sjgurps4e.itemProperties."+key)+`: `+itemProperties[key]+` </div>`;
+                    }
+                    props += `</div>`
+                    
+                    flavorText = flavorText + damageText + "</div>"+ props;    
                     
                             // chat message for sucess and by amount flagging crits 
                     ChatMessage.create({
@@ -1058,7 +1134,15 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                                 }
                                     
                             }
-                        flavorText = flavorText + damageText + "</div>";    
+                            let props = `<div class="item-properties">`;
+                            for(let key in itemProperties){
+                                console.log(key);
+                                console.log(itemProperties[key]);
+                                props+=`<div class="tag">`+game.i18n.localize("sjgurps4e.itemProperties."+key)+`: `+itemProperties[key]+` </div>`;
+                            }
+                            props += `</div>`
+                            
+                            flavorText = flavorText + damageText + "</div>"+ props;  
                         // chat message for sucess and by amount flagging crits 
                         ChatMessage.create({
                         user: game.user._id,

@@ -237,6 +237,24 @@ input:hover {
 .sjgurps4e.sheet.item .sheet-body .form-group {
   overflow: hidden;
 }
+.item-properties {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.item-properties .tag {
+  background-color: #fffce7;
+  border: 1px solid;
+  border-color: #c53131;
+  border-radius: 5px;
+  padding: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  flex-wrap: nowrap;
+  font-size: 0.8em;
+}
 .fourteen-location-dr {
   min-width: 170px;
 }
@@ -717,6 +735,9 @@ select:hover {
   min-width: 65%;
   padding: 0px 10px 0px 10px;
 }
+.info .appAndbio .twoby {
+  margin-top: 5px;
+}
 .info .appAndbio .mods-etc .full {
   width: 100%;
 }
@@ -778,6 +799,24 @@ select:hover {
   font-size: 22px;
   font-weight: 600;
   color: #c53131;
+}
+.chat-message .message-content .damage-rolls .item-properties {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.chat-message .message-content .damage-rolls .item-properties .tag {
+  background-color: #fffce7;
+  border: 1px solid;
+  border-color: #c53131;
+  border-radius: 5px;
+  padding: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  flex-wrap: nowrap;
+  font-size: 0.8em;
 }
 .flavor-text .use-desc {
   font-size: 0.8rem;
