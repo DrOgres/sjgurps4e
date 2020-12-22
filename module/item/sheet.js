@@ -54,8 +54,8 @@ export default class ItemSheetGurps extends ItemSheet{
     }
 
      /* -------------------------------------------- */
-  /*  Form Submission                             */
-	/* -------------------------------------------- */
+     /*  Form Submission                             */
+	 /* -------------------------------------------- */
 
   /** @override */
   _getSubmitData(updateData={}) {

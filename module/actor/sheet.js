@@ -1089,19 +1089,7 @@ export default class GURPS4eCharacterSheet extends ActorSheet {
                         isRoll: true,
                         roll: mRoll
                     });
-                    // damage rolls... should replace with buttons to roll
-
-                    if(!hasDamage){
-                        for(let n=0; n<damageFormulas.length;n++){
-                            mRoll = new Roll(damageFormulas[n], this.actor.data.data);
-                            label = `<div class=flexrow><div>` + baseType[n] + `</div>
-                            <div> ` + damageType[n] + `</div></div>`; 
-                            mRoll.roll().toMessage({
-                                speaker:ChatMessage.getSpeaker({actor: this.actor}),
-                                flavor: label
-                            });
-                        }
-                    }
+                    
                 } else {
                     let label = dataset.label ? 
                         `<span class="flavor-text"><div class="chat-header flexrow">

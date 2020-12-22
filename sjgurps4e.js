@@ -98,6 +98,11 @@ Hooks.once("init", function (){
 })
 
 
+Hooks.on("preCreateItem", (createData) =>{
+  if(!createData.img)
+    createData.img = "systems/sjgurps4e/icons/new_item.svg"
+})
+
 /**
  * Set default values for new actors' tokens
  */

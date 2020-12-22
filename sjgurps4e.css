@@ -59,6 +59,44 @@ select {
   font-weight: 700;
   border-radius: 5px;
 }
+#combat {
+  color: #fffce7;
+}
+#combat-tracker {
+  background-color: #a1a1a155;
+  color: #fffce7;
+}
+#combat-tracker .token-name .combatant-controls .combatant-control {
+  color: #fffce7;
+}
+#combat-tracker h4 {
+  color: #fffce7;
+}
+.directory-item .folder-header h3 {
+  color: #2b2b2b;
+}
+.directory-list {
+  background-color: dimgrey;
+}
+.directory-list #combat-tracker {
+  background-color: #a1a1a155;
+  color: #fffce7;
+}
+.directory-list #combat-tracker .token-name .combatant-controls .combatant-control {
+  color: #fffce7;
+}
+.directory-list #combat-tracker h4 {
+  color: #fffce7;
+}
+.directory-list .compendium-entity {
+  color: #fffce7;
+}
+.directory-list .compendium-footer {
+  color: #2b2b2b;
+}
+.directory-list h4 {
+  color: #fff8ee;
+}
 input:hover {
   background-color: #c5313120;
 }
@@ -133,6 +171,9 @@ input:hover {
 .sjgurps4e.sheet.item .sheet-header {
   align-items: flex-start;
   flex: 0;
+}
+.sjgurps4e.sheet.item .sheet-header .portrait {
+  border: none;
 }
 .sjgurps4e.sheet.item .sheet-header .charname input {
   background-color: #ffffff00;
@@ -229,7 +270,7 @@ input:hover {
 }
 .sjgurps4e.sheet.item .sheet-body .form-group select {
   width: 95px;
-  font-size: 14px;
+  font-size: 12px;
   padding: 1px 3px;
   margin: 0;
   align-items: flex-end;
